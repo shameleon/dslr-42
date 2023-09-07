@@ -1,6 +1,7 @@
-made,mileage,price,hp,color
-Ford, 25000, 6800, 90, white
-Ford, 85400, 4300, 110, black
-Toyota, 156000, 2150, 130, red
-Toyota, 16000, 12500, 180, grey
-Hyundai, 56000, 3800, 95, grey
+made,mileage,price,hp,color, store
+Ford, 25000, 6800, 90, white, 1
+Ford, 85400, 5300, 110, black, 2
+Toyota, 156000, 2150,, red, 2
+Toyota, 26000, 12500, 180, grey,
+Hyundai, 56000, 6800, 95, grey, 1
+Subaru, 78000, 15080, 180, blue, 2
