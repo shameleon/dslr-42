@@ -19,6 +19,8 @@ Model 3: C or not C
 
 ## One-vs-all 
 One-Vs-All Classification is a method of multi-class classification. It can be broken down by splitting up the multi-class classification problem into multiple binary classifier models. For k class labels present in the dataset, k binary classifiers are needed in One-vs-All multi-class classification.
+
+MLE 
 ()[https://towardsdatascience.com/multi-class-classification-one-vs-all-one-vs-one-94daed32a87b]
 best formulas
 ()[https://www.cs.rice.edu/~as143/COMP642_Spring22/Scribes/Lect5]
