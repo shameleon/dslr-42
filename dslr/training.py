@@ -48,13 +48,14 @@ def main() -> None:
     # (1333, )
     logreg_model = LogRegTrain(df_x_train, df_class)
     df_weights = logreg_model.train(0.1, 1000)
-    print(df_weights)
+    # print(df_weights)
     model_dir = './logistic_reg_model/'
     dest_file = 'gradient_descent_weights.csv'
     if not os.path.exists(model_dir):
         os.makedirs(model_dir)
     #no headers : np.savetxt(f'{model_dir + dest_file}', df_weights, delimiter=",")
     df_weights.to_csv(f'{model_dir + dest_file}')
+    logreg_model.verify()
     return None
 
 

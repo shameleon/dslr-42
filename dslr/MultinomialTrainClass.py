@@ -48,6 +48,10 @@ class LogRegTrain:
         return 1 / (1 + np.exp(-arr))
     
     @staticmethod
+    def sigmoid(n):
+        return 1 / (1 + np.exp(-n))
+    
+    @staticmethod
     def loss_function(y_actual, h_pred):
         """ y_actual : target class. 1 in class, 0 not in class
         h_pred = signoid(x.weights)
@@ -90,3 +94,12 @@ class LogRegTrain:
             # self.df_losses[house] = loss
             self.df_weights[house] = weights
         return self.df_weights
+
+    def verify(self):
+        score = 0
+        for i in range(1):
+            for house in self.houses:
+                w = self.df_weights[house]
+                feat = self.x_train[i]
+                print(LogRegTrain.sigmoid(np.sum(w * feat)))
+                ans = self.df_class[i]
