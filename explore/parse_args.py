@@ -23,7 +23,7 @@ def main():
     # parser.add_argument('-h', '--help')
     # parser.add_argument('', )
     # parser.print_help()
-    df = pd.read_csv(f'./explore/cars.csv')
+    df = pd.read_csv('./explore/cars.csv')
     print(df.head())
 
 if __name__ == "__main__":
