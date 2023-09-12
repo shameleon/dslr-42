@@ -79,7 +79,7 @@ def main():
     df = pd.read_csv(f'./datasets/dataset_train.csv')
     df['Accurate pred.'] = predict
     print(df.head(10))
-    df_pred_proba.to_csv(f'{model_dir}prediction_for_trainset1600.csv')
+    df.to_csv(f'{model_dir}prediction_for_trainset1600.csv')
     sns.scatterplot(data=df, x="Astronomy",y="Herbology", hue="Accurate pred.", legend='auto')
     #sns.histplot(data=df, x="Accurate pred.'", color="skyblue", kde=True, hue="Hogwarts House")
     #sns.histplot(data=df, x="Herbology", color="skyblue", kde=True, hue="Accurate pred.")
