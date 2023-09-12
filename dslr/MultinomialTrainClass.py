@@ -34,7 +34,7 @@ class LogRegTrain:
         self.houses = df_class.unique().tolist()
         # self.df_losses = pd.DataFrame(columns=self.houses)
         # self.df_losses.fillna(0)
-        w_indexes = df_x_train.columns.insert(0, ['Bias'])
+        w_indexes = df_x_train.columns.insert(0, ['Intercept'])
         self.df_weights = pd.DataFrame(columns=self.houses, index=w_indexes).fillna(0)
 
     @staticmethod
@@ -74,6 +74,7 @@ class LogRegTrain:
         y_actual = np.where(self.df_class == house, 1, 0)
         #loss = []
         weights = np.ones(len(self.features) + 1).T
+        #weights = np.zeros(len(self.features) + 1).T
         for iter in range(self.epochs):
             z_output = np.dot(self.x_train, weights)
             h_pred = LogRegTrain.sigmoid(z_output) 
@@ -93,13 +94,22 @@ class LogRegTrain:
             weights = self.train_one_vs_all(house)
             # self.df_losses[house] = loss
             self.df_weights[house] = weights
+        print(self.learning_rate, "  iterations =", self.epochs)
         return self.df_weights
 
-    def verify(self):
-        score = 0
-        for i in range(1):
-            for house in self.houses:
-                w = self.df_weights[house]
-                feat = self.x_train[i]
-                print(LogRegTrain.sigmoid(np.sum(w * feat)))
-                ans = self.df_class[i]
+    def get_predict_proba(self) -> pd.DataFrame:
+        """
+        input is the trained dataset
+        returns : a dataframe containing the probability for each outcome
+        and the final predicted outcome
+        """
+        print(self.x_train.shape, self.df_weights.shape)
+        z = np.dot(self.x_train, self.df_weights)
+        # odds = np.log(z)
+        h = LogRegTrain.sigmoid(z)
+        df_pred_proba = pd.DataFrame(h, columns=self.houses)
+        df_pred_proba['Predicted outcome'] = df_pred_proba.idxmax(axis=1)
+        df_pred_proba['Real outcome'] = self.df_class.tolist()
+        df_pred_proba['Accurate pred.'] = np.where(df_pred_proba['Predicted outcome'] 
+                                         == df_pred_proba['Real outcome'], 1, 0)
+        return df_pred_proba

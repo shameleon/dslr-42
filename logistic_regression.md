@@ -70,4 +70,14 @@ Logistic Regression Assumptions
 Standardization
 
     les données ne sont pas standardisées, leur interprétation dépendra de l’ordre de grandeur des échelles des variables.
+## missing data
 
+[https://bookdown.org/egarpor/PM-UC3M/app-nas.html]
+
+Use complete cases. This is the simplest solution and can be achieved by restricting the analysis to the set of fully-observed observations. 
+
+
+## probabilities
+[https://stats.oarc.ucla.edu/r/dae/multinomial-logistic-regression/]
+
+[https://bookdown.org/egarpor/PM-UC3M/app-ext-multinomialreg.html]
