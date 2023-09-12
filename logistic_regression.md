@@ -70,6 +70,11 @@ Logistic Regression Assumptions
 Standardization
 
     les données ne sont pas standardisées, leur interprétation dépendra de l’ordre de grandeur des échelles des variables.
+
+## swarm plots
+[https://www.kaggle.com/code/alexisbcook/scatter-plots]
+
+
 ## missing data
 
 [https://bookdown.org/egarpor/PM-UC3M/app-nas.html]
@@ -81,3 +86,15 @@ Use complete cases. This is the simplest solution and can be achieved by restric
 [https://stats.oarc.ucla.edu/r/dae/multinomial-logistic-regression/]
 
 [https://bookdown.org/egarpor/PM-UC3M/app-ext-multinomialreg.html]
+
+
+
+## correlation matrix
+
+[https://datatofish.com/correlation-matrix-pandas/]
+
+## confusion matrix 
+
+[https://datatofish.com/confusion-matrix-python/]
+
+[https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html]
