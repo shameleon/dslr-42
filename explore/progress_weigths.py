@@ -29,8 +29,17 @@ def my_iteration(epochs:int) -> None:
         arr += perturbation
         # bar = make_bar(i, epochs)
         time.sleep(0.05)
-        print(''.join(['{:>5.2}'.format(x) for x in arr])) #, end='\r')
+        n.zfill(3 if n < 0 else 2)
+        print(''.join([f'|    {x:>3.2{2.2 + (x < 0)}f}  ' for x in arr])) #, end='\r')
 
+"""
+https://www.pylenin.com/blogs/python-width-precision/
+ Let’s generalize 0.3f into a formula - x.yf
+
+    x represents the minimum width or padding of the output string.
+    y represents the maximum number of characters after the decimal.
+    f symbolizes floating-point representation.
+"""
 
 def main():
     """  """
