@@ -91,8 +91,7 @@ def main():
 
     #sns.histplot(data=df, x="Accurate pred.'", color="skyblue", kde=True, hue="Hogwarts House")
     #sns.histplot(data=df, x="Herbology", color="skyblue", kde=True, hue="Accurate pred.")
-          
-
+         
 if __name__ == "__main__":
     """ train model from file """
     main()

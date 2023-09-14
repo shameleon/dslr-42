@@ -90,11 +90,3 @@ Use complete cases. This is the simplest solution and can be achieved by restric
 
 
 ## correlation matrix
-
-[https://datatofish.com/correlation-matrix-pandas/]
-
-## confusion matrix 
-
-[https://datatofish.com/confusion-matrix-python/]
-
-[https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html]

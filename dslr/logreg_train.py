@@ -46,8 +46,6 @@ def main() -> None:
     # houses = df_classes.unique().tolist()
     # extract features columns
     df_x_train = df_train[df_train.columns[2:]]
-    # mean_x = df_x_train.mean(axis=0)
-    # std_x = df_x_train.std(axis=0)
     df_normalizing = pd.DataFrame({'mean_x': df_x_train.mean(axis=0),
                                  'std_x': df_x_train.std(axis=0)}).T
     df_normalizing.to_csv(f'{model_dir}normalization.csv')
