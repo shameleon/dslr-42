@@ -21,13 +21,15 @@ class   Describe:
 
 def test_describe():
     """ https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html# """
+    print("\npd.Series([1, 2, 3]  ===> describe()")
     s = pd.Series([1, 2, 3])
-    s.describe()
+    print(s.describe())
     df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f']),
                        'numeric': [1, 2, 3],
                        'object': ['a', 'b', 'c']})
+    print("\npd.DataFrame ===> describe()")
     df.describe(include='all')
-    df.numeric.describe() 
+    print(df.numeric.describe())
 
 
 if __name__ == "__main__":
