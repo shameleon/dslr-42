@@ -90,5 +90,3 @@ Use complete cases. This is the simplest solution and can be achieved by restric
 
 
 ## correlation matrix
-
-[https://datatofish.com/correlation-matrix-pandas/]
