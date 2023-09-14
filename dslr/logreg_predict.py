@@ -79,12 +79,19 @@ def main():
     df = pd.read_csv(f'./datasets/dataset_train.csv')
     df['Accurate pred.'] = predict
     print(df.head(10))
+    df.drop(df.columns[0], inplace=True, axis = 1)
     df.to_csv(f'{model_dir}prediction_for_trainset1600.csv')
-    sns.scatterplot(data=df, x="Astronomy",y="Herbology", hue="Accurate pred.", legend='auto')
+    df_inexact = df[df['Accurate pred.'] == 0]
+    sns.scatterplot(data=df_inexact, x="",y="Flying", hue="Best Hand", legend='auto')
+    sns.scatterplot(data=df_inexact, x="Hogwarts House",y="Flying", hue="Best Hand", legend='auto')
+    plt.show()
+    # df_inexact.drop(df.columns[6:18], inplace=True, axis = 1)
+    # df_inexact.sort_values(['First Name', 'Best Hand'], inplace=True)
+    # df_inexact.to_csv(f'{model_dir}incorrect_prediction_for_trainset1600.csv')
+
     #sns.histplot(data=df, x="Accurate pred.'", color="skyblue", kde=True, hue="Hogwarts House")
     #sns.histplot(data=df, x="Herbology", color="skyblue", kde=True, hue="Accurate pred.")
-          
-
+         
 if __name__ == "__main__":
     """ train model from file """
     main()
