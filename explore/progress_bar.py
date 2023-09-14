@@ -4,6 +4,9 @@ import numpy as np
 """
 program:
       displays a  progress bar on the stdout
+      progress is percentage of completed iterations
+      Parameters: present iteration,
+                    total iterations.
 """
 COL_RESET = '\x1b[0m'
 COL_ORANGE = '\x1b[38:5:208m'
@@ -11,7 +14,9 @@ COL_ORANGE = '\x1b[38:5:208m'
 def my_important_stuff():
     pass
 
-def display_bar(i: int, epochs: int, scale_factor=20):
+def display_bar(i: int, epochs: int):
+    bar_size = 50
+    scale_factor = epochs / bar_size
     full = int(epochs / scale_factor)
     progress = int((i + 1) / scale_factor)
     bar = ['Progress:', f'{int(100 * (i + 1) / epochs):>4}% ',
@@ -28,12 +33,12 @@ def my_iteration_bar(epochs:int) -> None:
     for i in range(epochs):
         my_important_stuff()
         display_bar(i, epochs)
-        time.sleep(0.005)
+        time.sleep(2 / epochs)
 
 
 def main():
     """  """
-    my_iteration_bar(1000)
+    my_iteration_bar(800)
 
 if __name__ == "__main__":
     main()
