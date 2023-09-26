@@ -1,6 +1,10 @@
 # dataset
-./dataset/*
-dataset*
+# ./datasets/*
+# results
+# .logistic_reg_model
+
+# VSCode
+dslr_project.code-workspace
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
