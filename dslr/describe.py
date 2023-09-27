@@ -1,65 +1,63 @@
+import argparse
 import pandas as pd
+from DescriberClass import Describe
 
 """describe.py:
+    This program reproduces the pandas.decribe() function.
 
-Program called describe.[extension].
-This program will take a dataset as a parameter
+Parameter  a dataset file name as parameter.
+options : 
+    --verbose or -v for more info
+    --bonnus or -b for bonus, additonal metrics to describe
 
-it displays information for all numerical features 
+An instance of Describe Class is created
+with agg_describe() method to display description of features 
 """
 
 __author__ = "jmouaike"
 
-class   Describe:
-    """ """
-    def __init__(self):
-        pass
-
-    def extension(self):
-        pass
-
-
-def test_describe():
-    """ https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html# """
-    print("\npd.Series([1, 2, 3]  ===> describe()")
-    s = pd.Series([1, 2, 3])
-    print(s.describe())
-    df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f']),
-                       'numeric': [1, 2, 3],
-                       'object': ['a', 'b', 'c']})
-    print("\npd.DataFrame ===> describe()")
-    df.describe(include='all')
-    print(df.numeric.describe())
-
+def dataset_describer():
+    """  """
+    print("File     :", args.filename)
+    print("Verbose" * args.verbose)
+    try:
+        df = pd.read_csv(args.filename)
+        if args.verbose:
+            print(df.describe())
+        dataset_descriptor = Describe(df)
+        dataset_descriptor.agg_describe(args.bonus)
+    except (FileNotFoundError, IsADirectoryError) as e:
+        print("File Error :", e)
+    except pd.errors.EmptyDataError as e:
+        print("File Content Error :", e)
 
 if __name__ == "__main__":
-    test_describe()
+    parser = argparse.ArgumentParser(prog='describe.[ext]',
+                                     description='Describe a dataset',
+                                     epilog='verbose mode for options')
+    parser.add_argument('filename')
+    parser.add_argument('-b', '--bonus',
+                        action='store_true')
+    parser.add_argument('-v', '--verbose',
+                        action='store_true') 
+    args = parser.parse_args()
+    dataset_describer()
 
 
 """
 Numerical column stats:
 
-    Type
-    Density
-    No. of Values
-    No. of Unique Values
-    No. of NaN
-    No. of Zeros
-    No. of +ve Values
-    Min
-    Max
-    Mean
-    Std
-    Median
-    Mode
-    Skew
-    Kurtosis
-    No. of 3 Sigma Outliers
+[+]     No. of Values = count
+[+]     Mean
+[+]     Std
+[+]     Min
+[+]     First quartile
+[+]     Median
+[+]     Third quartile
+[+]     Max
+[+]     No. of NaN
 
-Object column stats:
+bonus :
 
-    Type
-    Density
-    No. of Values
-    No. of Unique Values No. of NaN
+
 """

@@ -1,7 +1,7 @@
 # dataset
-# ./datasets/*
+datasets/*
 # results
-# .logistic_reg_model
+.logistic_reg_model
 
 # VSCode
 dslr_project.code-workspace
