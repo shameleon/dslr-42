@@ -1,12 +1,23 @@
 import unittest
+import pandas as pd
 
 class DescribeTesting(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
         super().__init__(methodName)
+        try:
+            df = pd.read_csv("./datasets/dataset_train.csv")
+        except (FileNotFoundError, IsADirectoryError) as e:
+            print("File Error :", e)
+        except pd.errors.EmptyDataError as e:
+            print("File Content Error :", e)
+        if df.empty:
+            self.df = None
+        else:
+            self.df = df.columns[1:]
 
-        
-    def setup(self):
-        print("Unit testing for describe.py")
+    def test_describe(self):
+        self.df.describe(include='all')
+        pass
 
 if __name__ == '__main__':
     unittest.main()

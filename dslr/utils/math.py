@@ -111,11 +111,12 @@ def mean(x: pd.Series):
 def std(x: pd.Series):
     """ Standard deviation"""
     x_list = drop_nan(x).to_list()
+    if len(x_list) == 0:
+        return np.nan
     x_mean = mean(x)
     sq_sum = 0
     for i in range(len(x_list)):
         sq_sum += (x_list[i] - x_mean)**2
-        sqrt(sq_sum / len(x_list))
     return sqrt(sq_sum / len(x_list))
 
 
@@ -138,7 +139,11 @@ def test_utils_math(s: pd.Series):
     put_wline("sum", np.sum(s), sum(s))
     put_wline("mean", np.mean(s), mean(s))
     put_wline("std", np.std(s), std(s))
-
+    print("_" * 50)
+    df2 = pd.DataFrame({'feature1': [np.nan, np.nan, np.nan, np.nan],
+                    'feature2': [50, 17, 42, np.nan]})
+    put_wline("std_feature1", np.std(df2['feature1']), std(df2['feature1']))
+    put_wline("std_feature1", np.std(df2['feature2']), std(df2['feature2']))
 
 if __name__ == "__main__":
     # create a DataFrame with missing values

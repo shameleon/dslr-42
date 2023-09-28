@@ -21,8 +21,7 @@ class   Describe:
     Parameter : a pandas dataframe
     Output : displays information for all numerical features of the dataframe"""
     def __init__(self, df=pd.DataFrame):
-        self.df = df
-        self.df_num = self.df[df.select_dtypes(include=np.number).columns[1:]]
+        self.df_num = df[df.select_dtypes(include=np.number).columns]
         self.funcs = [dum.count, dum.mean, dum.std, dum.min, dum.quantile_25,
                  dum.quantile_50, dum.quantile_75, dum.max]
         self.bonus_funcs = [dum.count_nan]
@@ -30,7 +29,7 @@ class   Describe:
     def agg_describe(self, bonus=False):
         """ using custom functions and counting NaN
         [9 rows x 13 columns]"""
-        if self.df.empty:
+        if self.df_num.empty:
             return None
         if bonus:
             self.funcs += self.bonus_funcs
@@ -38,21 +37,19 @@ class   Describe:
         print(description.applymap(lambda x: f"{x:0.2f}"))
 
 
-def test_describe():
-    """ https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html# """
-    print("\npd.Series([1, 2, 3]  ===> describe()")
-    s = pd.Series([1, 2, 3])
-    print(s.describe())
-    df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f']),
-                       'numeric': [1, 2, 3],
-                       'object': ['a', 'b', 'c']})
-    print("\npd.DataFrame ===> describe()")
-    df.describe(include='all')
-    print(df.numeric.describe())
+def test_describe_class():
+    """  """
+    df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f', 'e']),
+                       'feature1': [1, np.nan, np.nan, 42],
+                       'feature2': [50, 17, 42, np.nan]})
+    # print(df.describe(include='all'))
+    print(df.describe())
+    description = Describe(df)
+    description.agg_describe(False)
 
 
 if __name__ == "__main__":
-    test_describe()
+    test_describe_class()
 
 
 """
