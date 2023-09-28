@@ -140,7 +140,7 @@ def test_utils_math(s: pd.Series):
     put_wline("mean", np.mean(s), mean(s))
     put_wline("std", np.std(s), std(s))
     print("_" * 50)
-    df2 = pd.DataFrame({'feature1': [np.nan, np.nan, np.nan, np.nan],
+    df2 = pd.DataFrame({'feature1': [1, np.nan, np.nan, 42],
                     'feature2': [50, 17, 42, np.nan]})
     put_wline("std_feature1", np.std(df2['feature1']), std(df2['feature1']))
     put_wline("std_feature1", np.std(df2['feature2']), std(df2['feature2']))

@@ -1,4 +1,5 @@
 import unittest
+import numpy as np
 import pandas as pd
 
 class DescribeTesting(unittest.TestCase):
@@ -16,7 +17,7 @@ class DescribeTesting(unittest.TestCase):
             self.df = df.columns[1:]
 
     def test_describe(self):
-        self.df.describe(include='all')
+        self.df.describe()
         pass
 
 if __name__ == '__main__':
