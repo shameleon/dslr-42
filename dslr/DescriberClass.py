@@ -39,9 +39,9 @@ class   Describe:
 
 def test_describe_class():
     """  """
-    df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f', 'e']),
-                       'feature1': [1, np.nan, np.nan, 42],
-                       'feature2': [50, 17, 42, np.nan]})
+    df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f', 'g']),
+                       'feature1': [1, 22, 21, 42],
+                       'feature2': [50, 17, 42, 23]})
     # print(df.describe(include='all'))
     print(df.describe())
     description = Describe(df)

@@ -115,7 +115,9 @@ source /venv/bin/activate
 [Argument parser = argparse](https://docs.python.org/3/library/argparse.html)
 [Exceptions](https://docs.python.org/3/tutorial/errors.html)
 [Pandas describe doc](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html#)
+[numpy statistics](https://numpy.org/doc/stable/reference/routines.statistics.html)
 [numpy percentile](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html)
+[Math and statistics online calculator](https://www.calculator.net/math-calculator.html)
 [skweness and kurtosis](https://inside-machinelearning.com/skewness-et-kurtosis/)
 
 [subset data](https://pandas.pydata.org/docs/getting_started/intro_tutorials/03_subset_data.html)
