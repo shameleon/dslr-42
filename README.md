@@ -15,6 +15,7 @@ Since there is some bug on 42-intra, unfairly blocking me for that project,
 I am doing it all by myself while awaiting for 42-staff to unblock me.
 
 ### To-do-list
+
 ||from Done| status | to do next|
 |---|:---:|---|---|
 |describe.py | `50%` | functional |+ unit testing, + add bonus|
@@ -101,9 +102,12 @@ source /venv/bin/activate
 
 [setup.py script (french)](https://docs.python.org/fr/3/distutils/setupscript.html)
 
+### format, width, precision
+[Precision](https://www.pylenin.com/blogs/python-width-precision/)
+
 ### pandas dataframes and np.arrays
 
-[subset data](https://pandas.pydata.org/docs/getting_started/intro_tutorials/03_subset_data.html)
+[subsetting data](https://pandas.pydata.org/docs/getting_started/intro_tutorials/03_subset_data.html)
 [Numpy hierachy](https://numpy.org/doc/stable/reference/arrays.scalars.html)
 
 ### for the describe.py part
@@ -123,3 +127,8 @@ source /venv/bin/activate
 ### Plots
 
 [constrained layout](https://matplotlib.org/stable/tutorials/intermediate/constrainedlayout_guide.html#sphx-glr-tutorials-intermediate-constrainedlayout-guide-py)
+
+### testing
+
+[unittest](https://docs.python.org/fr/3/library/unittest.html)
+[unittest (in french)](https://gayerie.dev/docs/python/python3/unittest.html)
