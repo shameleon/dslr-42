@@ -8,13 +8,34 @@ Dslr consists of training a ***multivariate logistic regression model** to solve
 
 ---
 
+## Project status
+
+The project has to be accomplished by a team of two studs in order to be validated.
+Since there is some bug on 42-intra, unfairly blocking me for that project,
+I am doing it all by myself while awaiting for 42-staff to unblock me.
+
+### To-do-list
+||from Done| status | to do next|
+|---|:---:|---|---|
+|describe.py | `50%` | functional |+ unit testing, + add bonus|
+|plots| `50%` | undone | analysis ok in jupyter notebook >> to .py|
+|logreg train |`80%`|  functional | remove comments|
+|logreg predict | `90%` |  functional | remove comments|
+|model metrics| `20%` | X |choose relevent metrics, start toolkit|
+|bonus|`0%`||||
+
+### Results so far
+
+`98.3%` prediction accuracy on the training dataset with a 10-feature based model.
+I have to try to increase accuracy with other feature(s).
+
 ## Subject
 
 ### Synopsis
 
 The main objective is to recreate a magic Sorting Hat to predict Hogwarts student houses. When Harry Potter universe meet a Data sciencist.
 
-### Mandatory
+### Mandatory part
 
 #### Describe from scratch
 
@@ -40,7 +61,7 @@ logreg_predict.[extension] dataset_train.csv [weights]
 
 Predict from '.datasets/dataset_test.csv' and generate a prediction file `houses.csv`` formatted exactly as follows:
 
-```
+```shell
 $> cat houses.csv
 Index,Hogwarts House
 0,Gryffindor
@@ -76,12 +97,16 @@ source /venv/bin/activate
 
 ## Some helpful links
 
-### Fluency with pandas dataframes and np.arrays
+### Python
+
+[setup.py script (french)](https://docs.python.org/fr/3/distutils/setupscript.html)
+
+### pandas dataframes and np.arrays
 
 [subset data](https://pandas.pydata.org/docs/getting_started/intro_tutorials/03_subset_data.html)
 [Numpy hierachy](https://numpy.org/doc/stable/reference/arrays.scalars.html)
 
-### for the describe.py par
+### for the describe.py part
 
 [Argument parser = argparse](https://docs.python.org/3/library/argparse.html)
 [Exceptions](https://docs.python.org/3/tutorial/errors.html)
@@ -96,5 +121,5 @@ source /venv/bin/activate
 [Kaggle : logistic regression from scratch](https://www.kaggle.com/code/jagannathrk/logistic-regression-from-scratch-python)
 
 ### Plots
- 
+
 [constrained layout](https://matplotlib.org/stable/tutorials/intermediate/constrainedlayout_guide.html#sphx-glr-tutorials-intermediate-constrainedlayout-guide-py)

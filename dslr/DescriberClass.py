@@ -6,7 +6,12 @@ import utils.math as dum
     - class Describe
     - tests for the class
 
-    Class Describe reproduces the behavior of pandas pd.describe() function
+    Class Describe reproduces the behavior of pandas describe()
+    function for the mandatory part of 42's subject.
+    
+    Bonus:
+    More statistics lines are provided if bonus=True 
+    for self.agg_describe() method.
 """
 
 __author__ = "jmouaike"
@@ -17,19 +22,19 @@ class   Describe:
     Output : displays information for all numerical features of the dataframe"""
     def __init__(self, df=pd.DataFrame):
         self.df = df
-        self.df_num = self.df[self.df.select_dtypes(include=np.number).columns[1:]]
+        self.df_num = self.df[df.select_dtypes(include=np.number).columns[1:]]
+        self.funcs = [dum.count, dum.mean, dum.std, dum.min, dum.quantile_25,
+                 dum.quantile_50, dum.quantile_75, dum.max]
+        self.bonus_funcs = [dum.count_nan]
 
     def agg_describe(self, bonus=False):
         """ using custom functions and counting NaN
         [9 rows x 13 columns]"""
         if self.df.empty:
             return None
-        funcs = [dum.count, dum.mean, dum.std, dum.min, dum.quantile_25,
-                 dum.quantile_50, dum.quantile_75, dum.max]
-        # bonus_funcs = [dum.count_nan]
         if bonus:
-            funcs += [dum.count_nan] #.append(bonus_funcs)
-        description = self.df_num.agg(funcs)
+            self.funcs += self.bonus_funcs
+        description = self.df_num.agg(self.funcs)
         print(description.applymap(lambda x: f"{x:0.2f}"))
 
 
