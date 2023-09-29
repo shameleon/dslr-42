@@ -1,4 +1,4 @@
-from math import floor, ceil, sqrt
+# from math import floor, ceil, sqrt
 from functools import reduce 
 import numpy as np
 import pandas as pd
@@ -60,6 +60,8 @@ def percentile(x: pd.Series, q:float):
     q = 0.75 for third quartile,
     q = 1 for maximum.
     
+    variables:
+        g : virtual float index between f and c neighbors
     Return :
         float value
     arr : sorted numpy array without NaNs
@@ -109,15 +111,19 @@ def mean(x: pd.Series):
 
 
 def std(x: pd.Series):
-    """ Standard deviation"""
-    x_list = drop_nan(x).to_list()
-    if len(x_list) == 0:
+    """ Standard deviation
+    instead of being dropped with x_list = drop_nan(x).to_list()
+    NaNs are replaced by the mean : x_list[i] - x_mean = 0
+    useless incrementation of sq_sum is skipped
+    """
+    if count(x) <= 1:
         return np.nan
     x_mean = mean(x)
     sq_sum = 0
-    for i in range(len(x_list)):
-        sq_sum += (x_list[i] - x_mean)**2
-    return sqrt(sq_sum / len(x_list))
+    for i in range(len(x)):
+        if is_not_nan(x[i]):
+            sq_sum += is_not_nan(x[i]) * (x[i] - x_mean)**2
+    return sqrt(sq_sum / len(x))
 
 
 def put_wline(label: str, n1, n2):
