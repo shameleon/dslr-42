@@ -29,12 +29,17 @@ class   Describe:
     def agg_describe(self, bonus=False):
         """ using custom functions and counting NaN
         [9 rows x 13 columns]"""
+        new_idx_names = {'quantile_25': '25%',
+                         'quantile_50': '50%',
+                         'quantile_75': '75%'}
         if self.df_num.empty:
             return None
         if bonus:
             self.funcs += self.bonus_funcs
-        description = self.df_num.agg(self.funcs)
-        print(description.applymap(lambda x: f"{x:0.2f}"))
+        self.description = self.df_num.agg(self.funcs)
+        self.description.rename(index=new_idx_names, inplace=True)
+        print(self.description.applymap(lambda x: f"{x:0.2f}"))
+        return self.description
 
 
 def test_describe_class():
@@ -43,9 +48,15 @@ def test_describe_class():
                        'feature1': [1, 22, 21, 42],
                        'feature2': [50, 17, 42, 23]})
     # print(df.describe(include='all'))
+    pandas_stats = df.describe()
     print(df.describe())
     description = Describe(df)
-    description.agg_describe(False)
+    stats = description.agg_describe(False)
+    print(pandas_stats.shape[0], stats.shape)
+    result = (stats == pandas_stats)
+    print(result)
+    print(result.where(result == False))
+    # https://stackoverflow.com/questions/53979403/search-for-a-value-anywhere-in-a-pandas-dataframe
 
 
 if __name__ == "__main__":

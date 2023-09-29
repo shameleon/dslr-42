@@ -1,6 +1,7 @@
 import unittest
 import numpy as np
 import pandas as pd
+from ..DescriberClass import Describe
 
 class DescribeTesting(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
@@ -17,7 +18,9 @@ class DescribeTesting(unittest.TestCase):
             self.df = df.columns[1:]
 
     def test_describe(self):
-        self.df.describe()
+        description = Describe(self.df)
+        res = description.agg_describe(False)
+        self.assertEqual(self.df.describe(), res)
         pass
 
 if __name__ == '__main__':
