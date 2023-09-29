@@ -18,7 +18,7 @@ I am doing it all by myself while awaiting for 42-staff to unblock me.
 
 ||from Done| status | to do next|
 |---|:---:|---|---|
-|describe.py | `50%` | functional |+ unit testing, + add bonus|
+|describe.py | `80%` | functional |+ unit testing(50%), + add bonus|
 |plots| `50%` | undone | analysis ok in jupyter notebook >> to .py|
 |logreg train |`80%`|  functional | remove comments|
 |logreg predict | `90%` |  functional | remove comments|
