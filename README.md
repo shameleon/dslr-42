@@ -10,6 +10,12 @@ Dslr consists of training a ***multivariate logistic regression model** to solve
 
 The main objective is to recreate a magic Sorting Hat to predict Hogwarts student houses. When Harry Potter universe meet a Data sciencist.
 
+1600 students caracteristics each with his own set of skills in `Arithmancy,Astronomy,Herbology,Defense Against the Dark Arts,Divination,Muggle Studies,Ancient Runes,History of Magic,Transfiguration,Potions,Care of Magical Creatures,Charms,Flying`.
+
+A model is trained, based on selected features, it can accurately predict student affiliation to one of the four hogwart's houses (`Gryffindor` `Hufflepuff` `Ravenclaw` or `Slytherin`)
+
+![Pair plot](./plots/pairplot.png)
+
 ---
 
 ## Usage
