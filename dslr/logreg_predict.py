@@ -82,7 +82,7 @@ def main():
     df.drop(df.columns[0], inplace=True, axis = 1)
     df.to_csv(f'{model_dir}prediction_for_trainset1600.csv')
     df_inexact = df[df['Accurate pred.'] == 0]
-    sns.scatterplot(data=df_inexact, x="",y="Flying", hue="Best Hand", legend='auto')
+    # sns.scatterplot(data=df_inexact, x="", y="Flying", hue="Best Hand", legend='auto')
     sns.scatterplot(data=df_inexact, x="Hogwarts House",y="Flying", hue="Best Hand", legend='auto')
     plt.show()
     # df_inexact.drop(df.columns[6:18], inplace=True, axis = 1)

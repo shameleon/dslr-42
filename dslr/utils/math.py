@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 """
-import ulis.math
+import utils.math
 utils.math.py are functions that are primarily
 intended to be used by describe.py:
 

@@ -1,6 +1,11 @@
 import unittest
 import numpy as np
 import pandas as pd
+# import sys
+# import os
+# # setting path
+# parent_dir = os.path.dirname(os.path.realpath(__file__))
+# sys.path.append(parent_dir)
 from ..DescriberClass import Describe
 
 class DescribeTesting(unittest.TestCase):
