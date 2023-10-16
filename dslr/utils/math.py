@@ -1,15 +1,17 @@
-# from math import floor, ceil, sqrt
-from functools import reduce 
+from math import floor, ceil, sqrt
+from functools import reduce
 import numpy as np
 import pandas as pd
 
 """
-utils.math.py are functions primarily intended
-to be used by describe.py:
+import utils.math
+utils.math.py are functions that are primarily
+intended to be used by describe.py:
 
-the purpose is to avoid using numpy and pandas
+The purpose is to avoid using numpy and pandas
 
-functions used : 
+np and pd used :
+np.nan
 np.sort()
 np.array()
 .to_list()
@@ -47,6 +49,8 @@ def min(x: pd.Series):
 
 
 def max(x: pd.Series):
+    if drop_nan(x).empty:
+        return np.nan
     return sorted(x)[-1]
 
 
@@ -61,7 +65,8 @@ def percentile(x: pd.Series, q:float):
     q = 1 for maximum.
     
     variables:
-        g : virtual float index between f and c neighbors
+        g : virtual float index between two neighbors
+        of indexes f and c.
     Return :
         float value
     arr : sorted numpy array without NaNs
@@ -110,26 +115,38 @@ def mean(x: pd.Series):
     return sum(x) / len(drop_nan(x))
 
 
-def std(x: pd.Series):
-    """ Standard deviation
-    instead of being dropped with x_list = drop_nan(x).to_list()
-    NaNs are replaced by the mean : x_list[i] - x_mean = 0
-    useless incrementation of sq_sum is skipped
+def std(x: pd.Series, corrected=True):
+    """standard deviation
+    !!! numpy std() is different that pandas std() !!!
+    Pandas : DataFrame.describe() calls Series.std(),
+        which is a corrected Standard deviation (Bessel's correction)
+        and returns unbiased standard deviation over requested axis.
+        Normalized by N-1 by default.
+        Series.std(ddof=0) to obtain to normalize by N instead of N-1.
+
+    Parameters:
+        corrected=True : set by default, 
+            Return : a corrected std (normalized to N - 1) as pd.std()
+        corrected=False: for an uncorrected std as np.std()
+            Return : std (normalized to N) as np.std() or pd.std(ddof=1)
     """
-    if count(x) <= 1:
+    if count(x) <= corrected:
         return np.nan
+    x_list = drop_nan(x).to_list()
     x_mean = mean(x)
     sq_sum = 0
-    for i in range(len(x)):
-        if is_not_nan(x[i]):
-            sq_sum += is_not_nan(x[i]) * (x[i] - x_mean)**2
-    return sqrt(sq_sum / len(x))
+    for i in range(len(x_list)):
+        sq_sum += (x_list[i] - x_mean)**2
+    return sqrt(sq_sum / (len(x_list) - corrected))
 
 
 def put_wline(label: str, n1, n2):
     line = "{:10}{: >20}{: >20}".format(label, n1, n2)
     print(line)
 
+def put_wline4(label: str, n1, n2, n3, n4):
+    line = "{:10}{: >20}{: >20}{: >20}{: >20}".format(label, n1, n2, n3, n4)
+    print(line)
 
 def test_utils_math(s: pd.Series):
     print("sorted", sorted(s))
@@ -144,12 +161,32 @@ def test_utils_math(s: pd.Series):
     put_wline("NaNs", len(s[s.isna()]), count_nan(s))
     put_wline("sum", np.sum(s), sum(s))
     put_wline("mean", np.mean(s), mean(s))
-    put_wline("std", np.std(s), std(s))
+    put_wline("std", s.std(), std(s))
     print("_" * 50)
-    df2 = pd.DataFrame({'feature1': [1, np.nan, np.nan, 42],
-                    'feature2': [50, 17, 42, np.nan]})
-    put_wline("std_feature1", np.std(df2['feature1']), std(df2['feature1']))
-    put_wline("std_feature1", np.std(df2['feature2']), std(df2['feature2']))
+
+
+def test_utils_math_std(df: pd.DataFrame):
+    df2 = pd.DataFrame({'2+2': [1, np.nan, np.nan, 42],
+                        '3+1': [50, 17, 42, np.nan]})
+    df3 = pd.DataFrame({'2+0': [-1, 42],
+                        '1+1': [np.nan, -42],
+                        '0+2': [np.nan, np.nan]})
+    df4 = pd.DataFrame({'1+0': [42],
+                        '0+1': [np.nan]})
+    df5 = pd.DataFrame({'0+0': []})
+    print("_" * 75)
+    put_wline4("std's", "np.std()", "dum.std(False)", "pd.std()", "dum.std(True)")
+    series_to_test =[df['A'], df['B'], df['C'],
+                     df2['2+2'], df2['3+1'],
+                     df3['2+0'], df3['1+1'], df3['0+2'],
+                     df4['1+0'], df4['0+1'], df5['0+0']]
+    for s in series_to_test:
+        put_wline4(s.name, np.std(s), std(s, False), s.std(), std(s, True))
+    print("_" * 75)
+    for s in series_to_test:
+        put_wline4(s.name, "", "max :", s.max(), max(s))
+        if (s.max() != max(s)):
+            print("fail :",  s.max(), "v/s", max(s))
 
 if __name__ == "__main__":
     # create a DataFrame with missing values
@@ -159,6 +196,7 @@ if __name__ == "__main__":
     'C': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     })
     test_utils_math(df['B'])
+    test_utils_math_std(df)
 
 """
 NaN :

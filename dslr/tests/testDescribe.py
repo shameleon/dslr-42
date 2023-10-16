@@ -1,6 +1,12 @@
 import unittest
 import numpy as np
 import pandas as pd
+# import sys
+# import os
+# # setting path
+# parent_dir = os.path.dirname(os.path.realpath(__file__))
+# sys.path.append(parent_dir)
+from ..DescriberClass import Describe
 
 class DescribeTesting(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
@@ -17,7 +23,9 @@ class DescribeTesting(unittest.TestCase):
             self.df = df.columns[1:]
 
     def test_describe(self):
-        self.df.describe()
+        description = Describe(self.df)
+        res = description.agg_describe(False)
+        self.assertEqual(self.df.describe(), res)
         pass
 
 if __name__ == '__main__':

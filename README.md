@@ -2,11 +2,73 @@
 
 ---
 
-Machine Learning project at 42 school, from the holygraph outside circle.
+Machine Learning project at 42 school.
 
 Dslr consists of training a ***multivariate logistic regression model** to solve a classification problem.
 
 ---
+
+The main objective is to recreate a magic Sorting Hat to predict Hogwarts student houses. When Harry Potter universe meet a Data sciencist.
+
+---
+
+## Usage
+
+`make` to install the *virtual environement* with its *requirements*.
+
+activate `venv`:
+
+```shell
+source venv/bin/activate
+```
+
+Then, ```python ./dslr/logreg_train.py``` to train the dataset.
+
+```python ./dslr/logreg_predict.py``` to predict.
+
+### Describe
+
+`describe.py` mimics *pandas* library `describe()` function.
+A data file must be provided as argument.
+
+Describing the training dataset :
+
+```shell
+python ./dslr/describe.py datasets/dataset_train.csv
+```
+
+Output:
+
+```table
+         Index Arithmancy Astronomy  ... Care of Magical Creatures   Charms   Flying
+count  1600.00    1566.00   1568.00  ...                   1560.00  1600.00  1600.00
+mean    799.50   49634.57     39.80  ...                     -0.05  -243.37    21.96
+std     462.02   16679.81    520.30  ...                      0.97     8.78    97.63
+min       0.00  -24370.00   -966.74  ...                     -3.31  -261.05  -181.47
+25%     399.75   38511.50   -489.55  ...                     -0.67  -250.65   -41.87
+50%     799.50   49013.50    260.29  ...                     -0.04  -244.87    -2.51
+75%    1199.25   60811.25    524.77  ...                      0.59  -232.55    50.56
+max    1599.00  104956.00   1016.21  ...                      3.06  -225.43   279.07
+```
+
+#### Tests
+
+Test runner chosen : `unittest` included in Python standard library.
+
+`./dslr/tests/testDescribe.py` compares `DescriberClass` and pandas.describe()
+
+`./dslr/tests/testUtilsMath.py` compares `utils.math.py` functions and numpy / pandas equivalent functions
+
+#### describe.exe
+
+An executable application could be built with
+[pyinstaller](https://realpython.com/pyinstaller-python/)
+
+- adding the entry-point script
+
+```shell
+pyinstaller ./dslr/describe.py
+```
 
 ## Project status
 
@@ -18,7 +80,7 @@ I am doing it all by myself while awaiting for 42-staff to unblock me.
 
 ||from Done| status | to do next|
 |---|:---:|---|---|
-|describe.py | `50%` | functional |+ unit testing, + add bonus|
+|describe.py | `80%` | functional |+ unit testing(50%), + add bonus|
 |plots| `50%` | undone | analysis ok in jupyter notebook >> to .py|
 |logreg train |`80%`|  functional | remove comments|
 |logreg predict | `90%` |  functional | remove comments|
@@ -31,10 +93,6 @@ I am doing it all by myself while awaiting for 42-staff to unblock me.
 I have to try to increase accuracy with other feature(s).
 
 ## Subject
-
-### Synopsis
-
-The main objective is to recreate a magic Sorting Hat to predict Hogwarts student houses. When Harry Potter universe meet a Data sciencist.
 
 ### Mandatory part
 
@@ -134,3 +192,4 @@ source /venv/bin/activate
 
 [unittest](https://docs.python.org/fr/3/library/unittest.html)
 [unittest (in french)](https://gayerie.dev/docs/python/python3/unittest.html)
+[unittest tutorial - openclassrooms](https://openclassrooms.com/fr/courses/7155841-testez-votre-projet-python/7414161-ajoutez-des-tests-avec-unittest)
