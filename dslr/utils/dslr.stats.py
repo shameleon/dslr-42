@@ -185,8 +185,7 @@ def test_utils_math_std(df: pd.DataFrame):
     print("_" * 75)
     for s in series_to_test:
         put_wline4(s.name, "", "max :", s.max(), max(s))
-        if (s.max() != max(s)):
-            print("fail :",  s.max(), "v/s", max(s))
+
 
 if __name__ == "__main__":
     # create a DataFrame with missing values

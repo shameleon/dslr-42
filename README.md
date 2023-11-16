@@ -22,20 +22,31 @@ A model is trained, based on specific selected features, so that it can predict 
     - 🦡 `Hufflepuff`
     - 🐦‍⬛ `Ravenclaw`
     - 🐍 `Slytherin`
-The targeted accuracy for predicting testing dataset should be above 98%.
+The targeted accuracy for predicting testing dataset should be above 98%. 
 
-### Pairplot for students features
+Classification of students features with a Pairplot diagram
 
-![Pair plot](./plots/pairplot.png)
+![Pair plot](./reports/pairplot.png)
 
 ---
+
+### Directory Structure
+
+Project directory structure was organized accordingly with the following links guidelines.
+[The Hitchhiker's Guide to Python - Structuring Your Project](https://docs.python-guide.org/writing/structure/)
+[CookieCutter utility](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science)
+[How To Structure a Data Science Project: A Step-by-Step Guide](https://www.kdnuggets.com/2022/05/structure-data-science-project-stepbystep-guide.html)
+
+### Jupyter
+
+Jupyter notebooks were used for exploration and communication.
 
 ## Usage
 
 ### virtual environment
 
 A Python [virtual environment](https://docs.python.org/3/library/venv.html) is installed and set up so that this project is self-contained, isolated from the system Python and from other projects virtual environments.
-The virtual environment has its own Python Interpreter and dependencies as third-party libraries that are installed from `requirement.txt` file specifications. It avoids system pollution, dependency conflicts and optimizes reproducibility for a data science project. We used `virtualenv` tool for dependency management and project isolation. Instead of using `bash` script, we chose to exploit `Makefile` capabilities and readability for that purpose.
+The virtual environment has its own Python Interpreter and dependencies as third-party libraries that are installed from `requirement.txt` file specifications. It avoids system pollution, dependency conflicts and optimizes reproducibility for a data science project. We used `virtualenv` tool for dependency management and project isolation. Instead of using `bash` script, we chose to exploit `Makefile` capabilities and readability for generic management tasks.
 
 `make` to install the *virtual environment* with its *requirements*.
 
@@ -164,7 +175,7 @@ Answers will be evaluated using accuracy score of the Scikit-Learn library. Prof
 McGonagall agrees that your algorithm is comparable to the Sorting Hat only if it has a
 minimum precision of 98% .
 
-## My solution to Dslr
+## Our solution to Dslr
 
 ### venv
 

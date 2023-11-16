@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import unittest
-from ..utils import math as dum
+import math as dum
 
 """ Unit testing for utils/math.py """
 
