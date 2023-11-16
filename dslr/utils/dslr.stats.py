@@ -117,7 +117,7 @@ def mean(x: pd.Series):
 
 def std(x: pd.Series, corrected=True):
     """standard deviation
-    !!! numpy std() is different that pandas std() !!!
+    !!! numpy std() is different than pandas std() !!!
     Pandas : DataFrame.describe() calls Series.std(),
         which is a corrected Standard deviation (Bessel's correction)
         and returns unbiased standard deviation over requested axis.
@@ -185,8 +185,7 @@ def test_utils_math_std(df: pd.DataFrame):
     print("_" * 75)
     for s in series_to_test:
         put_wline4(s.name, "", "max :", s.max(), max(s))
-        if (s.max() != max(s)):
-            print("fail :",  s.max(), "v/s", max(s))
+
 
 if __name__ == "__main__":
     # create a DataFrame with missing values

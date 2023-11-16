@@ -1,28 +1,56 @@
-# Dslr  : Datascience X Logistic Regression
+# dslr  : Datascience X Logistic Regression
 
 ---
 
-Machine Learning project at 42 school.
+Dslr is a Machine Learning project at 42 school, done by a team of two. This is our solution.
 
 Dslr consists of training a ***multivariate logistic regression model** to solve a classification problem.
 
 ---
 
-The main objective is to recreate a magic Sorting Hat to predict Hogwarts student houses. When Harry Potter universe meet a Data sciencist.
+## Intro
 
-1600 students caracteristics each with his own set of skills in `Arithmancy,Astronomy,Herbology,Defense Against the Dark Arts,Divination,Muggle Studies,Ancient Runes,History of Magic,Transfiguration,Potions,Care of Magical Creatures,Charms,Flying`.
+The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses. When [Harry Potter's universe](https://www.wizardingworld.com/) meets a Data scientist.
 
-A model is trained, based on selected features, it can accurately predict student affiliation to one of the four hogwart's houses (`Gryffindor` `Hufflepuff` `Ravenclaw` or `Slytherin`)
+The training dataset consists of 1600 students caracteristics, each 🧙 with his own features :
 
-![Pair plot](./plots/pairplot.png)
+- Four Biographic features `First Name` `Last Name` `Birthday` `Best Hand`
+- A set of 13 wizard skills being refered as : `Arithmancy` `Astronomy` `Herbology` `Defense Against the Dark Arts` `Divination` `Muggle Studies` `Ancient Runes` `History of Magic` `Transfiguration` `Potions` `Care of Magical Creatures` `Charms` `Flying`.
+
+A model is trained, based on specific selected features, so that it can predict student's affiliation to one of the four 🏰 hogwart's houses
+    - 🦅 `Gryffindor`
+    - 🦡 `Hufflepuff`
+    - 🐦‍⬛ `Ravenclaw`
+    - 🐍 `Slytherin`
+The targeted accuracy for predicting testing dataset should be above 98%. 
+
+Classification of students features with a Pairplot diagram
+
+![Pair plot](./reports/pairplot.png)
 
 ---
 
+### Directory Structure
+
+Project directory structure was organized accordingly with the following links guidelines.
+[The Hitchhiker's Guide to Python - Structuring Your Project](https://docs.python-guide.org/writing/structure/)
+[CookieCutter utility](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science)
+[How To Structure a Data Science Project: A Step-by-Step Guide](https://www.kdnuggets.com/2022/05/structure-data-science-project-stepbystep-guide.html)
+
+### Jupyter
+
+Jupyter notebooks were used for exploration and communication.
+
 ## Usage
 
-`make` to install the *virtual environement* with its *requirements*.
+### virtual environment
 
-activate `venv`:
+A Python [virtual environment](https://docs.python.org/3/library/venv.html) is installed and set up so that this project is self-contained, isolated from the system Python and from other projects virtual environments.
+The virtual environment has its own Python Interpreter and dependencies as third-party libraries that are installed from `requirement.txt` file specifications. It avoids system pollution, dependency conflicts and optimizes reproducibility for a data science project. We used `virtualenv` tool for dependency management and project isolation. Instead of using `bash` script, we chose to exploit `Makefile` capabilities and readability for generic management tasks.
+
+`make` to install the *virtual environment* with its *requirements*.
+
+virtual environment `venv` activation:
 
 ```shell
 source venv/bin/activate
@@ -147,7 +175,7 @@ Answers will be evaluated using accuracy score of the Scikit-Learn library. Prof
 McGonagall agrees that your algorithm is comparable to the Sorting Hat only if it has a
 minimum precision of 98% .
 
-## My solution to Dslr
+## Our solution to Dslr
 
 ### venv
 
