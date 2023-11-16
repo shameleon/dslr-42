@@ -6,8 +6,8 @@ import utils.math as dum
     - class Describe
     - tests for the class
 
-    Class Describe reproduces the behavior of pandas describe()
-    function for the mandatory part of 42's subject.
+    Class Describe reproduces the behavior of pandas library
+    describe() function for the mandatory part of 42's subject.
     
     Bonus:
     More statistics lines are provided if bonus=True 
@@ -38,7 +38,7 @@ class   Describe:
             self.funcs += self.bonus_funcs
         self.description = self.df_num.agg(self.funcs)
         self.description.rename(index=new_idx_names, inplace=True)
-        print(self.description.applymap(lambda x: f"{x:0.2f}"))
+        print(self.description.map(lambda x: f"{x:0.2f}"))
         return self.description
 
 
