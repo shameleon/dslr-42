@@ -15,7 +15,7 @@ Of course, Python modules for machine learning are forbiden.
 The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses.
 When [Harry Potter's universe](https://www.wizardingworld.com/) meets a Data scientist.
 
-### Data exploration
+### Data understanding
 
 The training dataset consists of 1600 students caracteristics, each 🧙 with his own features :
 
