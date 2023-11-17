@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from ..stat_utils import standardize
+
 
 """
     select 10 best features for training
@@ -29,6 +29,7 @@ def main():
     model_dir = './logistic_reg_model/'
     df = pd.read_csv(f'./datasets/dataset_train.csv')
     df2 = drop_columns(df, False)
+    print(df2.head())
 
 
 if __name__ == "__main__":

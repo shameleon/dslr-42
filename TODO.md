@@ -9,6 +9,8 @@ VI Bonus Part
 ### Todo
 
 - [ ] refactor jupyter notebooks
+    - [ ] issue : kernel from 42's cluster
+- [ ] plots are in jupyter
 - [ ] Bonus for describe.py
 
 ### In Progress
@@ -24,20 +26,22 @@ VI Bonus Part
 
 ### Testing
 
-- [x] describe.py
-  - [] issue : House feature with file `./datasets/dataset_test.csv`
+- [] testing from ./dslr/tests
+  - [ ] issue : import path broken
 
 ### Done ✓
 
 - [x] utlis module
   - [x] dslr_stats
 - [x] Describe class
+- [x] describe.py
+  - [x] issue solved : House feature with file `./datasets/dataset_test.csv`
 
-### Adav
+### Summary
 
 ||from Done| status | to do next|
 |---|:---:|---|---|
-|describe.py | `80%` | functional |+ unit testing(50%), + add bonus|
+|describe.py | `80%` | functional |[ ] unit testing, [ ]add bonus|
 |plots| `50%` | undone | analysis ok in jupyter notebook >> to .py|
 |logreg train |`80%`|  functional | remove comments|
 |logreg predict | `90%` |  functional | remove comments|

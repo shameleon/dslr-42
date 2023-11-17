@@ -6,7 +6,7 @@ import pandas as pd
 # # setting path
 # parent_dir = os.path.dirname(os.path.realpath(__file__))
 # sys.path.append(parent_dir)
-from ..DescriberClass import Describe
+from DescriberClass import Describe
 
 class DescribeTesting(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
@@ -25,6 +25,8 @@ class DescribeTesting(unittest.TestCase):
     def test_describe(self):
         description = Describe(self.df)
         res = description.agg_describe(False)
+        print(description)
+        print(res)
         self.assertEqual(self.df.describe(), res)
         pass
 
