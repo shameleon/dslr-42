@@ -56,7 +56,7 @@ clean:
 	find -iname "*.pyc" -delete
 
 fclean: clean
-	@echo "$(CR) Removing virtual environment.@echo "$(CR) Removing __pycache__ ""
+	@echo "$(CR) Removing virtual environment $(VENV) $(CZ)"
 	rm -rf $(VENV)
 
 re: fclean $(VENV)

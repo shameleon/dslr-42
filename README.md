@@ -2,51 +2,43 @@
 
 ---
 
-Dslr is a Machine Learning project at 42 school, done by a team of two. This is our solution.
-
-Dslr consists of training a ***multivariate logistic regression model** to solve a classification problem.
-
+Our solution to 42's school *dslr* subject, done by a team of two.
+It is a *Machine Learning* project to solve a classification problem.
+It consists of training a *multivariate logistic regression model*,
+a classification algorithm used in data science and machine learning.
+The model is subsequently used for accurate prediction of a testing dataset.
+Of course, Python modules for machine learning are forbiden.
 ---
 
 ## Intro
 
-The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses. When [Harry Potter's universe](https://www.wizardingworld.com/) meets a Data scientist.
+The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses.
+When [Harry Potter's universe](https://www.wizardingworld.com/) meets a Data scientist.
+
+### Data understanding
 
 The training dataset consists of 1600 students caracteristics, each 🧙 with his own features :
 
-- Four Biographic features `First Name` `Last Name` `Birthday` `Best Hand`
+- Four Biographic features `First Name` `Last Name` `Birthday` `Best Hand`.
+
 - A set of 13 wizard skills being refered as : `Arithmancy` `Astronomy` `Herbology` `Defense Against the Dark Arts` `Divination` `Muggle Studies` `Ancient Runes` `History of Magic` `Transfiguration` `Potions` `Care of Magical Creatures` `Charms` `Flying`.
 
 A model is trained, based on specific selected features, so that it can predict student's affiliation to one of the four 🏰 hogwart's houses
-    - 🦅 `Gryffindor`
-    - 🦡 `Hufflepuff`
-    - 🐦‍⬛ `Ravenclaw`
-    - 🐍 `Slytherin`
+🦅 `Gryffindor`
+🦡 `Hufflepuff`
+🐦‍⬛ `Ravenclaw`
+🐍 `Slytherin`
+
 The targeted accuracy for predicting testing dataset should be above 98%. 
 
-Classification of students features with a Pairplot diagram
+Pairplot visualization for students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
+From there, we selected features that suits the best to train our model.
 
 ![Pair plot](./reports/pairplot.png)
 
 ---
 
-### Directory Structure
-
-Project directory structure was organized accordingly with the following links guidelines.
-[The Hitchhiker's Guide to Python - Structuring Your Project](https://docs.python-guide.org/writing/structure/)
-[CookieCutter utility](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science)
-[How To Structure a Data Science Project: A Step-by-Step Guide](https://www.kdnuggets.com/2022/05/structure-data-science-project-stepbystep-guide.html)
-
-### Jupyter
-
-Jupyter notebooks were used for exploration and communication.
-
-## Usage
-
-### virtual environment
-
-A Python [virtual environment](https://docs.python.org/3/library/venv.html) is installed and set up so that this project is self-contained, isolated from the system Python and from other projects virtual environments.
-The virtual environment has its own Python Interpreter and dependencies as third-party libraries that are installed from `requirement.txt` file specifications. It avoids system pollution, dependency conflicts and optimizes reproducibility for a data science project. We used `virtualenv` tool for dependency management and project isolation. Instead of using `bash` script, we chose to exploit `Makefile` capabilities and readability for generic management tasks.
+### Usage
 
 `make` to install the *virtual environment* with its *requirements*.
 
@@ -84,47 +76,6 @@ min       0.00  -24370.00   -966.74  ...                     -3.31  -261.05  -18
 75%    1199.25   60811.25    524.77  ...                      0.59  -232.55    50.56
 max    1599.00  104956.00   1016.21  ...                      3.06  -225.43   279.07
 ```
-
-#### Tests
-
-Test runner chosen : `unittest` included in Python standard library.
-
-`./dslr/tests/testDescribe.py` compares `DescriberClass` and pandas.describe()
-
-`./dslr/tests/testUtilsMath.py` compares `utils.math.py` functions and numpy / pandas equivalent functions
-
-#### describe.exe
-
-An executable application could be built with
-[pyinstaller](https://realpython.com/pyinstaller-python/)
-
-- adding the entry-point script
-
-```shell
-pyinstaller ./dslr/describe.py
-```
-
-## Project status
-
-The project has to be accomplished by a team of two studs in order to be validated.
-Since there is some bug on 42-intra, unfairly blocking me for that project,
-I am doing it all by myself while awaiting for 42-staff to unblock me.
-
-### To-do-list
-
-||from Done| status | to do next|
-|---|:---:|---|---|
-|describe.py | `80%` | functional |+ unit testing(50%), + add bonus|
-|plots| `50%` | undone | analysis ok in jupyter notebook >> to .py|
-|logreg train |`80%`|  functional | remove comments|
-|logreg predict | `90%` |  functional | remove comments|
-|model metrics| `20%` | X |choose relevent metrics, start toolkit|
-|bonus|`0%`||||
-
-### Results so far
-
-`98.3%` prediction accuracy on the training dataset with a 10-feature based model.
-I have to try to increase accuracy with other feature(s).
 
 ## Subject
 
@@ -175,26 +126,48 @@ Answers will be evaluated using accuracy score of the Scikit-Learn library. Prof
 McGonagall agrees that your algorithm is comparable to the Sorting Hat only if it has a
 minimum precision of 98% .
 
-## Our solution to Dslr
-
-### venv
-
-Virtual environment is created by a `Makefile`.
-In a terminal, ```make``` command, then
-
-```shell
-source /venv/bin/activate
-```
-
 ### Toolkit and testing
 
 ## Some helpful links
 
-### Python
+### Jupyter
+
+Jupyter notebooks were used for dataset exploration.
+
+### Directory Structure
+
+Project directory structure was organized accordingly with the following guidelines.
+
+[The Hitchhiker's Guide to Python - Structuring Your Project](https://docs.python-guide.org/writing/structure/)
+
+[CookieCutter utility](https://drivendata.github.io/cookiecutter-data-science/#cookiecutter-data-science)
+
+[How To Structure a Data Science Project: A Step-by-Step Guide](https://www.kdnuggets.com/2022/05/structure-data-science-project-stepbystep-guide.html)
+
+### virtual environment
+
+A Python [virtual environment](https://docs.python.org/3/library/venv.html) is installed and set up so that this project is self-contained, isolated from the system Python and from other projects virtual environments.
+The virtual environment has its own Python Interpreter and dependencies as third-party libraries that are installed from `requirement.txt` file specifications. It avoids system pollution, dependency conflicts and optimizes reproducibility for a data science project. We used `virtualenv` tool for dependency management and project isolation. Instead of using `bash` script, we chose to exploit `Makefile` capabilities and readability for generic management tasks.
+
+### Makefile and entrypoint
+
+[Makefile: the secret weapon for ML project management](https://valohai.com/blog/makefile-ml-project-management/)
+
+[Makefile - Make for Data Science](https://datasciencesouth.com/blog/make)
 
 [setup.py script (french)](https://docs.python.org/fr/3/distutils/setupscript.html)
 
+### setup.py
+
+A setup.py file is a standard way in Python to specify how your project should be installed, packaged, and distributed. This file is used by tools like `setuptools` and `pip` to manage the installation process. The `setup()` function within `setup.py` is used to define various *metadata* about your project, such as its name, version, dependencies, and other details.
+`python setup.py install` to install your project locally.
+
+[setuptools](https://setuptools.pypa.io/en/latest/references/keywords.html)
+
+Having a setup.py becomes especially important if you plan to distribute your code as a Python package, whether through the Python Package Index (PyPI) or other distribution channels. It helps other developers easily install and use your project and allows tools like pip to manage dependencies.
+
 ### format, width, precision
+
 [Precision](https://www.pylenin.com/blogs/python-width-precision/)
 
 ### pandas dataframes and np.arrays
@@ -227,3 +200,26 @@ source /venv/bin/activate
 [unittest](https://docs.python.org/fr/3/library/unittest.html)
 [unittest (in french)](https://gayerie.dev/docs/python/python3/unittest.html)
 [unittest tutorial - openclassrooms](https://openclassrooms.com/fr/courses/7155841-testez-votre-projet-python/7414161-ajoutez-des-tests-avec-unittest)
+
+#### Tests
+
+Test runner chosen : `unittest` included in Python standard library.
+
+`./dslr/tests/testDescribe.py` compares `DescriberClass` and pandas.describe()
+
+`./dslr/tests/testUtilsMath.py` compares `utils.math.py` functions and numpy / pandas equivalent functions
+
+#### describe.exe
+
+An executable application could be built with
+[pyinstaller](https://realpython.com/pyinstaller-python/)
+
+- adding the entry-point script
+
+```shell
+pyinstaller ./dslr/describe.py
+```
+
+#### Icons
+
+[Icons at mui.com](https://mui.com/material-ui/material-icon)

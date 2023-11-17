@@ -2,12 +2,14 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from stat_utils import standardize
 
-def standardize(arr:np.ndarray):
-    mean = np.mean(arr)
-    std = np.std(arr)
-    return (arr - mean) / std
 
+"""
+    in addition to the 10 best features,
+    exploring additonal features for training:
+
+"""
 
 def drop_columns(df: pd.DataFrame, drop_na:bool) -> pd.DataFrame:
     """ drop dataframe columns that are not useful for training:
