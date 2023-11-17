@@ -56,7 +56,7 @@ clean:
 	find -iname "*.pyc" -delete
 
 fclean: clean
-	@echo "$(CR) Removing virtual environment.@echo $(CZ)"
+	@echo "$(CR) Removing virtual environment $(VENV) $(CZ)"
 	rm -rf $(VENV)
 
 re: fclean $(VENV)

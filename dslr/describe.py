@@ -18,8 +18,9 @@ __author__ = "jmouaike"
 
 def dataset_describer():
     """  """
-    print("File     :", args.filename)
-    print("Verbose" * args.verbose)
+    if args.verbose:
+        print(("File     :", args.filename) * args.verbose)
+        print("Verbose : compares to pandas.describe()")
     try:
         df = pd.read_csv(args.filename)
         if args.verbose:
@@ -32,6 +33,7 @@ def dataset_describer():
         print("File Content Error :", e)
 
 if __name__ == "__main__":
+    """ """
     parser = argparse.ArgumentParser(prog='describe.[ext]',
                                      description='Describe a dataset',
                                      epilog='verbose mode for options')

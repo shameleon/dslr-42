@@ -38,7 +38,7 @@ From there, we selected features that suits the best to train our model.
 
 ---
 
-## Usage
+### Usage
 
 `make` to install the *virtual environment* with its *requirements*.
 
@@ -75,25 +75,6 @@ min       0.00  -24370.00   -966.74  ...                     -3.31  -261.05  -18
 50%     799.50   49013.50    260.29  ...                     -0.04  -244.87    -2.51
 75%    1199.25   60811.25    524.77  ...                      0.59  -232.55    50.56
 max    1599.00  104956.00   1016.21  ...                      3.06  -225.43   279.07
-```
-
-#### Tests
-
-Test runner chosen : `unittest` included in Python standard library.
-
-`./dslr/tests/testDescribe.py` compares `DescriberClass` and pandas.describe()
-
-`./dslr/tests/testUtilsMath.py` compares `utils.math.py` functions and numpy / pandas equivalent functions
-
-#### describe.exe
-
-An executable application could be built with
-[pyinstaller](https://realpython.com/pyinstaller-python/)
-
-- adding the entry-point script
-
-```shell
-pyinstaller ./dslr/describe.py
 ```
 
 ## Subject
@@ -207,3 +188,27 @@ The virtual environment has its own Python Interpreter and dependencies as third
 [unittest](https://docs.python.org/fr/3/library/unittest.html)
 [unittest (in french)](https://gayerie.dev/docs/python/python3/unittest.html)
 [unittest tutorial - openclassrooms](https://openclassrooms.com/fr/courses/7155841-testez-votre-projet-python/7414161-ajoutez-des-tests-avec-unittest)
+
+
+#### Tests
+
+Test runner chosen : `unittest` included in Python standard library.
+
+`./dslr/tests/testDescribe.py` compares `DescriberClass` and pandas.describe()
+
+`./dslr/tests/testUtilsMath.py` compares `utils.math.py` functions and numpy / pandas equivalent functions
+
+#### describe.exe
+
+An executable application could be built with
+[pyinstaller](https://realpython.com/pyinstaller-python/)
+
+- adding the entry-point script
+
+```shell
+pyinstaller ./dslr/describe.py
+```
+
+#### Icons
+
+(Icons at mui.com)[https://mui.com/material-ui/material-icon]

@@ -79,7 +79,7 @@ def percentile(x: pd.Series, q:float):
         return arr[int(g)]
     else:
         lower_neighbor = arr[int(f)] * (c - g)
-        higher_neighbor = arr[int(c)] * (g -f)
+        higher_neighbor = arr[int(c)] * (g - f)
         return lower_neighbor + higher_neighbor
 
 

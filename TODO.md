@@ -1,31 +1,37 @@
 # dslr TODO.md
 
-### Subject / stories
+### Subject stories
 
-V.1 Data Analysis
-V.2 Data Visualization
-V.2.1 Histogram
-V.2.2 Scatter plot
-V.2.3 Pair plot 
-V.3 Logistic Regression
+Data Analysis
+Logistic Regression
 VI Bonus Part
 
 ### Todo
 
-- [ ] rebuild directory structure 
-- [ ] define entrypoint 
-- [ ] jupyter notebooks
+- [ ] refactor jupyter notebooks
+- [ ] Bonus for describe.py
 
 ### In Progress
 
-- [ ] describe executable
-  - [ ] statistics module
+- [ ] rebuild directory structure
+  - [ ] define entrypoint
+  - [ ] make describe executable
+- [ ] Data Visualization
+  - [ ] Histogram
+  - [ ] Scatter plot
+  - [ ] Pair plot
+- [ ] Logistic Regression
 
 ### Testing
 
+- [x] describe.py
+  - [] issue : House feature with file `./datasets/dataset_test.csv`
+
 ### Done ✓
 
-- [x] Create TODO.md  
+- [x] utlis module
+  - [x] dslr_stats
+- [x] Describe class
 
 ### Adav
 

@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import utils.math as dum
+from utils import dslr_stats as dum
 
 """DescriberClass.py:
     - class Describe
@@ -38,7 +38,7 @@ class   Describe:
             self.funcs += self.bonus_funcs
         self.description = self.df_num.agg(self.funcs)
         self.description.rename(index=new_idx_names, inplace=True)
-        print(self.description.map(lambda x: f"{x:0.2f}"))
+        print(self.description.map(lambda x: f"{x:0.6f}"))
         return self.description
 
 
@@ -47,16 +47,16 @@ def test_describe_class():
     df = pd.DataFrame({'categorical': pd.Categorical(['d','e','f', 'g']),
                        'feature1': [1, 22, 21, 42],
                        'feature2': [50, 17, 42, 23]})
-    # print(df.describe(include='all'))
+    print("TEST : Describe class")
     pandas_stats = df.describe()
+    print("pandas describe() :")
     print(df.describe())
     description = Describe(df)
+    print("dslr project describe() :")
     stats = description.agg_describe(False)
-    print(pandas_stats.shape[0], stats.shape)
+    print("Results :")
     result = (stats == pandas_stats)
     print(result)
-    print(result.where(result == False))
-    # https://stackoverflow.com/questions/53979403/search-for-a-value-anywhere-in-a-pandas-dataframe
 
 
 if __name__ == "__main__":
