@@ -1,19 +1,27 @@
-# dslr  : Datascience X Logistic Regression
+# dslr-42
 
+## Datascience X Logistic Regression
+
+- [Intro](#intro)
+- [Data understanding](#data-understanding)
+- [Usage](#usage)
+    - [describe.py](#describe.py)
+- [Subject](#subject)
+    - [Mandatory](#mandatory-part)
+        - [Describe from scratch](#describe-from-scratch)
+
+### Intro
+
+    Our solution to 42's school *dslr* subject, done by a team of two.
+    It is a *Machine Learning* project to solve a classification problem.
+    It consists of training a *multivariate logistic regression model*,
+    a classification algorithm used in data science and machine learning.
+    The model is subsequently used for accurate prediction of a testing dataset.
+    Of course, Python modules for machine learning are forbiden.
 ---
 
-Our solution to 42's school *dslr* subject, done by a team of two.
-It is a *Machine Learning* project to solve a classification problem.
-It consists of training a *multivariate logistic regression model*,
-a classification algorithm used in data science and machine learning.
-The model is subsequently used for accurate prediction of a testing dataset.
-Of course, Python modules for machine learning are forbiden.
----
-
-## Intro
-
-The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses.
-When [Harry Potter's universe](https://www.wizardingworld.com/) meets a Data scientist.
+    The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses.
+    When [Harry Potter's universe](https://www.wizardingworld.com/) meets a Data scientist.
 
 ### Data understanding
 
@@ -52,7 +60,7 @@ Then, ```python ./dslr/logreg_train.py``` to train the dataset.
 
 ```python ./dslr/logreg_predict.py``` to predict.
 
-### Describe
+#### describe.py
 
 `describe.py` mimics *pandas* library `describe()` function.
 A data file must be provided as argument.
@@ -162,7 +170,7 @@ The virtual environment has its own Python Interpreter and dependencies as third
 A setup.py file is a standard way in Python to specify how your project should be installed, packaged, and distributed. This file is used by tools like `setuptools` and `pip` to manage the installation process. The `setup()` function within `setup.py` is used to define various *metadata* about your project, such as its name, version, dependencies, and other details.
 `python setup.py install` to install your project locally.
 
-[setuptools](https://setuptools.pypa.io/en/latest/references/keywords.html)
+[setuptools](https://setuptools.pypa.io/en/latest/)
 
 Having a setup.py becomes especially important if you plan to distribute your code as a Python package, whether through the Python Package Index (PyPI) or other distribution channels. It helps other developers easily install and use your project and allows tools like pip to manage dependencies.
 

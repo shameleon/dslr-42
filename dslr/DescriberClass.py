@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from utils import dslr_stats as dum
+from utils import describe_stats as dum
 
 """DescriberClass.py:
     - class Describe
