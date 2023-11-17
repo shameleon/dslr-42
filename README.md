@@ -162,7 +162,7 @@ The virtual environment has its own Python Interpreter and dependencies as third
 A setup.py file is a standard way in Python to specify how your project should be installed, packaged, and distributed. This file is used by tools like `setuptools` and `pip` to manage the installation process. The `setup()` function within `setup.py` is used to define various *metadata* about your project, such as its name, version, dependencies, and other details.
 `python setup.py install` to install your project locally.
 
-[setuptools](https://setuptools.pypa.io/en/latest/)
+[setuptools](https://setuptools.pypa.io/en/latest/references/keywords.html)
 
 Having a setup.py becomes especially important if you plan to distribute your code as a Python package, whether through the Python Package Index (PyPI) or other distribution channels. It helps other developers easily install and use your project and allows tools like pip to manage dependencies.
 
