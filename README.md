@@ -152,10 +152,22 @@ The virtual environment has its own Python Interpreter and dependencies as third
 ### Makefile and entrypoint
 
 [Makefile: the secret weapon for ML project management](https://valohai.com/blog/makefile-ml-project-management/)
-[Makefile - Make for Data Science ](https://datasciencesouth.com/blog/make)
+
+[Makefile - Make for Data Science](https://datasciencesouth.com/blog/make)
+
 [setup.py script (french)](https://docs.python.org/fr/3/distutils/setupscript.html)
 
+### setup.py
+
+A setup.py file is a standard way in Python to specify how your project should be installed, packaged, and distributed. This file is used by tools like `setuptools` and `pip` to manage the installation process. The `setup()` function within `setup.py` is used to define various *metadata* about your project, such as its name, version, dependencies, and other details.
+`python setup.py install` to install your project locally.
+
+[setuptools](https://setuptools.pypa.io/en/latest/)
+
+Having a setup.py becomes especially important if you plan to distribute your code as a Python package, whether through the Python Package Index (PyPI) or other distribution channels. It helps other developers easily install and use your project and allows tools like pip to manage dependencies.
+
 ### format, width, precision
+
 [Precision](https://www.pylenin.com/blogs/python-width-precision/)
 
 ### pandas dataframes and np.arrays
@@ -189,7 +201,6 @@ The virtual environment has its own Python Interpreter and dependencies as third
 [unittest (in french)](https://gayerie.dev/docs/python/python3/unittest.html)
 [unittest tutorial - openclassrooms](https://openclassrooms.com/fr/courses/7155841-testez-votre-projet-python/7414161-ajoutez-des-tests-avec-unittest)
 
-
 #### Tests
 
 Test runner chosen : `unittest` included in Python standard library.
@@ -211,4 +222,4 @@ pyinstaller ./dslr/describe.py
 
 #### Icons
 
-(Icons at mui.com)[https://mui.com/material-ui/material-icon]
+[Icons at mui.com](https://mui.com/material-ui/material-icon)
