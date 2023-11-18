@@ -3,6 +3,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+""" 
+Histogram
+Make a script called histogram.[extension] which displays a
+histogram answering the next question :
+Which Hogwarts course has a homogeneous score distribution
+between all four houses?
+"""
+
 
 def plot_histogram(feature='Astrology'):
     try:

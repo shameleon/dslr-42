@@ -3,6 +3,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+""" 
+Pair plot matrix
+V.2.3 Pair plot
+Make a script called pair_plot.[extension] which displays a pair plot or scatter plot
+matrix (according to the library that you are using).
+From this visualization, what features are you going to use for your logistic regression?
+7
+"""
+
 
 def plot_pairs():
     try:

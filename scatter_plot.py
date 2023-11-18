@@ -4,6 +4,14 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+"""
+V.2.2 Scatter plot
+Make a script called scatter_plot.[extension] which displays
+a scatter plot answering the next question :
+What are the two features that are similar ?
+answer : sns_scatter('Astronomy', 'Defense Against the Dark Arts')
+"""
+
 
 def plot_scatter(feature1='Astronomy', feature2='Herbology'):
     try:

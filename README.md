@@ -39,7 +39,7 @@ A model is trained, based on specific selected features, so that it can predict 
 
 The targeted accuracy for predicting testing dataset should be above 98%. 
 
-Pairplot visualization for students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
+scatter plots matrix visualization of students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
 From there, we selected features that suits the best to train our model.
 
 ![Pair plot](./reports/pairplot.png)

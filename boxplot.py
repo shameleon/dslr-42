@@ -5,6 +5,10 @@ import pandas as pd
 import seaborn as sns
 
 
+"""
+    boxplot with seaborn module
+"""
+
 def sns_boxplot(feature='Astronomy'):
     try:
         df = pd.read_csv(args.filename)
