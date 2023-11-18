@@ -10,7 +10,7 @@ https://seaborn.pydata.org/generated/seaborn.jointplot.html
 """
 
 
-def joint_plot(feature1: str, feature2: str):
+def joint_plot(feature1="Astrology", feature2="Herbology"):
     """_summary_
 
     Args:
@@ -37,4 +37,4 @@ if __name__ == "__main__":
                                      epilog='verbose mode for options')
     parser.add_argument('filename')
     args = parser.parse_args()
-    joint_plot('Astrology', 'Herbology')
+    joint_plot()

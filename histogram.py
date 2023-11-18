@@ -17,6 +17,7 @@ def plot_histogram(feature='Astrology'):
         df = pd.read_csv(args.filename)
         df_feat = df.groupby('Hogwarts House')[feature]
         df_feat.plot(kind='hist', alpha=0.4, legend=True)
+        plt.title(feature)
         plt.show()
     except (FileNotFoundError, IsADirectoryError) as e:
         print("File Error :", e)
