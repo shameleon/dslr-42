@@ -42,7 +42,8 @@ def main() -> None:
     target = df_train.columns[1]
     df_x_train = df_train[df_train.columns[2:]]
     df_normalizing = pd.DataFrame({'mean_x': df_x_train.mean(axis=0),
-                                 'std_x': df_x_train.std(axis=0)}).T
+                                   'std_x': df_x_train.std(axis=0)
+                                   }).T
     df_normalizing.to_csv(f'{model_dir}normalization.csv')
     df_class = df_train[target]
     logreg_model = LogRegTrain(df_x_train, df_class)
