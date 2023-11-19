@@ -2,12 +2,12 @@
 
 ## Datascience X Logistic Regression
 
-! [electronic hat](./graphics/bing-dslr-electroning-hat.jpg)
+![electronic hat](./graphics/bing-dslr-electroning-hat.jpg)
 
 - [Intro](#intro)
 - [Data understanding](#data-understanding)
 - [Usage](#usage)
-    - [describe.py](#describe.py)
+    - [describe.py](#describe-from-scratch)
 - [Subject](#subject)
     - [Mandatory](#mandatory-part)
         - [Describe from scratch](#describe-from-scratch)
