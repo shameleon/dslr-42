@@ -10,7 +10,7 @@ VI Bonus Part
 
 - [ ] refactor jupyter notebooks
     - [ ] issue : kernel from 42's cluster
-- [ ] plots are in jupyter
+- [ ] class for plots
 - [ ] Bonus for describe.py
 
 ### In Progress
@@ -22,6 +22,7 @@ VI Bonus Part
   - [ ] Histogram
   - [ ] Scatter plot
   - [ ] Pair plot
+- [ ] plots in jupyter
 - [ ] Logistic Regression
 
 ### Testing
