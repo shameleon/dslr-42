@@ -1,5 +1,5 @@
 
-subject 
+Subject :
 ```multi-classifier using a logistic regression one-vs-all```
 [https://www.youtube.com/watch?app=desktop&v=oYVdzBjkiZ4]
 

@@ -8,9 +8,18 @@
 - [Data understanding](#data-understanding)
 - [Usage](#usage)
     - [describe.py](#describe-from-scratch)
+    - [Plots](#plots)
+    - [logreg_train.py](#training-dataset-with-logreg_trainpy)
+
 - [Subject](#subject)
     - [Mandatory](#mandatory-part)
         - [Describe from scratch](#describe-from-scratch)
+        - [Logistic regression training](#logistic-regression-training)
+        - [Prediction](#prediction)
+    - [Bonus](#bonus)
+    - [Peer-Evaluation](#peer-evaluation)
+
+- [Some helpful links](#some-helpful-links)
 
 ### Intro
 
@@ -87,6 +96,38 @@ min       0.00  -24370.00   -966.74  ...                     -3.31  -261.05  -18
 max    1599.00  104956.00   1016.21  ...                      3.06  -225.43   279.07
 ```
 
+### Plots
+
+Plots that are required
+
+- Histogram 
+```histogram.py ./datasets/dataset_train.csv```
+
+- Scatter Plot
+```scatter_plot.py ./datasets/dataset_train.csv```
+
+- Pair plot Matrix
+```pair_plot.py ./datasets/dataset_train.csv```
+
+Additional plots :
+
+- Box plot
+```box_plot.py ./datasets/dataset_train.csv```
+
+- Joint plot
+```joint_plot.py ./datasets/dataset_train.csv```
+
+Other plots in notebooks :
+
+- [1.0 notebook](./notebooks/1.0-jm-dataset-preview.ipynb)
+
+- [2.0 notebook](./notebooks/2.0-jm-model-training.ipynb)
+
+
+### Training dataset with logreg_train.py
+
+```logreg_predict.[extension] ./datasets/dataset_train.csv [weights]```
+
 ## Subject
 
 ### Mandatory part
@@ -136,7 +177,6 @@ Answers will be evaluated using accuracy score of the Scikit-Learn library. Prof
 McGonagall agrees that your algorithm is comparable to the Sorting Hat only if it has a
 minimum precision of 98% .
 
-### Toolkit and testing
 
 ## Some helpful links
 
