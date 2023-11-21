@@ -1,5 +1,6 @@
 # dataset
-datasets/*
+# datasets/*
+
 # results
 .logistic_reg_model
 

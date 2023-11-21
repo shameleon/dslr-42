@@ -8,44 +8,54 @@ VI Bonus Part
 
 ### Todo
 
-- [ ] refactor jupyter notebooks
-    - [ ] issue : kernel from 42's cluster
-- [ ] class for plots
+- [ ] regroup plots in a class
+- [ ] Display cost
 - [ ] Bonus for describe.py
+- [ ] add options to argparse
+  - [ ] add weights argument to logreg_
+- [ ] logreg-predict.py
+- [ ] choose relevent model metrics
+  - [ ] apgrade toolkit utils
+- [ ] Bonuses
 
 ### In Progress
 
-- [ ] rebuild directory structure
-  - [ ] define entrypoint
-  - [ ] make describe executable
-- [ ] Data Visualization
-  - [ ] Histogram
-  - [ ] Scatter plot
-  - [ ] Pair plot
-- [ ] plots in jupyter
+- [ ] Refactor logreg-train.py 
+  - [ ] connect to Utlis module 
+  - [ ] make own functions 
 - [ ] Logistic Regression
 
 ### Testing
 
-- [] testing from ./dslr/tests
+- [ ] testing from ./dslr/tests
   - [ ] issue : import path broken
+- [ ] training with 8 features, excluding Potions, charms
 
 ### Done ✓
 
-- [x] utlis module
-  - [x] dslr_stats
-- [x] Describe class
-- [x] describe.py
-  - [x] issue solved : House feature with file `./datasets/dataset_test.csv`
+- [x] directory structure
+- [x] setup environment
+- [x] describing dataset
+  - [x] tools module dslr_stats
+  - [x] Describe class
+  - [x] describe.py at root
+- [x] Data Visualization
+  - [x] Histogram
+  - [x] Scatter plot
+  - [x] Pair plot
+- [x] Data Visualization
+- [x] Jupyter notebooks
+  - [x] explain pipeline and logistic regression
+  - [x] plots in jupyter
 
 ### Summary
 
 ||from Done| status | to do next|
 |---|:---:|---|---|
-|describe.py | `80%` | functional |[ ] unit testing, [ ]add bonus|
-|plots| `50%` | undone | analysis ok in jupyter notebook >> to .py|
-|logreg train |`80%`|  functional | remove comments|
-|logreg predict | `90%` |  functional | remove comments|
+|describe.py | `100%` | functional |[ ] unit testing, [ ]add bonus|
+|plots| `100%` | functional | |
+|logreg train |`80%`|  functional | refactor |
+|logreg predict | `80%` |  functional | refactor |
 |model metrics| `20%` | X |choose relevent metrics, start toolkit|
 |bonus|`0%`||||
 
