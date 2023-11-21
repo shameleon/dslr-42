@@ -3,9 +3,9 @@ import os
 import pandas as pd
 from MultinomialTrainClass import LogRegTrain
 
-"""training.py:
+"""logreg_train.py:
 
-Programm to train a linear regression model
+Program to train a linear regression model
 based on technique of gradient descent to minimize the error
 
 a car price to mileage datasetdata.csv is required
@@ -13,6 +13,7 @@ a car price to mileage datasetdata.csv is required
 """
 
 __author__ = "jmouaike"
+
 
 def drop_useless(df: pd.DataFrame) -> pd.DataFrame:
     """ drop dataframe columns that are not useful for training:
