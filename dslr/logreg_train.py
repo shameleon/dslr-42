@@ -55,8 +55,8 @@ def main() -> None:
     df_pred_proba = logreg_model.get_predict_proba()
     df_pred_proba.to_csv(f'{model_dir}prediction_for_trainset1333.csv')
     print("Prediction accurate at", 100 * np.mean(df_pred_proba['Accurate pred.']), "%.") 
-    
     return None
+    
 
 if __name__ == "__main__":
     """
