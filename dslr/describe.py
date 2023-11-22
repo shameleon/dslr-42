@@ -16,15 +16,16 @@ with agg_describe() method to display description of features
 
 __author__ = "jmouaike"
 
+
 def dataset_describer():
     """  """
     if args.verbose:
-        print(("File     :", args.filename) * args.verbose)
+        print("File     :", args.filename)
         print("Verbose : compares to pandas.describe()")
     try:
         df = pd.read_csv(args.filename)
-        if args.verbose:
-            print(df.describe())
+        if args.bonus:
+            print("Bonus")
         dataset_descriptor = Describe(df)
         dataset_descriptor.agg_describe(args.bonus)
     except (FileNotFoundError, IsADirectoryError) as e:

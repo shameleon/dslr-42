@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
 
-"""training.py:
 
+"""
 class for multinomial logistic regression model training
         - one-vs-all strategy
         - gradient descent algorithm to minimize the error
