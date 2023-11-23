@@ -20,9 +20,9 @@ VI Bonus Part
 
 ### In Progress
 
-- [ ] Refactor logreg-train.py 
-  - [ ] connect to Utlis module 
-  - [ ] make own functions 
+- [ ] Refactor logreg-train.py
+  - [ ] connect to Utlis module
+  - [ ] make own functions
 - [ ] Logistic Regression
 
 ### Testing

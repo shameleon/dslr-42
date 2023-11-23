@@ -3,10 +3,10 @@ import pandas as pd
 import unittest
 from utils import describe_stats as dum
 
-""" Unit testing for utils/math.py """
+""" Unit testing for dslr/utils/describe_stats.py """
 
 
-class UtilsMathTesting(unittest.TestCase):
+class DslrUtilsMathTesting(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
         super().__init__(methodName)
         self.df = pd.DataFrame({
@@ -20,7 +20,7 @@ class UtilsMathTesting(unittest.TestCase):
         """"""
         s = self.s
         self.assertEqual(s.count(), dum.count(s))
-    
+
     def test_min(self):
         s = self.s
         self.assertEqual(s.min(), dum.min(s))
@@ -28,7 +28,7 @@ class UtilsMathTesting(unittest.TestCase):
     def test_quantile_25(self):
         s = self.s
         self.assertEqual(s.quantile(0.25), dum.percentile(s, 0.25))
-                         
+         
     def test_quantile_50(self):
         s = self.s
         self.assertEqual(s.quantile(0.5), dum.percentile(s, 0.5))
@@ -36,7 +36,7 @@ class UtilsMathTesting(unittest.TestCase):
     def test_quantile_75(self):
         s = self.s
         self.assertEqual(s.quantile(0.75), dum.percentile(s, 0.75))
-    
+
     def test_max(self):
         s = self.s
         self.assertEqual(s.max(), dum.max(s))
@@ -63,7 +63,7 @@ class UtilsMathTesting(unittest.TestCase):
         as pandas Series.std())"""
         s = self.s
         self.assertEqual(s.std(), dum.std(s), "KO")
-    
+
     def test_std_uncorrected(self):
         """std_normalized to N, as np.std()"""
         s = self.s
@@ -71,7 +71,7 @@ class UtilsMathTesting(unittest.TestCase):
 
     def test_shape_two(self):
         """"""
-        df = pd.DataFrame({'A': [-1, 42], 'B': [0, -42], 
+        df = pd.DataFrame({'A': [-1, 42], 'B': [0, -42],
                            'C': [0, 0]})
         for col in df.columns:
             s = df[col]
@@ -86,7 +86,6 @@ class UtilsMathTesting(unittest.TestCase):
 if __name__ == '__main__':
     """python3 -m unittest -v ./dslr/tests/UtilsMathTest.py
     not forgetting -v --verbose option for detailled output
-    
     https://docs.python.org/fr/3/library/unittest.html
     """
     unittest.main()

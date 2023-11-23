@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 
 """
 """
@@ -7,13 +6,13 @@ import pandas as pd
 __author__ = "jmouaike"
 
 
-def standardize(arr:np.ndarray):
+def standardize(arr: np.ndarray):
     mean = np.mean(arr)
     std = np.std(arr)
     return (arr - mean) / std
 
 
-def sigmoid(arr:np.ndarray):
+def sigmoid(arr: np.ndarray):
     return 1 / (1 + np.exp(-arr))
 
 
@@ -34,4 +33,3 @@ def gradient_descent(x_train, h_pred, y_actual):
 
 def update_weight_loss(weights, learning_rate, grad_desc):
     return weights - learning_rate * grad_desc
-    

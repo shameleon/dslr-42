@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import sys
 from MultinomialTrainClass import LogRegTrain
+import config
 
 """ """
 
@@ -25,21 +26,20 @@ class TrainingDataset:
         self.df = df
         self.learning_rate = learning
         self.epochs = epochs
-        self.excluded_features = ["Arithmancy",
-                                  "Defense Against the Dark Arts",
-                                  "Care of Magical Creatures"]
-        self.model_dir = './logistic_reg_model/'
-        self.dest_file = 'gradient_descent_weights.csv'
+        self.excluded_features = config.excluded_features
+        self.model_dir = config.model_dir
+        self.dest_file = config.gradient_descent_weights
         self.train_logistic_regression_model()
 
     def train_logistic_regression_model(self):
         """_summary_
 
-        dataframe features are selected. 
-        Outputs are kept    
-        dataframe means and std are saved to csv.file
+        Dataframe features are selected. Outputs are kept.
+        The means and std of features are saved to csv file
+
         issue : use mean and std from utlis
-        an instance of LogRegTrain class is constructed
+
+        An instance of LogRegTrain class is constructed
         and takes 2 parameters :
             - features data (df_x_train) NOT STANDARDIZED
             - corresponding real outputs (df_class)
@@ -47,18 +47,19 @@ class TrainingDataset:
         returning a dataframe for weights
         """
         df_train = self.drop_useless_features()
-        target = df_train.columns[1]
+        target = config.target_label
         df_x_train = df_train[df_train.columns[2:]]
         df_normalized = pd.DataFrame({'mean_x': df_x_train.mean(axis=0),
-                                       'std_x': df_x_train.std(axis=0)}).T
+                                      'std_x': df_x_train.std(axis=0)}).T
         df_normalized.to_csv(f'{self.model_dir}normalization.csv')
         df_class = df_train[target]
         logreg_model = LogRegTrain(df_x_train, df_class)
         self.df_weights = logreg_model.train(self.learning_rate, self.epochs)
         self.save_weights()
         df_pred_proba = logreg_model.get_predict_proba()
-        df_pred_proba.to_csv(f'{self.model_dir}prediction_for_trainset1333.csv')
-        print("Prediction accurate at", 100 * np.mean(df_pred_proba['Accurate pred.']), "%.") 
+        df_pred_proba.to_csv(f'{self.model_dir}prediction_trainset1333.csv')
+        print("Prediction accurate at",
+              100 * np.mean(df_pred_proba['Accurate pred.']), "%.")
 
     def drop_useless_features(self) -> pd.DataFrame:
         """Drop dataframe columns that are not useful for training:
@@ -68,7 +69,7 @@ class TrainingDataset:
             drop dataframe rows that contains NaN
         """
         df = self.df
-        df.drop(df.columns[2:6], inplace=True, axis = 1)
+        df.drop(df.columns[2:6], inplace=True, axis=1)
         df.drop(self.excluded_features, inplace=True, axis=1)
         return df.dropna()
 
@@ -78,13 +79,20 @@ class TrainingDataset:
         if not os.path.exists(model_dir):
             os.makedirs(model_dir)
         self.df_weights.to_csv(f'{model_dir + dest_file}')
+        print(f'Model Weights to {model_dir + dest_file}')
+
+    def __str__(self):
+        return f'{self.epochs} iteration training, [OK]'
 
 
 def train_dataset():
     """  """
     try:
         df = pd.read_csv(args.csv_file_path)
-        training = TrainingDataset(df)
+        training = TrainingDataset(df,
+                                   config.learning_rate,
+                                   config.epochs)
+        print(training)
     except (FileNotFoundError, IsADirectoryError) as e:
         print("File Error :", e)
         sys.exit("No file provided : exit")
@@ -101,10 +109,9 @@ if __name__ == "__main__":
                                      epilog='Enter a valid csv file, please')
     parser.add_argument('csv_file_path')
     parser.add_argument('-v', '--verbose',
-                        action='store_true') 
+                        action='store_true')
     parser.add_argument('-b', '--bonus',
                         action='store_true')
     args = parser.parse_args()
     train_dataset()
     sys.exit(0)
-

@@ -10,7 +10,7 @@ intended to be used by describe.py:
 The purpose is to avoid using numpy and pandas functions.
 
 np and pd that are used :
-np.nan, np.sort(), np.array(), .to_list()
+    np.nan, np.sort(), np.array(), .to_list()
 
 functions for testing :
     __put_format_line() __put_format_line4()

@@ -1,18 +1,18 @@
 import numpy as np
 import pandas as pd
-
+from utils import describe_stats as dum
 
 """
 class for multinomial logistic regression model training
-        - one-vs-all strategy
-        - gradient descent algorithm to minimize the error
+    - one-vs-all strategy
+    - gradient descent algorithm to minimize the error
 
 Multinomial Logistic regression : Where the target variable has
 three or more possible classes.
 
-One-Vs-All Classification is a method of multi-class classification.
-It can be broken down by splitting up the multi-class classification
-problem into multiple binary classifier models.
+One-Vs-All Classification : a method of multi-class classification,
+where the multi-class classification problem is broken down into
+multiple binary classifier models.
 For k class labels present in the dataset, k binary classifiers
 are needed in One-vs-All multi-class classification.
 """
@@ -40,8 +40,8 @@ class LogRegTrain:
 
     @staticmethod
     def standardize(arr: np.ndarray) -> np.ndarray:
-        mean = np.mean(arr)
-        std = np.std(arr)
+        mean = dum.mean(arr)
+        std = dum.std(arr)
         return (arr - mean) / std
 
     @staticmethod
@@ -56,7 +56,7 @@ class LogRegTrain:
         loss = (-y * np.log(h) - (1 - y) * np.log(1 - h)).mean()
         """
         m = len(h_pred)
-        a = -y_actual * np.log(h_pred)
+        a = - y_actual * np.log(h_pred)
         b = (1 - y_actual) * np.log(1 - h_pred)
         return (a - b) / m
 
