@@ -8,7 +8,7 @@ VI Bonus Part
 
 ### Todo
 
-- [ ] regroup plots in a class
+
 - [ ] Display cost
 - [ ] Bonus for describe.py
 - [ ] add options to argparse
@@ -20,6 +20,8 @@ VI Bonus Part
 
 ### In Progress
 
+- [x] regroup plots in a class
+  - [ ] connect to Utlis module
 - [ ] Refactor logreg-train.py
   - [ ] connect to Utlis module
   - [ ] make own functions
@@ -47,6 +49,7 @@ VI Bonus Part
 - [x] Jupyter notebooks
   - [x] explain pipeline and logistic regression
   - [x] plots in jupyter
+
 
 ### Summary
 
