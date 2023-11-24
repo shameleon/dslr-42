@@ -40,6 +40,7 @@ class LogRegTrain:
 
     @staticmethod
     def standardize(arr: np.ndarray) -> np.ndarray:
+        """standardization with Z-score"""
         mean = dum.mean(arr)
         std = dum.std(arr)
         return (arr - mean) / std
@@ -81,6 +82,7 @@ class LogRegTrain:
                                                      grad_desc)
         return weights
 
+
     def train(self, learning_rate=0.1, epochs=1000):
         self.learning_rate = learning_rate
         self.epochs = epochs
@@ -90,6 +92,7 @@ class LogRegTrain:
             self.df_weights[house] = weights
         print(self.learning_rate, "  iterations =", self.epochs)
         return self.df_weights
+
 
     def get_predict_proba(self) -> pd.DataFrame:
         """
@@ -107,3 +110,11 @@ class LogRegTrain:
                                  == df_pred_proba['Real outcome'], 1, 0)
         df_pred_proba['Accurate pred.'] = accurate_pred
         return df_pred_proba
+
+
+if __name__ == "__main__":
+    """_summary_
+    """
+    pass
+
+    

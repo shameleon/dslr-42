@@ -21,10 +21,10 @@ setup(
     author='jmouaike',
     author_email='john.mouaike@gmail.com',
     description = ("A machine learning 42-school project,"
-                    "multivariate logistic regression from scratch"),
+                    "multivariate logistic regression"),
     license = "BSD",
     keywords = "42 dataset machine learning dataset logistic regression",
-    long_description=read('README'),
+    long_description= read('README'),
     install_requires=[
         'pandas',
         'matplotlib',

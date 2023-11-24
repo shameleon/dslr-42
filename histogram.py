@@ -19,4 +19,4 @@ if __name__ == "__main__":
     parser.add_argument('features', nargs=1, type=str)
     args = parser.parse_args()
     os.system(f'./venv/bin/python {script_path} {args.filename}'
-              + f'-i {args.features[0]}')
+              + f' -i {args.features[0]}')

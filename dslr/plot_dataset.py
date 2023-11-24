@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import config
+from utils import print_out as pout
 
 def dataset_plotter(func):
     """
@@ -65,7 +66,7 @@ def plot_pairplotmatrix(df: pd.DataFrame, target_label: str,
                  y_vars=features,
                  hue=target_label,
                  corner=True)
-    sns.set(rc={'font.size' : 10, 'axes.labelsize': 10})
+    sns.set(rc={'font.size' : 6, 'axes.labelsize': 6})
     plt.savefig('./reports/pair_plot_matrix.png')
 
 
@@ -90,7 +91,8 @@ def plot_selected():
         plot_joinplot(df, config.target_label,
                       args.joinplot[0], args.joinplot[1])
     elif args.pairplotmatrix:
-        plot_pairplotmatrix(df, config.target_label, df_features)
+        plot_pairplotmatrix(df, config.target_label,
+                            df_features.to_list())
     else:
         print("Data_features :\n", df_features.to_list())
     return None
@@ -100,16 +102,15 @@ if __name__ == "__main__":
     """ -h for help
     Positional argument : filepath
     Optional Arguments : -h for help, -i, -s, -b, -j"""
-    parser = argparse.ArgumentParser(prog='all_plots.py',
-                                     description='plot histogram',
+    parser = argparse.ArgumentParser(prog='plot_dataset.py',
+                                     description='many available plots',
                                      epilog='end')
     parser.add_argument('filepath')
-    parser.add_argument('-i', '--histogram', nargs = 1, type=str)
-    parser.add_argument('-s', '--scatter', nargs = 2, type=str)
+    parser.add_argument('-i', '--histogram', nargs=1, type=str)
+    parser.add_argument('-s', '--scatter', nargs=2, type=str)
     parser.add_argument('-p', '--pairplotmatrix', action='store_true')
-    parser.add_argument('-b', '--boxplot', nargs = 1, type=str)
-    parser.add_argument('-j', '--joinplot', nargs = 2, type=str)
-    #parser.add_argument_group()
+    parser.add_argument('-b', '--boxplot', nargs=1, type=str)
+    parser.add_argument('-j', '--joinplot', nargs=2, type=str)
     args = parser.parse_args()
-    print(args)
+    print(vars(args))
     plot_selected()

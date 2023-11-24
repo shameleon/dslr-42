@@ -8,7 +8,6 @@ VI Bonus Part
 
 ### Todo
 
-
 - [ ] Display cost
 - [ ] Bonus for describe.py
 - [ ] add options to argparse
@@ -21,7 +20,7 @@ VI Bonus Part
 ### In Progress
 
 - [x] regroup plots in a class
-  - [ ] connect to Utlis module
+  - [ ] scale pairplot matrix
 - [ ] Refactor logreg-train.py
   - [ ] connect to Utlis module
   - [ ] make own functions

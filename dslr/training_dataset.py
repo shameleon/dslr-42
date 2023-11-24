@@ -3,8 +3,9 @@ import numpy as np
 import os
 import pandas as pd
 import sys
-from MultinomialTrainClass import LogRegTrain
 import config
+from MultinomialTrainClass import LogRegTrain
+from utils import describe_stats as dum
 
 """ """
 
@@ -22,6 +23,7 @@ class TrainingDataset:
                                              df[1] are real outputs
             learning (float, optional): _description_. Defaults to 0.1.
             epochs (int, optional): _description_. Defaults to 1000.
+        Setting up the config.py file is necessary
         """
         self.df = df
         self.learning_rate = learning
@@ -34,10 +36,12 @@ class TrainingDataset:
     def train_logistic_regression_model(self):
         """_summary_
 
-        Dataframe features are selected. Outputs are kept.
-        The means and std of features are saved to csv file
+        Dataframe features are selected.
+        Outputs are kept.
+        The means and std of dataset features are saved to csv file
 
-        issue : use mean and std from utlis
+        issue : use mean and std from utlis, in 
+                save_mean_and_std method()
 
         An instance of LogRegTrain class is constructed
         and takes 2 parameters :
@@ -49,10 +53,8 @@ class TrainingDataset:
         df_train = self.drop_useless_features()
         target = config.target_label
         df_x_train = df_train[df_train.columns[2:]]
-        df_normalized = pd.DataFrame({'mean_x': df_x_train.mean(axis=0),
-                                      'std_x': df_x_train.std(axis=0)}).T
-        df_normalized.to_csv(f'{self.model_dir}normalization.csv')
         df_class = df_train[target]
+        self.save_mean_and_std(df_x_train)
         logreg_model = LogRegTrain(df_x_train, df_class)
         self.df_weights = logreg_model.train(self.learning_rate, self.epochs)
         self.save_weights()
@@ -72,6 +74,24 @@ class TrainingDataset:
         df.drop(df.columns[2:6], inplace=True, axis=1)
         df.drop(self.excluded_features, inplace=True, axis=1)
         return df.dropna()
+    
+    def save_mean_and_std(self, df_x_train: pd.DataFrame):
+        """ Saves standardization parameters
+        Writes means and std's of the dataset to a file
+        before standardization that occurs at 
+        LogRegTrain instance construction.
+
+        df_stats = pd.DataFrame({'mean_x': df_x_train.mean(axis=0),
+                                 'std_x': df_x_train.std(axis=0)}).T
+        """
+        if not os.path.exists(self.model_dir):
+            os.makedirs(self.model_dir)
+        dest_file = config.standardization_params
+        df_means = df_x_train.agg(lambda feat: dum.mean(feat), axis=0)
+        df_stds =  df_x_train.agg(lambda feat: dum.std(feat), axis=0)
+        df_stats = pd.DataFrame({'mean_x': df_means,
+                                 'std_x': df_stds}).T
+        df_stats.to_csv(f'{self.model_dir + dest_file}')
 
     def save_weights(self):
         model_dir = self.model_dir
@@ -108,10 +128,8 @@ if __name__ == "__main__":
                                      description='Training a dataset',
                                      epilog='Enter a valid csv file, please')
     parser.add_argument('csv_file_path')
-    parser.add_argument('-v', '--verbose',
-                        action='store_true')
-    parser.add_argument('-b', '--bonus',
-                        action='store_true')
+    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-b', '--bonus', action='store_true')
     args = parser.parse_args()
     train_dataset()
     sys.exit(0)

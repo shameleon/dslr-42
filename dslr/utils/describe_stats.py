@@ -130,8 +130,8 @@ def mean(x: pd.Series):
 
 
 def std(x: pd.Series, corrected=True) -> float:
-    """standard deviation
-    !!! numpy std() is different than pandas std() !!!
+    """Standard deviation
+    IMPORTANT : numpy std() is different than pandas std() !!!
     Pandas : DataFrame.describe() calls Series.std(),
         which is a corrected Standard deviation (Bessel's correction)
         and returns unbiased standard deviation over requested axis.
@@ -140,7 +140,7 @@ def std(x: pd.Series, corrected=True) -> float:
 
     Parameters:
         corrected=True : set by default,
-            Return : a corrected std (normalized to N - 1) as pd.std()
+            Return : a corrected std (normalized to N - 1) aswith pd.std()
         corrected=False: for an uncorrected std as np.std()
             Return : std (normalized to N) as np.std() or pd.std(ddof=1)
     """

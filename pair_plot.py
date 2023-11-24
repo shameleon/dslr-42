@@ -1,8 +1,5 @@
 import argparse
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import seaborn as sns
+import os
 
 """ 
 Pair plot matrix : Plot pairwise relationships in a dataset.
@@ -14,35 +11,12 @@ to use for your logistic regression?
 7
 """
 
-
-def plot_pair_matrix(save_plot=False):
-    target="Hogwarts House"
-    remove_list = ['Index', 'First Name', 'Last Name', 'Birthday', 'Best Hand']
-    try:
-        df = pd.read_csv(args.filename)
-        df = df.drop(remove_list, axis=1)
-        features = df.keys()[1:].to_list()
-        sns.pairplot(df,
-                     x_vars=features,
-                     y_vars=features,
-                     hue=target,
-                     corner=True
-                    )
-        if save_plot:
-            plt.savefig('./reports/pair_plot_matrix.png')
-        plt.show()
-    except (FileNotFoundError, IsADirectoryError) as e:
-        print("File Error :", e)
-        print("Please, provide a valid .csv file as argument")
-    except pd.errors.EmptyDataError as e:
-        print("File Content Error :", e)
-
-
 if __name__ == "__main__":
     """ """
-    parser = argparse.ArgumentParser(prog='pair_plot[ext]',
-                                     description='matrix pairplot for a dataset',
-                                     epilog='verbose mode for options')
+    description = 'pairplot matrix for all features of a dataset'
+    script_path = './dslr/plot_dataset.py'
+    parser = argparse.ArgumentParser(prog='pair_plot.py',
+                                     description=description)
     parser.add_argument('filename')
     args = parser.parse_args()
-    plot_pair_matrix(True)
+    os.system(f'./venv/bin/python {script_path} {args.filename} -p')

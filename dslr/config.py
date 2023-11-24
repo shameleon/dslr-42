@@ -11,12 +11,13 @@ excluded_features = ["Arithmancy",
 
 """ Training dataset """
 learning_rate = 0.01
-epochs=100
+epochs=10
 
 
 """ Model """
 model_dir = './logistic_reg_model/'
+standardization_params = 'standardization_params.csv'
 gradient_descent_weights = 'gradient_descent_weights.csv'
 
-""" """
+""" Bomus """
 bonus = False

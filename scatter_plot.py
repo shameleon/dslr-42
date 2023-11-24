@@ -1,8 +1,5 @@
 import argparse
-import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import seaborn as sns
+import os
 
 """
 V.2.2 Scatter plot
@@ -13,42 +10,14 @@ answer : sns_scatter('Astronomy', 'Defense Against the Dark Arts')
 """
 
 
-def sns_scatter(feature1='Astronomy', feature2='Herbology'):
-    """_summary_
-        scatter plot for two features with seaborn module
-        legend : target categories
-    Args:
-        feature1 (str, optional): _description_. Defaults to 'Astronomy'.
-        feature2 (str, optional): _description_. Defaults to 'Herbology'.
-    """
-    target = "Hogwarts House"
-    try:
-        df = pd.read_csv(args.filename)
-        house = df.keys()[1]
-        plt.figure(figsize=(8,8))
-        sns.scatterplot(data=df, 
-                        x=feature1,
-                        y=feature2,
-                        hue=target,
-                        legend='auto')
-        plt.title("Scatter plot by house")
-        plt.legend(loc='upper center',
-                   bbox_to_anchor=(0.9, 1.15),
-                   ncol=2,
-                   title=target)
-        plt.show()
-    except (FileNotFoundError, IsADirectoryError) as e:
-        print("File Error :", e)
-    except pd.errors.EmptyDataError as e:
-        print("File Content Error :", e)
-
-
 if __name__ == "__main__":
     """ """
-    parser = argparse.ArgumentParser(prog='scatter_plot.[ext]',
-                                     description='scatter plot for 2 features of a dataset',
-                                     epilog='verbose mode for options')
+    description = 'scatter plot for a given feature of a dataset'
+    script_path = './dslr/plot_dataset.py'
+    parser = argparse.ArgumentParser(prog='scatter_plot.py',
+                                     description=description)
     parser.add_argument('filename')
+    parser.add_argument('features', nargs=2, type=str)
     args = parser.parse_args()
-    sns_scatter()
-    sns_scatter('Astronomy', 'Defense Against the Dark Arts')
+    os.system(f'./venv/bin/python {script_path} {args.filename}'
+              + f' -s {args.features[0]} {args.features[1]}')
