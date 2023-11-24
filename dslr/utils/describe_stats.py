@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 """
-describe_stats functions are primarily
+These describe_stats functions are primarily
 intended to be used by describe.py:
 
 The purpose is to avoid using numpy and pandas functions.

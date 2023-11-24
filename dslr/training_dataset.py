@@ -36,9 +36,12 @@ class TrainingDataset:
     def train_logistic_regression_model(self):
         """_summary_
 
-        Dataframe features are selected.
-        Outputs are kept.
-        The means and std of dataset features are saved to csv file
+        df dataframe features are selected, so that
+        df_train contains only target variable column
+                target : target variable
+        and meaningful data as unstandardized data.
+
+        The means and std of dataset features are saved to csv file.
 
         issue : use mean and std from utlis, in 
                 save_mean_and_std method()

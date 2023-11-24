@@ -1,4 +1,5 @@
 import numpy as np
+from utils import describe_stats as dum
 
 """
 """
@@ -6,9 +7,10 @@ import numpy as np
 __author__ = "jmouaike"
 
 
-def standardize(arr: np.ndarray):
-    mean = np.mean(arr)
-    std = np.std(arr)
+def standardize(arr: np.ndarray) -> np.ndarray:
+    """Standardization with Z-score"""
+    mean = dum.mean(arr)
+    std = dum.std(arr)
     return (arr - mean) / std
 
 

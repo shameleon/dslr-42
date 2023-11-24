@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from utils import describe_stats as dum
+from utils import logreg_tools as logreg
 
 """
 class for multinomial logistic regression model training
@@ -25,7 +25,7 @@ class LogRegTrain:
     """
     def __init__(self, df_x_train, df_class):
         """ Parameters : unstandardized data to train without NaN, output """
-        df_std = df_x_train.agg(lambda feat: LogRegTrain.standardize(feat))
+        df_std = df_x_train.agg(lambda feat: logreg.standardize(feat))
         x_train_std = np.array(df_std)
         ones = np.ones((len(x_train_std), 1), dtype=float)
         self.x_train = np.concatenate((ones, x_train_std), axis=1)
@@ -37,17 +37,6 @@ class LogRegTrain:
         w_indexes = df_x_train.columns.insert(0, ['Intercept'])
         self.df_weights = pd.DataFrame(columns=self.houses,
                                        index=w_indexes).fillna(0)
-
-    @staticmethod
-    def standardize(arr: np.ndarray) -> np.ndarray:
-        """standardization with Z-score"""
-        mean = dum.mean(arr)
-        std = dum.std(arr)
-        return (arr - mean) / std
-
-    @staticmethod
-    def sigmoid(arr: np.ndarray) -> np.ndarray:
-        return 1 / (1 + np.exp(-arr))
 
     @staticmethod
     def loss_function(y_actual: np.ndarray,
@@ -74,7 +63,7 @@ class LogRegTrain:
         weights = np.ones(len(self.features) + 1).T
         for iter in range(self.epochs):
             z_output = np.dot(self.x_train, weights)
-            h_pred = LogRegTrain.sigmoid(z_output)
+            h_pred = logreg.sigmoid(z_output)
             tmp = np.dot(self.x_train.T, (h_pred - y_actual))
             grad_desc = tmp / y_actual.shape[0]
             weights = LogRegTrain.update_weight_loss(weights,
@@ -102,7 +91,7 @@ class LogRegTrain:
         """
         print(self.x_train.shape, self.df_weights.shape)
         z = np.dot(self.x_train, self.df_weights)
-        h = LogRegTrain.sigmoid(z)
+        h = logreg.sigmoid(z)
         df_pred_proba = pd.DataFrame(h, columns=self.houses)
         df_pred_proba['Predicted outcome'] = df_pred_proba.idxmax(axis=1)
         df_pred_proba['Real outcome'] = self.df_class.tolist()

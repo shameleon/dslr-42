@@ -11,8 +11,8 @@ excluded_features = ["Arithmancy",
 
 """ Training dataset """
 learning_rate = 0.01
-epochs=10
-
+epochs=1
+algorithm = 'Gradient Descent'
 
 """ Model """
 model_dir = './logistic_reg_model/'
