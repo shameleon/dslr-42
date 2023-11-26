@@ -38,7 +38,6 @@ class TrainingDataset:
 
         df dataframe features are selected, so that
         df_train contains only target variable column
-                target : target variable
         and meaningful data as unstandardized data.
 
         The means and std of dataset features are saved to csv file.
