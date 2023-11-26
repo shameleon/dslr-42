@@ -1,34 +1,37 @@
 import unittest
-import numpy as np
 import pandas as pd
-# import sys
-# import os
-# # setting path
-# parent_dir = os.path.dirname(os.path.realpath(__file__))
-# sys.path.append(parent_dir)
 from DescriberClass import Describe
+
+""" Unit testing for dslr/DescriberClass Describe class """
+
 
 class DescribeTesting(unittest.TestCase):
     def __init__(self, methodName: str = "runTest") -> None:
         super().__init__(methodName)
         try:
-            df = pd.read_csv("./datasets/dataset_train.csv")
+            self.df = pd.read_csv("./datasets/dataset_train.csv")
         except (FileNotFoundError, IsADirectoryError) as e:
             print("File Error :", e)
         except pd.errors.EmptyDataError as e:
             print("File Content Error :", e)
-        if df.empty:
+        if self.df.empty:
             self.df = None
         else:
-            self.df = df.columns[1:]
+            self.df.drop(self.df.columns[0], inplace=True, axis=1)
 
     def test_describe(self):
+        """ test that compares Describe.agg_describe()
+        to pandas describe.
+        rtol : Relative tolerance.
+        """
+        rtol = 1e-12
         description = Describe(self.df)
-        res = description.agg_describe(False)
-        print(description)
-        print(res)
-        self.assertEqual(self.df.describe(), res)
-        pass
+        ours = description.agg_describe(False).to_numpy()
+        theirs = self.df.describe().to_numpy()
+        diff = ours - theirs
+        print(f'\n{(diff > rtol).sum()} errors in diff at {rtol} precision')
+        self.assertTrue((diff > rtol).sum() == 0)
+
 
 if __name__ == '__main__':
     unittest.main()

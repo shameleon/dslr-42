@@ -33,6 +33,7 @@ def predict_proba(x,
                                         == df_pred_proba['Real outcome'], 1, 0)
     return df_pred_proba
 
+
 def standardize(arr:np.ndarray):
     mean = np.mean(arr)
     std = np.std(arr)

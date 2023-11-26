@@ -37,11 +37,11 @@ def main():
     # normalize
     df2['Best Hand'].replace({"Left":0, "Right":1}, inplace=True)
     df2['First Initial'] = df2['First Name'].str[0]
-    df2['First Initial'] = [ ord(x) - 64 for x in df2['First Initial'] ]
+    df2['First Initial'] = [ord(x) - 64 for x in df2['First Initial'] ]
     #df2['First Initial'].map(lambda x: ord(x) - 64 if x.isalpha() else x, line)
     #df2['First Initial'] = df2['First Name'].replace('[^A-Z]', '', regex=True).astype('int64')
     df2['Last Initial'] = df2['Last Name'].str[0]
-    df2['Last Initial'] = [ ord(x) - 64 for x in df2['Last Initial'] ]
+    df2['Last Initial'] = [ord(x) - 64 for x in df2['Last Initial'] ]
     df2.drop(['First Name', 'Last Name'], inplace=True, axis=1)
     df2['Year'] = pd.DatetimeIndex(df2['Birthday']).year
     df2['Month'] = pd.DatetimeIndex(df2['Birthday']).month

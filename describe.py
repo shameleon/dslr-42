@@ -2,8 +2,9 @@ import argparse
 import os
 
 """
-    describes the data of a dataset file
-    execute ./dlsr/describe.py script
+    Describes the data of a dataset file
+
+    executes ./dlsr/describe.py script
     takes one argument 'filename' .csv file
 """
 
