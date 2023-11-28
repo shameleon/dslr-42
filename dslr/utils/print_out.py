@@ -34,7 +34,7 @@ COL_ASKKM = '\x1b[2;34;43m'
 def printout_title(level: int, mssg: str):
     color = {1: COL_BLUWHI, 2: COL_BLUCYA, 3: COL_BLUWHI}
     if level == 1:
-        print(f'\n   {COL_FTLIN}ft_linear regression{COL_RESET}')
+        print(f'\n   {COL_FTLIN}Datascience X Logistic Regression{COL_RESET}')
     print(f'{color[level]}' + ' ' * 10 + mssg + ' ' * 10 + f'{COL_RESET}\n')
 
 
