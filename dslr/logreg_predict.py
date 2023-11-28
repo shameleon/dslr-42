@@ -54,8 +54,8 @@ def test_dataset():
 
 if __name__ == "__main__":
     """ train model from file """
-    parser = argparse.ArgumentParser(prog='logreg_test.[ext]',
-                                     description='Testing a dataset',
+    parser = argparse.ArgumentParser(prog='logreg_precit.py',
+                                     description='Testing dataset',
                                      epilog='Enter a valid csv file, please')
     parser.add_argument('test_file_path')
     parser.add_argument('weights_file_path')

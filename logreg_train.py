@@ -3,10 +3,8 @@ import os
 
 """logreg_train.py:
 
-Program to train a linear regression model
-based on technique of gradient descent to minimize the error
-
-a car price to mileage datasetdata.csv is required
+Program to train a logistic regression model
+based on gradient descent algorithm to minimize the error
 
 """
     
