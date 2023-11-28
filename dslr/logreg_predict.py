@@ -20,7 +20,7 @@ def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
     config.py : 'target_label' entry defines truth file name.
 
     Parameter : Dataframe to test
-    Returns : a pd.Dataframe pour the output, 
+    Returns : the real output, 
             so that the index can be used to compared
             with predicted ouput
     """
@@ -30,7 +30,9 @@ def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
     else:
         dir = os.path.split(args.test_file_path)[0]
         truth_file = os.path.join(dir, config.test_truth)
-        df_real_class = pd.read_csv(truth_file)
+        df_real_class = pd.read_csv(truth_file)[target]
+        if df_real_class.shape[0] == 0:
+            raise SystemExit(1)
     return df_real_class
     
 
@@ -39,7 +41,9 @@ def test_dataset():
     try:
         df = pd.read_csv(args.test_file_path)
         df_weights = pd.read_csv(args.weights_file_path)
+        test_model = PredictFromLogRegModel(df, df_weights)
         df_real_class = set_real_class(df)
+        test_model.compare_to_truth(df_real_class)
     except (FileNotFoundError, IsADirectoryError) as e:
         sys.stderr("File Error :", e)
         sys.exit(1)

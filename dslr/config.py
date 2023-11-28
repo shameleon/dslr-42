@@ -1,5 +1,8 @@
 
 """
+Datascience X Logistic Regression
+dslr/config.py
+
 Variables that are global to all dslr module
 """
 
