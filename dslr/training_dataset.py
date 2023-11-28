@@ -1,7 +1,9 @@
 import argparse
+import matplotlib.pyplot as plt
 import numpy as np
-import os
 import pandas as pd
+import seaborn as sns
+import os
 import sys
 import config
 from MultinomialTrainClass import LogRegTrain
@@ -60,10 +62,11 @@ class TrainingDataset:
         logreg_model = LogRegTrain(df_x_train, df_class)
         self.df_weights = logreg_model.train(self.learning_rate, self.epochs)
         self.save_weights()
+        self._losses = logreg_model.get_losses()
         df_pred_proba = logreg_model.get_predict_proba()
         df_pred_proba.to_csv(f'{self.model_dir}prediction_trainset1333.csv')
-        print("Prediction accurate at",
-              100 * np.mean(df_pred_proba['Accurate pred.']), "%.")
+        accuracy = df_pred_proba['Accurate pred.'].value_counts(1)[1]
+        print("Prediction accuracy = {} %".format(100 * accuracy))
 
     def drop_useless_features(self) -> pd.DataFrame:
         """Drop dataframe columns that are not useful for training:
@@ -103,6 +106,11 @@ class TrainingDataset:
         self.df_weights.to_csv(f'{model_dir + dest_file}')
         print(f'Model Weights to {model_dir + dest_file}')
 
+    def plot_losses(self):
+        sns.lineplot(data=self._losses)
+        plt.title("Losses")
+        plt.show()
+
     def __str__(self):
         return f'{self.epochs} iteration training, [OK]'
 
@@ -115,6 +123,8 @@ def train_dataset():
                                    config.learning_rate,
                                    config.epochs)
         print(training)
+        if args.bonus:
+            training.plot_losses()
     except (FileNotFoundError, IsADirectoryError) as e:
         print("File Error :", e)
         sys.exit("No file provided : exit")

@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 from utils import logreg_tools as logreg
+from utils import describe_stats as dum
 
 """
 Multinomial Logistic regression : Where the target variable has
@@ -24,7 +25,8 @@ class LogRegTrain:
 
     .train() method to 
     """
-    def __init__(self, df_x_train: pd.DataFrame, df_class: pd.DataFrame):
+    def __init__(self, df_x_train: pd.DataFrame, 
+                 df_class: pd.DataFrame):
         """ Parameters : unstandardized data to train without NaN, output """
         df_std = df_x_train.agg(lambda feat: logreg.standardize(feat))
         x_train_std = np.array(df_std)
@@ -41,15 +43,16 @@ class LogRegTrain:
 
     @staticmethod
     def _loss_function(y_actual: np.ndarray,
-                       h_pred: np.ndarray) -> np.ndarray:
-        """ y_actual : target class. 1 in class, 0 not in class
+                       h_pred: np.ndarray) -> float:
+        """ returns : mean of losses.
+        y_actual : target class. 1 in class, 0 not in class
         h_pred = sigmoid(x.weights)
         loss = (-y * np.log(h) - (1 - y) * np.log(1 - h)).mean()
         """
         m = len(h_pred)
         a = - y_actual * np.log(h_pred)
         b = (1 - y_actual) * np.log(1 - h_pred)
-        return (a - b) / m
+        return (((a - b) / m)).mean()
 
     @staticmethod
     def _update_weight_loss(weights, learning_rate, grad_desc):
@@ -60,6 +63,7 @@ class LogRegTrain:
         loss_iter = LogRegTrain._loss_function(y_actual, h_pred)
         gradient = np.dot(self.x_train.T, (h_pred - y_actual))
         """
+        self.loss = []
         y_actual = np.where(self.df_class == house, 1, 0)
         weights = np.ones(len(self.features) + 1).T
         for iter in range(self.epochs):
@@ -70,8 +74,8 @@ class LogRegTrain:
             weights = LogRegTrain._update_weight_loss(weights,
                                                      self.learning_rate,
                                                      grad_desc)
+            self.loss.append(self._loss_function(y_actual, h_pred))
         return weights
-
 
     def train(self, learning_rate=0.1, epochs=1000):
         """
@@ -81,11 +85,14 @@ class LogRegTrain:
         self.epochs = epochs
         for house in self.houses:
             weights = self._train_one_vs_all(house)
-            # self.df_losses[house] = loss
+            self._losses[house] = self.loss
             self.df_weights[house] = weights
-        print(f'alpha = {self.learning_rate}\niterations = {self.epochs}')
+        print(f'Learning rate = {self.learning_rate}')
+        print(f'Iterations = {self.epochs}')
         return self.df_weights
 
+    def get_losses(self) -> pd.DataFrame:
+        return self._losses
 
     def get_predict_proba(self) -> pd.DataFrame:
         """
@@ -93,7 +100,6 @@ class LogRegTrain:
         returns : a dataframe containing the probability for each outcome
         and the final predicted outcome
         """
-        print(self.x_train.shape, self.df_weights.shape)
         z = np.dot(self.x_train, self.df_weights)
         h = logreg.sigmoid(z)
         df_pred_proba = pd.DataFrame(h, columns=self.houses)
