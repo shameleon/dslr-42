@@ -3,10 +3,6 @@ import pandas as pd
 from utils import logreg_tools as logreg
 
 """
-class for multinomial logistic regression model training
-    - one-vs-all strategy
-    - gradient descent algorithm to minimize the error
-
 Multinomial Logistic regression : Where the target variable has
 three or more possible classes.
 
@@ -22,8 +18,13 @@ __author__ = "jmouaike"
 
 class LogRegTrain:
     """
+    Class for multinomial logistic regression model training
+    - one-vs-all strategy
+    - gradient descent algorithm to minimize the error
+
+    .train() method to 
     """
-    def __init__(self, df_x_train, df_class):
+    def __init__(self, df_x_train: pd.DataFrame, df_class: pd.DataFrame):
         """ Parameters : unstandardized data to train without NaN, output """
         df_std = df_x_train.agg(lambda feat: logreg.standardize(feat))
         x_train_std = np.array(df_std)
@@ -32,17 +33,17 @@ class LogRegTrain:
         self.features = df_std.columns.tolist()
         self.df_class = df_class
         self.houses = df_class.unique().tolist()
-        # self.df_losses = pd.DataFrame(columns=self.houses)
-        # self.df_losses.fillna(0)
+        self._losses = pd.DataFrame(columns=self.houses)
+        self._losses.fillna(0)
         w_indexes = df_x_train.columns.insert(0, ['Intercept'])
         self.df_weights = pd.DataFrame(columns=self.houses,
                                        index=w_indexes).fillna(0)
 
     @staticmethod
-    def loss_function(y_actual: np.ndarray,
-                      h_pred: np.ndarray) -> np.ndarray:
+    def _loss_function(y_actual: np.ndarray,
+                       h_pred: np.ndarray) -> np.ndarray:
         """ y_actual : target class. 1 in class, 0 not in class
-        h_pred = signoid(x.weights)
+        h_pred = sigmoid(x.weights)
         loss = (-y * np.log(h) - (1 - y) * np.log(1 - h)).mean()
         """
         m = len(h_pred)
@@ -51,12 +52,12 @@ class LogRegTrain:
         return (a - b) / m
 
     @staticmethod
-    def update_weight_loss(weights, learning_rate, grad_desc):
+    def _update_weight_loss(weights, learning_rate, grad_desc):
         return weights - learning_rate * grad_desc
 
-    def train_one_vs_all(self, house):
+    def _train_one_vs_all(self, house):
         """
-        loss_iter = LogRegTrain.loss_function(y_actual, h_pred)
+        loss_iter = LogRegTrain._loss_function(y_actual, h_pred)
         gradient = np.dot(self.x_train.T, (h_pred - y_actual))
         """
         y_actual = np.where(self.df_class == house, 1, 0)
@@ -66,20 +67,23 @@ class LogRegTrain:
             h_pred = logreg.sigmoid(z_output)
             tmp = np.dot(self.x_train.T, (h_pred - y_actual))
             grad_desc = tmp / y_actual.shape[0]
-            weights = LogRegTrain.update_weight_loss(weights,
+            weights = LogRegTrain._update_weight_loss(weights,
                                                      self.learning_rate,
                                                      grad_desc)
         return weights
 
 
     def train(self, learning_rate=0.1, epochs=1000):
+        """
+        
+        """
         self.learning_rate = learning_rate
         self.epochs = epochs
         for house in self.houses:
-            weights = self.train_one_vs_all(house)
+            weights = self._train_one_vs_all(house)
             # self.df_losses[house] = loss
             self.df_weights[house] = weights
-        print(self.learning_rate, "  iterations =", self.epochs)
+        print(f'alpha = {self.learning_rate}\niterations = {self.epochs}')
         return self.df_weights
 
 

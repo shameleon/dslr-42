@@ -1,6 +1,9 @@
 
 Subject :
 ```multi-classifier using a logistic regression one-vs-all```
+
+[Deep Learning: Logistic Regression by Shrivastava](https://www.cs.rice.edu/~as143/COMP642_Spring22/Scribes/Lect5)
+
 [https://www.youtube.com/watch?app=desktop&v=oYVdzBjkiZ4]
 
 Three types of Logistic Regression:

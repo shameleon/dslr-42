@@ -1,7 +1,9 @@
-import numpy as np
+import argparse
+import os
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
+import sys
+import config
+from PredictClass import PredictFromLogRegModel
 
 """
 """
@@ -9,90 +11,53 @@ import matplotlib.pyplot as plt
 __author__ = "jmouaike"
 
 
-def sigmoid(arr:np.ndarray):
-    return 1 / (1 + np.exp(-arr))
-
-def predict_proba(x,
-                  y,
-                  weights,
-                  outcomes) -> pd.DataFrame:
+def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
     """
-    input is the dataset, normalized and containing data usefull for model
-    returns : a dataframe containing the probability for each outcome
-    and the final predicted outcome
+    It searches for the real output for the classifiers
+    in the Dataframe. 
+    if not found, it looks for truth file defined in config.py
+    in the same directory that the tested dataframe.
+    config.py : 'target_label' entry defines truth file name.
+
+    Parameter : Dataframe to test
+    Returns : a pd.Dataframe pour the output, 
+            so that the index can be used to compared
+            with predicted ouput
     """
-    ones = np.ones((len(x), 1), dtype=float)
-    x_test = np.concatenate((ones, x), axis=1)
-    print(x_test.shape, weights.shape)
-    z = np.dot(x_test, weights)
-    # odds = np.log(z)
-    h = sigmoid(z)
-    df_pred_proba = pd.DataFrame(h, columns=outcomes)
-    df_pred_proba['Predicted outcome'] = df_pred_proba.idxmax(axis=1)
-    df_pred_proba['Real outcome'] = y.tolist()
-    df_pred_proba['Accurate pred.'] = np.where(df_pred_proba['Predicted outcome'] 
-                                        == df_pred_proba['Real outcome'], 1, 0)
-    return df_pred_proba
-
-
-def standardize(arr: np.ndarray):
-    mean = np.mean(arr)
-    std = np.std(arr)
-    return (arr - mean) / std
-
-
-def drop_columns(df: pd.DataFrame, drop_na:bool) -> pd.DataFrame:
-    """ drop dataframe columns that are not useful for training:
-        - non numeric data
-        - numeric data that has colinearity
-        - not meaningful variables should be included
-        drop dataframe rows that contains NaN
-    """
-    df.drop(df.columns[2:6], inplace=True, axis = 1)
-    excluded_features = ["Arithmancy",
-                         "Defense Against the Dark Arts",
-                         "Care of Magical Creatures"]
-    df.drop(excluded_features, inplace=True, axis=1)
-    if drop_na:
-        return df.dropna()
+    target = config.target_label
+    if df[target].dropna().shape[0] > 0:
+        df_real_class = df[target]
     else:
-        return df.fillna(0)
+        dir = os.path.split(args.test_file_path)[0]
+        truth_file = os.path.join(dir, config.test_truth)
+        df_real_class = pd.read_csv(truth_file)
+    return df_real_class
+    
 
-def main():
-    model_dir = './logistic_reg_model/'
-    df = pd.read_csv(f'./datasets/dataset_train.csv')
-    df_train = drop_columns(df, False)
-    target = df_train.columns[1]
-    df_x_train = df_train[df_train.columns[2:]]
-    df_x_train_std = df_x_train.agg(lambda feature: standardize(feature))
-    df_y_train = df_train[target]
-    model_weights = pd.read_csv(f'./logistic_reg_model/gradient_descent_weights.csv')
-    model_weights.drop(columns="Unnamed: 0", inplace=True)
-    weights = np.array(model_weights)
-    df_pred_proba = predict_proba(np.array(df_x_train_std),
-                                  df_y_train,
-                                  weights,
-                                  df_y_train.unique().tolist())
-    print(df_pred_proba.head())
-    print("prediction are accurate at", 100 * np.mean(df_pred_proba['Accurate pred.']), "%.") 
-    predict = df_pred_proba['Accurate pred.']
-    df = pd.read_csv(f'./datasets/dataset_train.csv')
-    df['Predicted outcome'] = df_pred_proba['Predicted outcome']
-    df['Accurate pred.'] = predict
-    print(df.head(10))
-    df.drop(df.columns[0], inplace=True, axis = 1)
-    df.to_csv(f'{model_dir}prediction_for_trainset1600.csv')
-    df_inexact = df[df['Accurate pred.'] == 0]
-    # sns.scatterplot(data=df_inexact, x="", y="Flying", hue="Best Hand", legend='auto')
-    sns.scatterplot(data=df_inexact, x="Hogwarts House",y="Flying", hue="Best Hand", legend='auto')
-    plt.show()
-    # df_inexact.drop(df.columns[6:18], inplace=True, axis = 1)
-    # df_inexact.sort_values(['First Name', 'Best Hand'], inplace=True)
-    # df_inexact.to_csv(f'{model_dir}incorrect_prediction_for_trainset1600.csv')
+def test_dataset():
+    """ Reading files from locations given as arguments """
+    try:
+        df = pd.read_csv(args.test_file_path)
+        df_weights = pd.read_csv(args.weights_file_path)
+        df_real_class = set_real_class(df)
+    except (FileNotFoundError, IsADirectoryError) as e:
+        sys.stderr("File Error :", e)
+        sys.exit(1)
+    except pd.errors.EmptyDataError as e:
+        sys.stderr("File Content Error :", e)
+        sys.exit(1)
 
-    #sns.histplot(data=df, x="Accurate pred.'", color="skyblue", kde=True, hue="Hogwarts House")
-    #sns.histplot(data=df, x="Herbology", color="skyblue", kde=True, hue="Accurate pred.")
-         
+
 if __name__ == "__main__":
     """ train model from file """
-    main()
+    parser = argparse.ArgumentParser(prog='logreg_test.[ext]',
+                                     description='Testing a dataset',
+                                     epilog='Enter a valid csv file, please')
+    parser.add_argument('test_file_path')
+    parser.add_argument('weights_file_path')
+    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-b', '--bonus', action='store_true')
+    args = parser.parse_args()
+    test_dataset()
+    sys.exit(0)
+
