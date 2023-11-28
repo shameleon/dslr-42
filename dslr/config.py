@@ -10,8 +10,8 @@ excluded_features = ["Arithmancy",
                      "Care of Magical Creatures"]
 
 """ Training dataset """
-learning_rate = 0.01
-epochs=1
+learning_rate = 0.1
+epochs=1000
 algorithm = 'Gradient Descent'
 
 """ Model """

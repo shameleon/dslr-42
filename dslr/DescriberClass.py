@@ -23,7 +23,7 @@ class Describe:
     Output :
         displays information for all numerical features of the dataframe
     """
-    def __init__(self, df=pd.DataFrame):
+    def __init__(self, df: pd.DataFrame):
         self.df_num = df[df.select_dtypes(include=np.number).columns]
         self.funcs = [dum.count, dum.mean, dum.std, dum.min,
                       dum.quantile_25, dum.quantile_50,

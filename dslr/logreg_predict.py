@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 
 __author__ = "jmouaike"
 
+
 def sigmoid(arr:np.ndarray):
     return 1 / (1 + np.exp(-arr))
 
@@ -34,7 +35,7 @@ def predict_proba(x,
     return df_pred_proba
 
 
-def standardize(arr:np.ndarray):
+def standardize(arr: np.ndarray):
     mean = np.mean(arr)
     std = np.std(arr)
     return (arr - mean) / std
@@ -65,7 +66,6 @@ def main():
     df_x_train = df_train[df_train.columns[2:]]
     df_x_train_std = df_x_train.agg(lambda feature: standardize(feature))
     df_y_train = df_train[target]
-    df_y_train.unique().tolist()
     model_weights = pd.read_csv(f'./logistic_reg_model/gradient_descent_weights.csv')
     model_weights.drop(columns="Unnamed: 0", inplace=True)
     weights = np.array(model_weights)
