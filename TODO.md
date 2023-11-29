@@ -1,36 +1,25 @@
 # dslr TODO.md
 
-### Subject stories
+### Issues
 
-Data Analysis
-Logistic Regression
-VI Bonus Part
+- [ ] issue #cheating : describe is used for testing
+            purpose in DescriberClass main and testDescribe.py
+- [ ] issue : Scale pairplot matrix to screen
+- [ ] issue : Display live cost during training - might slow down
+- [ ] issue : Display dataset details during training
 
 ### Todo
 
-- [ ] Display cost
 - [ ] Bonus for describe.py
-- [ ] add options to argparse
-  - [ ] add weights argument to logreg_
-- [ ] logreg-predict.py
+- [ ] add plot logreg-predict.py
 - [ ] choose relevent model metrics
-  - [ ] apgrade toolkit utils
-- [ ] Bonuses
+- [ ] Bonus : Stochastic Gradient Descent
 
 ### In Progress
 
-- [x] regroup plots in a class
-  - [ ] scale pairplot matrix
-- [ ] Refactor logreg-train.py
-  - [ ] connect to Utlis module
-  - [ ] make own functions
-- [ ] Logistic Regression
 
 ### Testing
 
-- [ ] testing from ./dslr/tests
-  - [ ] issue : import path broken
-- [ ] training with 8 features, excluding Potions, charms
 
 ### Done ✓
 
@@ -48,7 +37,12 @@ VI Bonus Part
 - [x] Jupyter notebooks
   - [x] explain pipeline and logistic regression
   - [x] plots in jupyter
-
+- [x] Group plots in a class
+- [x] Refactor logreg-train.py
+  - [x] add loss function plot
+- [x] Refactor logreg-predict.py
+  - [x] add weights argument to logreg
+  - [x] handle real output for both datasets
 
 ### Summary
 
@@ -56,8 +50,8 @@ VI Bonus Part
 |---|:---:|---|---|
 |describe.py | `100%` | functional |[ ] unit testing, [ ]add bonus|
 |plots| `100%` | functional | |
-|logreg train |`80%`|  functional | refactor |
-|logreg predict | `80%` |  functional | refactor |
+|logreg train |`90%`|  functional | refactor |
+|logreg predict | `90%` |  functional | refactor |
 |model metrics| `20%` | X |choose relevent metrics, start toolkit|
 |bonus|`0%`||||
 

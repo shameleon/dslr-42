@@ -33,21 +33,8 @@ list:
 	$(V_PY) -m pip list
 
 flake: $(VENV)
+	$(V_FLAKE) *.py
 	$(V_FLAKE) $(SRC)
-
-describe: $(VENV)
-	$(V_PY) -m pip install pyinstaller
-	$(V_PY) ./dslr/describe.py datasets/dataset_train.csv
-
-predict: $(VENV)
-	$(V_PY) $(SRC)predict.py
-
-training: $(VENV)
-	$(V_PY) $(SRC)training.py
-
-test: $(VENV)
-	@echo "$(CG) Installing unitest in the venv $(CZ)"
-	$(V_PIP) install unitest
 
 clean:
 	@echo "$(CR) Removing __pycache__ "
@@ -61,7 +48,7 @@ fclean: clean
 
 re: fclean $(VENV)
 
-.PHONY: all list flake describe test predict training clean fclean re
+.PHONY: all list flake clean fclean re
 
 # colors
 CR:=\033[1;31m

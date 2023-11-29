@@ -75,6 +75,7 @@ Standardization
     les données ne sont pas standardisées, leur interprétation dépendra de l’ordre de grandeur des échelles des variables.
 
 ## swarm plots
+
 [https://www.kaggle.com/code/alexisbcook/scatter-plots]
 
 

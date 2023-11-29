@@ -8,7 +8,7 @@ packages:
     and include all Python packages in the project.
 install_requires:
     A list of dependencies that are needed by the project.
-    When someone installs your project using pip, 
+    When someone installs your project using pip,
     these dependencies will be installed automatically.
 entry_points: This is optional. If your project includes
  command-line scripts, you can use entry_points to define them.
@@ -20,11 +20,11 @@ setup(
     packages=find_packages(),
     author='jmouaike',
     author_email='john.mouaike@gmail.com',
-    description = ("A machine learning 42-school project,"
-                    "multivariate logistic regression"),
-    license = "BSD",
-    keywords = "42 dataset machine learning dataset logistic regression",
-    long_description= read('README'),
+    description=("A machine learning 42-school project,"
+                 "multivariate logistic regression"),
+    license="BSD",
+    keywords="42 dataset machine learning dataset logistic regression",
+    long_description=('README'),
     install_requires=[
         'pandas',
         'matplotlib',

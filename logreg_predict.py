@@ -4,25 +4,29 @@ import os
 """logreg_predict.py:
 
 Program to test a logistic regression model
-comparing predicted outputs to real outputs
-
+Comparing predicted outputs to real outputs
 """
-    
+
 
 if __name__ == "__main__":
     """
     Train model from dataset.
 
-    Argument : filepath to .csv file of dataset to train
+    Arguments (2)
+        - filepath to .csv file of dataset to train
+        - weigths file path to .csv file of model weights
 
-    Prerequisite : set up the ./dslr/config.py file 
-
+    Prerequisites :
+        - set up the ./dslr/config.py file
+        - model must have been trained
     """
-    script_path = './dslr/training_dataset.py'
+    script_path = './dslr/predict_dataset.py'
     parser = argparse.ArgumentParser(prog='logreg_predict.py',
                                      description='Testing dataset',
                                      epilog='verbose mode for options')
-    parser.add_argument('testfilepath')
-    parser.add_argument('weights')
+    parser.add_argument('filepath', type=str)
+    parser.add_argument('weights', type=str)
     args = parser.parse_args()
-    os.system(f'./venv/bin/python {script_path} {args.testfilepath} {args.weights}')
+    print(f'{args.filepath} {args.weights}')
+    os.system(f'./venv/bin/python {script_path}'
+              + f' {args.filepath} {args.weights}')

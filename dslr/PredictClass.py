@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import config
 from utils import logreg_tools as logreg
+from utils import print_out as po
 
 """
 """
@@ -46,26 +47,24 @@ class PredictFromLogRegModel:
         y_pred['Predicted Outcome'] = y_pred.idxmax(axis=1)
         return y_pred
 
-
     def compare_to_truth(self, truth: pd.DataFrame):
         self.result['Real Outcome'] = truth.to_list()
         is_same = np.where(self.result['Predicted Outcome']
                            == self.result['Real Outcome'], 1, 0)
         self.result['Accurate Prediction'] = is_same
         accuracy = self.get_accuracy()
-        print(f'Accuracy for the tested dataset: {accuracy * 100}%')
+        po.as_result(f'Accuracy for the tested dataset: {accuracy * 100}%\n')
         return None
-    
+
     def inaccurate_prediction_details(self):
         inaccurate = self.result[self.result['Accurate Prediction'] == 0]
         print("Inaccurate prediction details :")
         print(inaccurate.head(10))
         print(self.df.iloc[inaccurate.index.to_list()].head(10))
-        pass
 
     def get_accuracy(self) -> float:
         return self.result['Accurate Prediction'].value_counts(1)[1]
-        
+
 
 if __name__ == "__main__":
     """_summary_

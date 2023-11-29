@@ -4,23 +4,23 @@ import pandas as pd
 import sys
 import config
 from PredictClass import PredictFromLogRegModel
+from utils import print_out as po
 
-"""
-"""
+"""predict_dataset.py"""
 
 __author__ = "jmouaike"
 
 
 def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
     """
-    It searches for the real output for the classifiers
-    in the Dataframe. 
+    predict_dataset.py searches for the real output for the classifiers
+    in the Dataframe.
     if not found, it looks for truth file defined in config.py
     in the same directory that the tested dataframe.
     config.py : 'target_label' entry defines truth file name.
 
     Parameter : Dataframe to test
-    Returns : the real output, 
+    Returns : the real output,
             so that the index can be used to compared
             with predicted ouput
     """
@@ -34,7 +34,7 @@ def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
         if df_real_class.shape[0] == 0:
             raise SystemExit(1)
     return df_real_class
-    
+
 
 def test_dataset():
     """ Reading files from locations given as arguments """
@@ -43,12 +43,14 @@ def test_dataset():
         df_weights = pd.read_csv(args.weights_file_path)
         test_model = PredictFromLogRegModel(df, df_weights)
         df_real_class = set_real_class(df)
+        po.as_title(f'Predicting {config.target_label}')
+        po.as_check(f'Sample size : {df.shape[0]}')
         test_model.compare_to_truth(df_real_class)
     except (FileNotFoundError, IsADirectoryError) as e:
-        sys.stderr("File Error :", e)
+        po.as_error("File Error :", e)
         sys.exit(1)
     except pd.errors.EmptyDataError as e:
-        sys.stderr("File Content Error :", e)
+        po.as_error("File Content Error :", e)
         sys.exit(1)
 
 
@@ -64,4 +66,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     test_dataset()
     sys.exit(0)
-
