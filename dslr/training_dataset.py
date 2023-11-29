@@ -7,8 +7,9 @@ import sys
 import config
 from MultinomialTrainClass import LogRegTrain
 from utils import describe_stats as dum
+from utils import print_out as po
 
-""" """
+"""training_dataset.py"""
 
 __author__ = "jmouaike"
 
@@ -32,6 +33,8 @@ class TrainingDataset:
         self.excluded_features = config.excluded_features
         self.model_dir = config.model_dir
         self.dest_file = config.gradient_descent_weights
+        po.as_title("Training dataset")
+        po.as_result(f'Sample size : {df.shape[0]}')
         self.train_logistic_regression_model()
 
     def train_logistic_regression_model(self):
@@ -65,7 +68,7 @@ class TrainingDataset:
         df_pred_proba = logreg_model.get_predict_proba()
         df_pred_proba.to_csv(f'{self.model_dir}prediction_trainset1333.csv')
         accuracy = df_pred_proba['Accurate pred.'].value_counts(1)[1]
-        print("Prediction accuracy = {} %".format(100 * accuracy))
+        po.as_result(f'Prediction accuracy = {100 * accuracy:.4f} %')
 
     def drop_useless_features(self) -> pd.DataFrame:
         """Drop dataframe columns that are not useful for training:
@@ -105,13 +108,19 @@ class TrainingDataset:
         self.df_weights.to_csv(f'{model_dir + dest_file}')
         print(f'Model Weights to {model_dir + dest_file}')
 
-    def plot_losses(self):
-        sns.lineplot(data=self._losses)
-        plt.title("Losses")
+    def plot_losses_and_weights(self):
+        fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 8))
+        fig.suptitle('Dataset training', c='blue', fontsize=16)
+        fig.subplots_adjust(hspace=0.125, wspace=0.5)
+        sns.lineplot(ax=axes[0], data=self._losses,
+                     linestyle='solid', alpha=0.6)
+        axes[0].set_title(f'Loss for each {config.target_label}')
+        sns.heatmap(ax=axes[1], data=self.df_weights, cmap="YlGnBu")
+        axes[1].set_title('Weights')
         plt.show()
 
     def __str__(self):
-        return f'{self.epochs} iteration training, [OK]'
+        return 'Model ready !'
 
 
 def train_dataset():
@@ -121,21 +130,22 @@ def train_dataset():
         training = TrainingDataset(df,
                                    config.learning_rate,
                                    config.epochs)
-        print(training)
+        po.as_check(training)
         if args.bonus:
-            training.plot_losses()
+            training.plot_losses_and_weights()
     except (FileNotFoundError, IsADirectoryError) as e:
-        print("File Error :", e)
+        po.as_error("File Error :", e)
         sys.exit("No file provided : exit")
     except pd.errors.EmptyDataError as e:
-        print("File Content Error :", e)
+        po.as_error("File Content Error :", e)
         sys.exit("Empty File : exit")
 
 
 if __name__ == "__main__":
     """_summary_
+    -b option for bonus plot(losses and weights)
     """
-    parser = argparse.ArgumentParser(prog='logreg_train.[ext]',
+    parser = argparse.ArgumentParser(prog='training_dataset.py',
                                      description='Training a dataset',
                                      epilog='Enter a valid csv file, please')
     parser.add_argument('csv_file_path')
