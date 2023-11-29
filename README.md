@@ -134,12 +134,12 @@ Additional plots :
 
 - Box plot `-b option`
 
-```dslr/plot_dataset.py -b ./datasets/dataset_train.csv```
+```python dslr/plot_dataset.py -b ./datasets/dataset_train.csv```
 
 - Joint plot `-j option`
 Joint plot is a nice combination of scatter plot and density distribution.
 
-```./dslr .py ./datasets/dataset_train.csv```
+```python dslr/plot_dataset.py ./datasets/dataset_train.csv```
 
 Other plots in notebooks :
 
