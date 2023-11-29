@@ -29,11 +29,11 @@ test_truth = 'dataset_truth.csv'
 """ Bomus """
 bonus = False
 
-
 """
 all_features = ['Arithmancy', 'Astronomy', 'Herbology',
                 'Defense Against the Dark Arts,Divination',
-                'Muggle Studies', 'Ancient Runes', 'History of Magic',
-                'Transfiguration', 'Potions', 'Care of Magical Creatures', 'Charms', 'Flying']
-
+                'Muggle Studies', 'Ancient Runes',
+                'History of Magic', 'Transfiguration',
+                'Potions', 'Care of Magical Creatures',
+                'Charms', 'Flying']
 """

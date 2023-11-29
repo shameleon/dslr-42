@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 from utils import logreg_tools as logreg
-from utils import describe_stats as dum
 
 """
 Multinomial Logistic regression : Where the target variable has
@@ -18,14 +17,14 @@ __author__ = "jmouaike"
 
 
 class LogRegTrain:
-    """
-    Class for multinomial logistic regression model training
+    """LogTrain class
+    for multinomial logistic regression model training
     - one-vs-all strategy
     - gradient descent algorithm to minimize the error
 
-    .train() method to 
+    .train() method to start training the model
     """
-    def __init__(self, df_x_train: pd.DataFrame, 
+    def __init__(self, df_x_train: pd.DataFrame,
                  df_class: pd.DataFrame):
         """ Parameters : unstandardized data to train without NaN, output """
         df_std = df_x_train.agg(lambda feat: logreg.standardize(feat))
@@ -72,14 +71,14 @@ class LogRegTrain:
             tmp = np.dot(self.x_train.T, (h_pred - y_actual))
             grad_desc = tmp / y_actual.shape[0]
             weights = LogRegTrain._update_weight_loss(weights,
-                                                     self.learning_rate,
-                                                     grad_desc)
+                                                      self.learning_rate,
+                                                      grad_desc)
             self.loss.append(self._loss_function(y_actual, h_pred))
         return weights
 
     def train(self, learning_rate=0.1, epochs=1000):
         """
-        
+
         """
         self.learning_rate = learning_rate
         self.epochs = epochs
@@ -115,5 +114,3 @@ if __name__ == "__main__":
     """_summary_
     """
     pass
-
-    

@@ -1,6 +1,5 @@
 import argparse
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import seaborn as sns
 import os
@@ -44,7 +43,7 @@ class TrainingDataset:
 
         The means and std of dataset features are saved to csv file.
 
-        issue : use mean and std from utlis, in 
+        issue : use mean and std from utlis, in
                 save_mean_and_std method()
 
         An instance of LogRegTrain class is constructed
@@ -79,11 +78,11 @@ class TrainingDataset:
         df.drop(df.columns[2:6], inplace=True, axis=1)
         df.drop(self.excluded_features, inplace=True, axis=1)
         return df.dropna()
-    
+
     def save_mean_and_std(self, df_x_train: pd.DataFrame):
         """ Saves standardization parameters
         Writes means and std's of the dataset to a file
-        before standardization that occurs at 
+        before standardization that occurs at
         LogRegTrain instance construction.
 
         df_stats = pd.DataFrame({'mean_x': df_x_train.mean(axis=0),
@@ -93,7 +92,7 @@ class TrainingDataset:
             os.makedirs(self.model_dir)
         dest_file = config.standardization_params
         df_means = df_x_train.agg(lambda feat: dum.mean(feat), axis=0)
-        df_stds =  df_x_train.agg(lambda feat: dum.std(feat), axis=0)
+        df_stds = df_x_train.agg(lambda feat: dum.std(feat), axis=0)
         df_stats = pd.DataFrame({'mean_x': df_means,
                                  'std_x': df_stds}).T
         df_stats.to_csv(f'{self.model_dir + dest_file}')

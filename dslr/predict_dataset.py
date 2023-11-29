@@ -14,13 +14,13 @@ __author__ = "jmouaike"
 def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
     """
     predict_dataset.py searches for the real output for the classifiers
-    in the Dataframe. 
+    in the Dataframe.
     if not found, it looks for truth file defined in config.py
     in the same directory that the tested dataframe.
     config.py : 'target_label' entry defines truth file name.
 
     Parameter : Dataframe to test
-    Returns : the real output, 
+    Returns : the real output,
             so that the index can be used to compared
             with predicted ouput
     """
@@ -34,7 +34,7 @@ def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
         if df_real_class.shape[0] == 0:
             raise SystemExit(1)
     return df_real_class
-    
+
 
 def test_dataset():
     """ Reading files from locations given as arguments """
@@ -64,4 +64,3 @@ if __name__ == "__main__":
     args = parser.parse_args()
     test_dataset()
     sys.exit(0)
-

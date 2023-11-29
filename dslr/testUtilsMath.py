@@ -28,7 +28,7 @@ class DslrUtilsMathTesting(unittest.TestCase):
     def test_quantile_25(self):
         s = self.s
         self.assertEqual(s.quantile(0.25), dum.percentile(s, 0.25))
-         
+
     def test_quantile_50(self):
         s = self.s
         self.assertEqual(s.quantile(0.5), dum.percentile(s, 0.5))

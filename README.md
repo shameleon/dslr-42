@@ -63,15 +63,17 @@ From there, we selected features that suits the best to train our model.
 
 virtual environment `venv` activation:
 
-```shell
-source venv/bin/activate
-```
+```source venv/bin/activate```
+
+then
+
+``` (venv) ➜  dslr-42 git:(main) ✗ python describe.py ./datasets/dataset_train.csv ```
 
 Entrypoints are at the root of the project :
 
 |Program|Arguments|Action|
 |---|---|---|
-|`descibe.py`|[dataset]|Describing a datasetwith statistics|
+|`describe.py`|[dataset]|Describing a datasetwith statistics|
 |`logreg_train.py`|[dataset]|Training logistic regression model from a training dataset|
 |`logreg_test.py`|[dataset] [weights]|Testing logistic regression model with a testing dataset|
 |`histogram.py`|[dataset] [feature]| plots a histogram for a given dataset feature|

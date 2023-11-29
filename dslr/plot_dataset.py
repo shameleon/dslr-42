@@ -4,11 +4,11 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import config
-from utils import print_out as pout
+
 
 def dataset_plotter(func):
     """
-    This is a decorator to get exceptions while 
+    This is a decorator to get exceptions while
     reading dataset file then plotting dataset features
     """
     def plot_wrapper(*args, **kwargs):
@@ -27,9 +27,12 @@ def dataset_plotter(func):
         return None
     return plot_wrapper
 
+
 """
 Subfunctions used by plot_selected()
 """
+
+
 def plot_histogram(df: pd.DataFrame, target_label: str, feature: str):
     df_feat = df.groupby(target_label)[feature]
     df_feat.plot(kind='hist', alpha=0.4, legend=True)
@@ -44,9 +47,9 @@ def plot_boxplot(df: pd.DataFrame, target_label: str, feature: str):
 
 
 def plot_scatter(df: pd.DataFrame, target_label: str,
-                feature1: str, feature2=str):
-    plt.figure(figsize=(8,8))
-    sns.scatterplot(data=df, 
+                 feature1: str, feature2=str):
+    plt.figure(figsize=(8, 8))
+    sns.scatterplot(data=df,
                     x=feature1,
                     y=feature2,
                     hue=target_label,
@@ -66,12 +69,12 @@ def plot_pairplotmatrix(df: pd.DataFrame, target_label: str,
                  y_vars=features,
                  hue=target_label,
                  corner=True)
-    sns.set(rc={'font.size' : 6, 'axes.labelsize': 6})
+    sns.set(rc={'font.size': 6, 'axes.labelsize': 6})
     plt.savefig('./reports/pair_plot_matrix.png')
 
 
 def plot_joinplot(df: pd.DataFrame, target_label: str,
-                feature1: str, feature2=str):
+                  feature1: str, feature2=str):
     sns.jointplot(data=df, x=feature1, y=feature2, hue=target_label)
 
 
@@ -97,7 +100,7 @@ def plot_selected():
         print("Data_features :\n", df_features.to_list())
     return None
 
-        
+
 if __name__ == "__main__":
     """ -h for help
     Positional argument : filepath

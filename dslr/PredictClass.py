@@ -46,7 +46,6 @@ class PredictFromLogRegModel:
         y_pred['Predicted Outcome'] = y_pred.idxmax(axis=1)
         return y_pred
 
-
     def compare_to_truth(self, truth: pd.DataFrame):
         self.result['Real Outcome'] = truth.to_list()
         is_same = np.where(self.result['Predicted Outcome']
@@ -55,7 +54,7 @@ class PredictFromLogRegModel:
         accuracy = self.get_accuracy()
         print(f'Accuracy for the tested dataset: {accuracy * 100}%')
         return None
-    
+
     def inaccurate_prediction_details(self):
         inaccurate = self.result[self.result['Accurate Prediction'] == 0]
         print("Inaccurate prediction details :")
@@ -65,7 +64,7 @@ class PredictFromLogRegModel:
 
     def get_accuracy(self) -> float:
         return self.result['Accurate Prediction'].value_counts(1)[1]
-        
+
 
 if __name__ == "__main__":
     """_summary_
