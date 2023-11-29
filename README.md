@@ -48,9 +48,9 @@ A model is trained, based on specific selected features, so that it can predict 
 🐦‍⬛ `Ravenclaw`
 🐍 `Slytherin`
 
-The targeted accuracy for predicting testing dataset should be above 98%. 
+The targeted accuracy for predicting testing dataset should be above 98%.
 
-scatter plots matrix visualization of students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
+Scatter plots matrix visualization of students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
 From there, we selected features that suits the best to train our model.
 
 ![Pair plot](./reports/pairplot.png)
@@ -67,9 +67,26 @@ virtual environment `venv` activation:
 source venv/bin/activate
 ```
 
-Then, ```python ./dslr/logreg_train.py``` to train the dataset.
+Entrypoints are at the root of the project :
 
-```python ./dslr/logreg_predict.py``` to predict.
+|Program|Arguments|Action|
+|---|---|---|
+|`descibe.py`|[dataset]|Describing a datasetwith statistics|
+|`logreg_train.py`|[dataset]|Training logistic regression model from a training dataset|
+|`logreg_test.py`|[dataset] [weights]|Testing logistic regression model with a testing dataset|
+|`histogram.py`|[dataset] [feature]| plots a histogram for a given dataset feature|
+|`scatter_plot.py`|[dataset] [feature_1] [feature_2]| Plots a scatter-plot for 2 given features|
+|`pair_plot.py`|[dataset] | Plots a triangle-matrix of scatter-plots and distrbution for all dataset features|
+
+Examples :
+
+``` python ./dslr/logreg_train.py ./datasets/dataset_train.csv ```
+
+to train the dataset.
+
+``` python ./logreg_predict.py ./datasets/dataset_test.csv ./logistic_reg_model/gradient_descent_weights.csv ```
+
+ to predict.
 
 #### describe.py
 
@@ -78,8 +95,7 @@ A data file must be provided as argument.
 
 Describing the training dataset :
 
-```shell
-python ./dslr/describe.py datasets/dataset_train.csv
+```python ./dslr/describe.py datasets/dataset_train.csv
 ```
 
 Output:
@@ -100,29 +116,36 @@ max    1599.00  104956.00   1016.21  ...                      3.06  -225.43   27
 
 Plots that are required
 
-- Histogram 
-```histogram.py ./datasets/dataset_train.csv```
+- Histogram
+
+```python . histogram.py ./datasets/dataset_train.csv```
 
 - Scatter Plot
-```scatter_plot.py ./datasets/dataset_train.csv```
+
+```python scatter_plot.py ./datasets/dataset_train.csv```
 
 - Pair plot Matrix
-```pair_plot.py ./datasets/dataset_train.csv```
+
+```python pair_plot.py ./datasets/dataset_train.csv```
 
 Additional plots :
 
-- Box plot
-```box_plot.py ./datasets/dataset_train.csv```
+- Box plot `-b option`
 
-- Joint plot
-```joint_plot.py ./datasets/dataset_train.csv```
+```dslr/plot_dataset.py -b ./datasets/dataset_train.csv```
+
+- Joint plot `-j option`
+Joint plot is a nice combination of scatter plot and density distribution.
+
+```./dslr .py ./datasets/dataset_train.csv```
 
 Other plots in notebooks :
+
+    multi-box plots and many heatmaps
 
 - [1.0 notebook](./notebooks/1.0-jm-dataset-preview.ipynb)
 
 - [2.0 notebook](./notebooks/2.0-jm-model-training.ipynb)
-
 
 ### Training dataset with logreg_train.py
 

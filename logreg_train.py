@@ -6,17 +6,19 @@ import os
 Program to train a logistic regression model
 based on gradient descent algorithm to minimize the error
 
+Usage example
+$ python logreg_train.py ./datasets/dataset_train.csv
 """
-    
+
 
 if __name__ == "__main__":
     """
     Train model from dataset.
 
-    Argument : filepath to .csv file of dataset to train
+    Argument (1): filepath to .csv file of dataset to train
 
-    Prerequisite : set up the ./dslr/config.py file 
-        to select target, important features,
+    Prerequisite : set up the ./dslr/config.py file
+        to select the target, important features,
         learning rate and epochs
     """
     script_path = './dslr/training_dataset.py'

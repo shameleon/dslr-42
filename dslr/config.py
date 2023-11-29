@@ -12,9 +12,10 @@ target_label = 'Hogwarts House'
 """ Training dataset parameters """
 excluded_features = ["Arithmancy",
                      "Defense Against the Dark Arts",
-                     "Care of Magical Creatures"]
+                     "Care of Magical Creatures"
+                     ]
 learning_rate = 0.1
-epochs=1000
+epochs = 1000
 algorithm = 'Gradient Descent'
 
 """ Model directory """
@@ -27,3 +28,12 @@ test_truth = 'dataset_truth.csv'
 
 """ Bomus """
 bonus = False
+
+
+"""
+all_features = ['Arithmancy', 'Astronomy', 'Herbology',
+                'Defense Against the Dark Arts,Divination',
+                'Muggle Studies', 'Ancient Runes', 'History of Magic',
+                'Transfiguration', 'Potions', 'Care of Magical Creatures', 'Charms', 'Flying']
+
+"""

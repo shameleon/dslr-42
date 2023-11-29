@@ -13,7 +13,7 @@ __author__ = "jmouaike"
 
 def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
     """
-    It searches for the real output for the classifiers
+    predict_dataset.py searches for the real output for the classifiers
     in the Dataframe. 
     if not found, it looks for truth file defined in config.py
     in the same directory that the tested dataframe.
