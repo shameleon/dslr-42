@@ -131,7 +131,7 @@ def train_dataset():
                                    config.learning_rate,
                                    config.epochs)
         po.as_check(training)
-        if args.bonus:
+        if args.verbose:
             training.plot_losses_and_weights()
     except (FileNotFoundError, IsADirectoryError) as e:
         po.as_error("File Error :", e)
@@ -143,7 +143,7 @@ def train_dataset():
 
 if __name__ == "__main__":
     """_summary_
-    -b option for bonus plot(losses and weights)
+    -v option for plotting losses and weights)
     """
     parser = argparse.ArgumentParser(prog='training_dataset.py',
                                      description='Training a dataset',

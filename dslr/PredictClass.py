@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import config
 from utils import logreg_tools as logreg
+from utils import print_out as po
 
 """
 """
@@ -52,7 +53,7 @@ class PredictFromLogRegModel:
                            == self.result['Real Outcome'], 1, 0)
         self.result['Accurate Prediction'] = is_same
         accuracy = self.get_accuracy()
-        print(f'Accuracy for the tested dataset: {accuracy * 100}%')
+        po.as_result(f'Accuracy for the tested dataset: {accuracy * 100}%\n')
         return None
 
     def inaccurate_prediction_details(self):
@@ -60,7 +61,6 @@ class PredictFromLogRegModel:
         print("Inaccurate prediction details :")
         print(inaccurate.head(10))
         print(self.df.iloc[inaccurate.index.to_list()].head(10))
-        pass
 
     def get_accuracy(self) -> float:
         return self.result['Accurate Prediction'].value_counts(1)[1]
