@@ -14,14 +14,16 @@ excluded_features = ["Arithmancy",
                      "Defense Against the Dark Arts",
                      "Care of Magical Creatures"
                      ]
+
+""" Training dataset parameters """
 learning_rate = 0.1
 epochs = 1000
 algorithm = 'Gradient Descent'
 
 """ Model directory """
-model_dir = './logistic_reg_model/'
+model_dir = './logreg_model/'
 standardization_params = 'standardization_params.csv'
-gradient_descent_weights = 'gradient_descent_weights.csv'
+gradient_descent_weights = 'weights.csv'
 
 """ Test model """
 test_truth = 'dataset_truth.csv'
