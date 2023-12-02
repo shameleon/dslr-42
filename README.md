@@ -2,7 +2,7 @@
 
 ## Datascience X Logistic Regression
 
-![electronic hat](./graphics/bing-dslr-electroning-hat.jpg)
+![electronic hat](./screenshots/bing-dslr-electroning-hat.jpg)
 
 - [Intro](#intro)
 - [Data understanding](#data-understanding)
@@ -45,28 +45,27 @@ A model is trained, based on specific selected features, so that it can predict 
     🐦‍⬛ `Ravenclaw`
     🐍 `Slytherin`
 
-The targeted accuracy for predicting testing dataset should be above *98*%.
-
-Scatter plots matrix visualization of students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
-From there, we selected features that suits the best to train our model.
-
-![Pair plot](./reports/pairplot.png)
+The targeted accuracy for predicting testing dataset should be above *98%*.
 
 ---
 
 ### Usage
 
+#### config file
+
+In `dslr` module, a `config.py` file contains configuration for scripts to be run : Directories and files names, but also features to be trained and regression parameters.
+
+#### Virtual environment
+
 `make` to install the *virtual environment* with its *requirements*.
 
-virtual environment `venv` activation:
+For virtual environment `venv` activation:
 
 ```source venv/bin/activate```
 
-then
+#### Entrypoints scripts
 
-``` (venv) ➜  dslr-42 git:(main) ✗ python describe.py ./datasets/dataset_train.csv ```
-
-Entrypoints are at the root of the project :
+Entrypoints scripts are at the root of the project :
 
 |Program|Arguments|Action|
 |---|---|---|
@@ -77,17 +76,23 @@ Entrypoints are at the root of the project :
 |`scatter_plot.py`|[dataset] [feature_1] [feature_2]| Plots a scatter-plot for 2 given features|
 |`pair_plot.py`|[dataset] | Plots a triangle-matrix of scatter-plots and distrbution for all dataset features|
 
-Examples :
+Describing the dataset :
 
-``` python ./dslr/logreg_train.py ./datasets/dataset_train.csv ```
+``` (venv) ➜  dslr-42 git:(main) ✗ python describe.py ./datasets/dataset_train.csv```
 
-to train the dataset.
+The training script takes a dataset file as argument :
 
-``` python ./logreg_predict.py ./datasets/dataset_test.csv ./logistic_reg_model/gradient_descent_weights.csv ```
+``` python ./dslr/logreg_train.py ./datasets/dataset_train.csv```
 
- to predict.
+For prediction :
 
-#### describe.py
+``` python ./logreg_predict.py ./datasets/dataset_test.csv ./logreg_model/weights.csv```
+
+Screenshot :
+
+![Dataset scripts](./screenshots/describe_train_test.png)
+
+### describe.py
 
 `describe.py` mimics *pandas* library `describe()` function.
 A data file must be provided as argument.
@@ -127,6 +132,12 @@ Plots that are required
 
 ```python pair_plot.py ./datasets/dataset_train.csv```
 
+Scatter plots matrix visualization of students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
+From there, we selected features that suits the best to train our model.
+
+![Pair plot](./reports/pairplot.png)
+
+
 Additional plots :
 
 - Box plot `-b option`
@@ -151,6 +162,8 @@ Other plots in notebooks :
 ```logreg_predict.[extension] ./datasets/dataset_train.csv [weights]```
 
 ## Subject
+
+[42 dslr subject](./docs/subject.txt)
 
 ### Mandatory part
 
