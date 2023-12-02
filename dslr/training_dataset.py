@@ -34,7 +34,7 @@ class TrainingDataset:
         self.model_dir = config.model_dir
         self.dest_file = config.gradient_descent_weights
         po.as_title("Training dataset")
-        po.as_result(f'Sample size : {df.shape[0]}')
+        po.as_title2(f'Sample size : {df.shape[0]}')
         self.train_logistic_regression_model()
 
     def train_logistic_regression_model(self):

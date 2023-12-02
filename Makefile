@@ -21,9 +21,9 @@ V_FLAKE		= ./venv/bin/flake8
 # all: $(VENV)
 
 $(ACTIVATE): requirements.txt
-	@echo "$(CG) Installing Virtual Environment $(CZ)"
+	@echo "$(CR)➜$(CG) Installing Virtual Environment $(CZ)"
 	virtualenv $(VENV)
-	@echo "$(CG) venv pip is installing requirements $(CZ)"
+	@echo "$(CR)➜$(CG) venv pip is installing requirements $(CZ)"
 	$(V_PIP) install -r requirements.txt
 
 $(VENV): $(ACTIVATE)
@@ -37,10 +37,10 @@ flake: $(VENV)
 	$(V_FLAKE) $(SRC)
 
 clean:
-	@echo "$(CG)➜$(CR) Removing __pycache__ "
+	@echo "$(CG)➜$(CR) Removing __pycache__  $(CZ) ✗"
 	find . -type d -name "__pycache__" | xargs rm -rf {};
-	@echo "$(CG)➜$(CR) Removing .pyc files $(CZ)"
-	find -iname "*.pyc" -delete
+#	@echo "$(CG)➜$(CR) Removing .pyc files $(CZ) ✗"
+#	find -iname "*.pyc" -delete
 
 fclean: clean
 	@echo "$(CG)➜$(CR) Removing virtual environment $(VENV) $(CZ)"

@@ -44,7 +44,7 @@ def test_dataset():
         test_model = PredictFromLogRegModel(df, df_weights)
         df_real_class = set_real_class(df)
         po.as_title(f'Predicting {config.target_label}')
-        po.as_check(f'Sample size : {df.shape[0]}')
+        po.as_title2(f'Sample size : {df.shape[0]}')
         test_model.compare_to_truth(df_real_class)
     except (FileNotFoundError, IsADirectoryError) as e:
         po.as_error("File Error :", e)

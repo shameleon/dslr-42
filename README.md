@@ -229,7 +229,7 @@ Project directory structure was organized accordingly with the following guideli
 
 [How To Structure a Data Science Project: A Step-by-Step Guide](https://www.kdnuggets.com/2022/05/structure-data-science-project-stepbystep-guide.html)
 
-### virtual environment
+### Virtual environment
 
 A Python [virtual environment](https://docs.python.org/3/library/venv.html) is installed and set up so that this project is self-contained, isolated from the system Python and from other projects virtual environments.
 The virtual environment has its own Python Interpreter and dependencies as third-party libraries that are installed from `requirement.txt` file specifications. It avoids system pollution, dependency conflicts and optimizes reproducibility for a data science project. We used `virtualenv` tool for dependency management and project isolation. Instead of using `bash` script, we chose to exploit `Makefile` capabilities and readability for generic management tasks.
@@ -294,7 +294,7 @@ Test runner chosen : `unittest` included in Python standard library.
 
 `./dslr/tests/testUtilsMath.py` compares `utils.math.py` functions and numpy / pandas equivalent functions
 
-#### describe.exe
+#### pyinstaller modeule
 
 An executable application could be built with
 [pyinstaller](https://realpython.com/pyinstaller-python/)

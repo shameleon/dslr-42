@@ -23,13 +23,13 @@ class PredictFromLogRegModel:
         self.result = self._predict_outputs()
 
     def _init_x_test(self, df: pd.DataFrame) -> np.ndarray:
-        """Extract and transforms data from dataframe
+        """Extract and transform data from dataframe
            and returns an array ready for prediction.
         - keeping only features that are in the model
         - standardization with the z-score method
         - replacing NaNs with 0 (= mean of the feature)
         - adding a column of ones for later dot product
-        with intercept weights
+        with intercept weights.
         """
         df_test = df[self.model_features]
         df_test_std = df_test.agg(lambda feat: logreg.standardize(feat))
@@ -48,6 +48,7 @@ class PredictFromLogRegModel:
         return y_pred
 
     def compare_to_truth(self, truth: pd.DataFrame):
+        po.as_check('Model predictions compared to real outcomes')
         self.result['Real Outcome'] = truth.to_list()
         is_same = np.where(self.result['Predicted Outcome']
                            == self.result['Real Outcome'], 1, 0)

@@ -32,11 +32,14 @@ COL_ASKKM = '\x1b[2;34;43m'
 
 
 def printout_title(level: int, mssg: str):
-    color = {1: COL_BLUWHI, 2: COL_BLUCYA, 3: COL_BLUWHI}
+    """Project name then Title1 printed with
+    colorful central padding : ^80
+    """
+    color = {1: COL_BLUWHI, 2: COL_GRNBLK, 3: COL_BLUWHI}
     if level == 1:
         project_name = 'Datascience X Logistic Regression'
-        print(f'\n{COL_FTLIN} {project_name}  {COL_RESET}')
-    print(f'{color[level]}' + ' ' * 10 + mssg + ' ' * 10 + f'{COL_RESET}\n')
+        print(f'\n{COL_FTLIN}{project_name:_^80}{COL_RESET}')
+    print(f'{color[level]}{mssg: ^80}{COL_RESET}\n')
 
 
 def as_title(mssg: str):
@@ -101,3 +104,12 @@ def input_user_yes(mssg: str, pos_answers=["y", "yes"]) -> bool:
         as_error("\nError : unexpected end of file !")
         return False
     return answer.lower() in pos_answers
+
+
+if __name__ == "__main__":
+    mess = "Hello World !"
+    as_title(mess)
+    as_title2(mess)
+    as_result(mess)
+    as_status(mess)
+    as_check(mess)
