@@ -23,12 +23,9 @@
 
 ### Intro
 
-    Our solution to 42's school *dslr* subject, done by a team of two.
-    It is a *Machine Learning* project to solve a classification problem.
-    It consists of training a *multivariate logistic regression model*,
-    a classification algorithm used in data science and machine learning.
-    The model is subsequently used for accurate prediction of a testing dataset.
-    Of course, Python modules for machine learning are forbiden.
+The **DataScience x Logistic Regression** (`dslr`) is a *42's school* project, on the data branch of the *Holygraph*. As an initiation to *Machine Learning*, it consists of training a *multivariate logistic regression model*, to solve a classification problem.
+This our solution `dslr` subject, done by a team of two, mostly in `Python` language.
+`Python` functions or modules that are useful for statistics or machine learning, such as `scikit-learn`, are forbiden by *42*.
 ---
 
     The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses.
@@ -36,19 +33,19 @@
 
 ### Data understanding
 
-The training dataset consists of 1600 students caracteristics, each 🧙 with his own features :
+The training dataset consists of 1600 students 🧙 caracteristics, with 17 features :
 
 - Four Biographic features `First Name` `Last Name` `Birthday` `Best Hand`.
 
-- A set of 13 wizard skills being refered as : `Arithmancy` `Astronomy` `Herbology` `Defense Against the Dark Arts` `Divination` `Muggle Studies` `Ancient Runes` `History of Magic` `Transfiguration` `Potions` `Care of Magical Creatures` `Charms` `Flying`.
+- A set of 13 wizard skills features being refered as : `Arithmancy` `Astronomy` `Herbology` `Defense Against the Dark Arts` `Divination` `Muggle Studies` `Ancient Runes` `History of Magic` `Transfiguration` `Potions` `Care of Magical Creatures` `Charms` `Flying`.
 
 A model is trained, based on specific selected features, so that it can predict student's affiliation to one of the four 🏰 hogwart's houses
-🦅 `Gryffindor`
-🦡 `Hufflepuff`
-🐦‍⬛ `Ravenclaw`
-🐍 `Slytherin`
+    🦅 `Gryffindor`
+    🦡 `Hufflepuff`
+    🐦‍⬛ `Ravenclaw`
+    🐍 `Slytherin`
 
-The targeted accuracy for predicting testing dataset should be above 98%.
+The targeted accuracy for predicting testing dataset should be above *98*%.
 
 Scatter plots matrix visualization of students features. As preliminary work, we investigated the relationship between two variables taken two-by-two.
 From there, we selected features that suits the best to train our model.

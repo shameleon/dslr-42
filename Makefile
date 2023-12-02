@@ -37,13 +37,13 @@ flake: $(VENV)
 	$(V_FLAKE) $(SRC)
 
 clean:
-	@echo "$(CR) Removing __pycache__ "
+	@echo "$(CG)➜$(CR) Removing __pycache__ "
 	find . -type d -name "__pycache__" | xargs rm -rf {};
-	@echo "$(CR) Removing .pyc files $(CZ)"
+	@echo "$(CG)➜$(CR) Removing .pyc files $(CZ)"
 	find -iname "*.pyc" -delete
 
 fclean: clean
-	@echo "$(CR) Removing virtual environment $(VENV) $(CZ)"
+	@echo "$(CG)➜$(CR) Removing virtual environment $(VENV) $(CZ)"
 	rm -rf $(VENV)
 
 re: fclean $(VENV)
