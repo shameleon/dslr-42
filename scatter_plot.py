@@ -34,5 +34,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print("Scatter plot for", os.path.split(args.filename)[1])
     print('features :', args.features)
-    os.system(f'./venv/bin/python {script_path} {args.filename}'
-              + f' -s "{args.features[0]}" "{args.features[1]}"')
+    os.system(f'./venv/bin/python {script_path} {args.filename}' +
+              f' -s "{args.features[0]}" "{args.features[1]}"')

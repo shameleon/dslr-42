@@ -38,7 +38,7 @@ class LogRegTrain:
     self.get_predict_proba() to get predicted probabilities
     """
     def __init__(self, df_x_train: pd.DataFrame,
-                 df_class: pd.DataFrame):
+                 df_y_class: pd.DataFrame):
         """
         Parameters :
             Unstandardized data to train without NaN, output
@@ -49,8 +49,8 @@ class LogRegTrain:
         ones = np.ones((len(x_train_std), 1), dtype=float)
         self.x_train = np.concatenate((ones, x_train_std), axis=1)
         self.features = df_std.columns.tolist()
-        self.df_class = df_class
-        self.houses = df_class.unique().tolist()
+        self.df_y_class = df_y_class
+        self.houses = df_y_class.unique().tolist()
         self._losses = pd.DataFrame(columns=self.houses)
         self._losses.fillna(0)
         w_indexes = df_x_train.columns.insert(0, ['Intercept'])
@@ -80,7 +80,7 @@ class LogRegTrain:
         gradient = np.dot(self.x_train.T, (h_pred - y_actual))
         """
         self.loss = []
-        y_actual = np.where(self.df_class == house, 1, 0)
+        y_actual = np.where(self.df_y_class == house, 1, 0)
         weights = np.ones(len(self.features) + 1).T
         for iter in range(self.epochs):
             z_output = np.dot(self.x_train, weights)
@@ -120,7 +120,7 @@ class LogRegTrain:
         h = logreg.sigmoid(z)
         df_pred_proba = pd.DataFrame(h, columns=self.houses)
         df_pred_proba['Predicted outcome'] = df_pred_proba.idxmax(axis=1)
-        df_pred_proba['Real outcome'] = self.df_class.tolist()
+        df_pred_proba['Real outcome'] = self.df_y_class.tolist()
         accurate_pred = np.where(df_pred_proba['Predicted outcome']
                                  == df_pred_proba['Real outcome'], 1, 0)
         df_pred_proba['Accurate pred.'] = accurate_pred

@@ -62,9 +62,9 @@ class TrainingDataset:
         df_train = self.drop_useless_features()
         target = config.target_label
         df_x_train = df_train[df_train.columns[2:]]
-        df_class = df_train[target]
+        df_y_class = df_train[target]
         self.save_mean_and_std(df_x_train)
-        logreg_model = LogRegTrain(df_x_train, df_class)
+        logreg_model = LogRegTrain(df_x_train, df_y_class)
         self.df_weights = logreg_model.train(self.learning_rate, self.epochs)
         self.save_weights()
         self._losses = logreg_model.get_losses()

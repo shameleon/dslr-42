@@ -33,5 +33,5 @@ if __name__ == "__main__":
     parser.add_argument('filepath', type=str)
     parser.add_argument('weights', type=str)
     args = parser.parse_args()
-    os.system(f'./venv/bin/python {script_path}'
-              + f' {args.filepath} {args.weights}')
+    os.system(f'./venv/bin/python {script_path}' +
+              f' {args.filepath} {args.weights}')

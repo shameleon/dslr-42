@@ -25,11 +25,6 @@ setup(
     license="BSD",
     keywords="42 dataset machine learning dataset logistic regression",
     long_description=('README'),
-    install_requires=[
-        'pandas',
-        'matplotlib',
-        'numpy',
-        'seaborn'
-        ],
+    install_requires=['pandas', 'matplotlib', 'numpy', 'seaborn'],
     entry_points=''' ''',
 )

@@ -11,7 +11,7 @@
 ### Reading
 
 - [Model Evaluation](https://www.geeksforgeeks.org/machine-learning-model-evaluation/?ref=ml_lbp)
-- [ML](https://www.geeksforgeeks.org/multilabel-ranking-metrics-label-ranking-average-precision-ml/)
+- [mutlilabel ranking metrics](https://www.geeksforgeeks.org/multilabel-ranking-metrics-label-ranking-average-precision-ml/)
 - [skewness-et-kurtosis](https://inside-machinelearning.com/skewness-et-kurtosis/)
 - [Logistic Regression with Stochastic Gradient Descent](https://www.kaggle.com/code/marissafernandes/logistic-regression-sgd-in-python-from-scratch)
 - [Gradient descent algorithms](https://realpython.com/gradient-descent-algorithm-python/)
