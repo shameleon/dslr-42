@@ -1,23 +1,27 @@
-from math import floor, ceil, sqrt
-from functools import reduce
-import numpy as np
-import pandas as pd
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
-These describe_stats functions are primarily
-intended to be used by describe.py:
-
-The purpose is to avoid using numpy and pandas functions.
-
-np and pd that are used :
+describe_stats.py functions are used by describe.py
+ in dslr module, to avoid using numpy and pandas functions.
+The only np and pd that are used :
     np.nan, np.sort(), np.array(), .to_list()
 
-functions for testing :
+Usage:
+    from utils import describe_stats as dum
+
+    series_std = dum.std(my_series)
+
+Test: functions for testing:
     __put_format_line() __put_format_line4()
     __test_utils_math() __test_utils_math_std():
 """
+__authors__ = ['jmouaike, ebremond']
 
-__author__ = "jmouaike"
+from math import floor, ceil, sqrt
+from functools import reduce
+
+import numpy as np
+import pandas as pd
 
 
 def is_nan(num) -> bool:
@@ -212,7 +216,7 @@ def __test_utils_math_std(df: pd.DataFrame):
 
 
 if __name__ == "__main__":
-    # create a DataFrame with missing values
+    """Test: python describe_stats.py"""
     df = pd.DataFrame({
         'A': [42, np.nan, 3, np.nan, 5, 10, 18, 6, -2, 0],
         'B': [np.nan, 4, 1, 4, 5, 8, 0, 12, 20, np.nan],

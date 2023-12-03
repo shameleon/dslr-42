@@ -1,17 +1,20 @@
-import sys
-
-"""printout.py:
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+printout.py for colorful stdout or stderr output
 
 Usage:
-import printout as pout
+    import printout as pout
+    po.as_title2("Hello")
 
-add a colored and customizable
-- output to terminal stdout and stderr.
-- asks for terminal user input
+Description:
+    colored and customizable output
+    - output to terminal stdout and stderr.
+    - asks for terminal user input
 """
+__authors__ = ['jmouaike, ebremond']
 
-__author__ = "jmouaike"
-
+import sys
 
 """Color code
 https://talyian.github.io/ansicolors/ """
@@ -35,7 +38,7 @@ def printout_title(level: int, mssg: str):
     """Project name then Title1 printed with
     colorful central padding : ^80
     """
-    color = {1: COL_BLUWHI, 2: COL_GRNBLK, 3: COL_BLUWHI}
+    color = {1: COL_BLUWHI, 2: COL_TURQU, 3: COL_BLUWHI}
     if level == 1:
         project_name = 'Datascience X Logistic Regression'
         print(f'\n{COL_FTLIN}{project_name:_^80}{COL_RESET}')
@@ -56,7 +59,7 @@ def as_title3(mssg: str):
 
 def printout_one_line(color, mssg: str):
     """ colored one-line printed to stdout"""
-    print(f'{color}{mssg}{COL_RESET}')
+    print(f'{color}{mssg}{COL_RESET}\n')
 
 
 def as_result(mssg: str):

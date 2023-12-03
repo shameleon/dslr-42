@@ -1,10 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+logreg_tools.py contains logistic regression functions
+and are mainly used by dlsr module MultinomialTrainClass.
+
+Usage:
+    from utils import logreg_tools as logreg
+"""
+__authors__ = ['jmouaike, ebremond']
+
 import numpy as np
+
 from utils import describe_stats as dum
-
-"""
-"""
-
-__author__ = "jmouaike"
 
 
 def standardize(arr: np.ndarray) -> np.ndarray:
@@ -35,3 +42,7 @@ def gradient_descent(x_train, h_pred, y_actual):
 
 def update_weight_loss(weights, learning_rate, grad_desc):
     return weights - learning_rate * grad_desc
+
+
+if __name__ == "__main__":
+    pass
