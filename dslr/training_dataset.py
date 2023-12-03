@@ -1,17 +1,20 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/training_dataset.py"""
+__authors__ = ['jmouaike, ebremond']
+
+import os
+import sys
+
 import argparse
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import os
-import sys
+
 import config
 from MultinomialTrainClass import LogRegTrain
 from utils import describe_stats as dum
 from utils import print_out as po
-
-"""training_dataset.py"""
-
-__author__ = "jmouaike"
 
 
 class TrainingDataset:
@@ -134,10 +137,10 @@ def train_dataset():
         if args.verbose:
             training.plot_losses_and_weights()
     except (FileNotFoundError, IsADirectoryError) as e:
-        po.as_error("File Error :", e)
+        po.as_error2("File Error :", e)
         sys.exit("No file provided : exit")
     except pd.errors.EmptyDataError as e:
-        po.as_error("File Content Error :", e)
+        po.as_error2("File Content Error :", e)
         sys.exit("Empty File : exit")
 
 

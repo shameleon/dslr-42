@@ -1,32 +1,49 @@
-import numpy as np
-import pandas as pd
-from utils import logreg_tools as logreg
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/MultinomialTrainClass.py
 
-"""
-Multinomial Logistic regression : Where the target variable has
+Multinomial Logistic regression training.
+
+class : LogRegTrain
+    __init__()
+    train() method to start training the model
+    get_predict_proba() method for probabilities
+
+Multinomial Logistic regression : the target variable has
 three or more possible classes.
 
 One-Vs-All Classification : a method of multi-class classification,
 where the multi-class classification problem is broken down into
 multiple binary classifier models.
+
 For k class labels present in the dataset, k binary classifiers
 are needed in One-vs-All multi-class classification.
 """
+__authors__ = ['jmouaike, ebremond']
 
-__author__ = "jmouaike"
+import numpy as np
+import pandas as pd
+
+from utils import logreg_tools as logreg
 
 
 class LogRegTrain:
-    """LogTrain class
+    """LogRegTrain class
     for multinomial logistic regression model training
     - one-vs-all strategy
     - gradient descent algorithm to minimize the error
 
-    .train() method to start training the model
+    self.train() method to start training the model
+
+    self.get_predict_proba() to get predicted probabilities
     """
     def __init__(self, df_x_train: pd.DataFrame,
                  df_class: pd.DataFrame):
-        """ Parameters : unstandardized data to train without NaN, output """
+        """
+        Parameters :
+            Unstandardized data to train without NaN, output
+            Real Outputs dataframe
+        """
         df_std = df_x_train.agg(lambda feat: logreg.standardize(feat))
         x_train_std = np.array(df_std)
         ones = np.ones((len(x_train_std), 1), dtype=float)
@@ -113,4 +130,4 @@ class LogRegTrain:
 if __name__ == "__main__":
     """_summary_
     """
-    pass
+    print(LogRegTrain.__doc__)

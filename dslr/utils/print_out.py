@@ -4,7 +4,7 @@
 printout.py for colorful stdout or stderr output
 
 Usage:
-    import printout as pout
+    from utils import printout as po
     po.as_title2("Hello")
 
 Description:
@@ -84,6 +84,11 @@ def as_cross(mssg: str):
 
 def as_error(mssg: str):
     print(f'{COL_ERR}{mssg}{COL_RESET}', file=sys.stderr)
+
+
+def as_error2(mssg: str, error: str):
+    as_error(mssg)
+    print("❌", f'{COL_BLURED}{error}{COL_RESET}\n')
 
 
 def input_user_str(mssg: str) -> str:

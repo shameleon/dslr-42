@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-""" code from
+"""timer.py not used
+code from
 https://dev.to/kcdchennai/python-decorator-to-measure-execution-time-54hk
 """
 

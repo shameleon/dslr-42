@@ -1,8 +1,36 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/plot_dataset.py
+
+_summary_ Plot dataset
+
+Usage:
+    dslr/plot_dataset.py [dataset] [option]
+
+    Options:
+        -i  histogram
+        -s  scatter_plot
+        -p  pair-plot and density Matrix
+        -b  boxplot
+        -j  joinplot
+
+Raises:
+    SystemExit: _description_ FileNotFoundError,
+                              IsADirectoryError
+    SystemExit: _description_ EmptyDataError
+    SystemExit: _description_ ValueError
+
+Returns:
+    _type_: _description_ None
+"""
+__authors__ = ['jmouaike, ebremond']
+
 import argparse
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+
 import config
 
 
@@ -64,6 +92,9 @@ def plot_scatter(df: pd.DataFrame, target_label: str,
 
 def plot_pairplotmatrix(df: pd.DataFrame, target_label: str,
                         features: list):
+    """plots pairplot triangular matrix
+    with density on diagonal.
+    Saves figure to reports directory"""
     sns.pairplot(df,
                  x_vars=features,
                  y_vars=features,

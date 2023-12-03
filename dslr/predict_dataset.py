@@ -1,14 +1,17 @@
-import argparse
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/predict_dataset.py"""
+__authors__ = ['jmouaike, ebremond']
+
 import os
-import pandas as pd
 import sys
+
+import argparse
+import pandas as pd
+
 import config
 from PredictClass import PredictFromLogRegModel
 from utils import print_out as po
-
-"""predict_dataset.py"""
-
-__author__ = "jmouaike"
 
 
 def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
@@ -32,6 +35,7 @@ def set_real_class(df: pd.DataFrame) -> pd.DataFrame:
         truth_file = os.path.join(dir, config.test_truth)
         df_real_class = pd.read_csv(truth_file)[target]
         if df_real_class.shape[0] == 0:
+            po.as_error("No trust detected")
             raise SystemExit(1)
     return df_real_class
 

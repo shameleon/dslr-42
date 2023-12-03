@@ -2,7 +2,7 @@
 
 ### Issues
 
-- [x] issue : Display live cost during training - might slow down
+- [ ] issue : Display live cost during training - might slow down
 - [ ] issue #cheating : describe is used for testing in DescriberClass main and testDescribe.py
 - [ ] issue : Scale pairplot matrix to screen - Dell clusters
 - [ ] issue : Display more dataset details during training
@@ -17,6 +17,7 @@
 - [Gradient descent algorithms](https://realpython.com/gradient-descent-algorithm-python/)
 
 ### Todo
+- [ ] describe.py output saved to file *BonusFeature*
 - [ ] add plot logreg-predict.py
 - [ ] *Bonus* : Stochastic Gradient Descent (SGD)
 - [ ] *Bonus* : Minibatch (SGD)

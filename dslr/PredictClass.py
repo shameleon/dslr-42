@@ -1,13 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/PredictClass.py
+"""
+__authors__ = ['jmouaike, ebremond']
+
 import numpy as np
 import pandas as pd
+
 import config
 from utils import logreg_tools as logreg
 from utils import print_out as po
-
-"""
-"""
-
-__author__ = "jmouaike"
 
 
 class PredictFromLogRegModel:

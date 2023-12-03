@@ -1,8 +1,6 @@
-import numpy as np
-import pandas as pd
-from utils import describe_stats as dum
-
-"""DescriberClass.py:
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/DescriberClass.py:
     - class Describe
     - tests for the class
 
@@ -13,8 +11,12 @@ from utils import describe_stats as dum
     More statistics lines are provided if bonus=True
     for self.agg_describe() method.
 """
+__authors__ = ['jmouaike, ebremond']
 
-__author__ = "jmouaike"
+import numpy as np
+import pandas as pd
+
+from utils import describe_stats as dum
 
 
 class Describe:

@@ -2,7 +2,7 @@
 
 ## Datascience X Logistic Regression
 
-![electronic hat](./screenshots/bing-dslr-electroning-hat.jpg)
+<img src="./screenshots/bing-dslr-electroning-hat.jpg" alt="ML sorting hat" width=75% height=75%>
 
 - [Intro](#intro)
 - [Data understanding](#data-understanding)
@@ -27,9 +27,9 @@
 
 ### Intro
 
-The **DataScience x Logistic Regression** (`dslr`) is a *42's school* project, on the data branch of the *Holygraph*. As an initiation to *Machine Learning*, it consists of training a *multivariate logistic regression model*, to solve a classification problem.
-This our solution `dslr` subject, done by a team of two, mostly in `Python` language.
-`Python` functions or modules that are useful for statistics or machine learning, such as `scikit-learn`, are forbiden by *42*.
+The *DataScience x Logistic Regression* (`dslr`) is a *42's school* project, on the data branch of the *Holygraph*. As an initiation to *Machine Learning*, it consists of training a *multivariate logistic regression model* to solve a classification problem.
+This our solution `dslr` subject, done by a team of two, in `Python` language.
+The use of `Python` functions or modules that are doing most of the job for statistics or machine learning, such as `scikit-learn`, are forbiden by *42* for this project.
 ---
 
     The main objective is to recreate a ✨ magic Sorting Hat 🎓 ✨ to predict Hogwarts student houses.

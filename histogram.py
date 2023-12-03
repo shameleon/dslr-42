@@ -18,8 +18,9 @@ Subject:
 """
 __authors__ = ['jmouaike, ebremond']
 
-import argparse
 import os
+
+import argparse
 
 
 if __name__ == "__main__":
@@ -36,5 +37,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     print("Histogram plot for", os.path.split(args.filename)[1])
     print('feature :', args.feature[0])
-    os.system(f'./venv/bin/python {script_path} {args.filename}'
-              + f' -i "{args.feature[0]}"')
+    os.system(f'./venv/bin/python {script_path} {args.filename}' +
+              f' -i "{args.feature[0]}"')

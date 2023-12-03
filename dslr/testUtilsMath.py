@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+""" Unit testing for dslr/utils/describe_stats.py """
 import numpy as np
 import pandas as pd
 import unittest
-from utils import describe_stats as dum
 
-""" Unit testing for dslr/utils/describe_stats.py """
+from utils import describe_stats as dum
 
 
 class DslrUtilsMathTesting(unittest.TestCase):

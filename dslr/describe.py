@@ -1,20 +1,24 @@
-import argparse
-import pandas as pd
-from DescriberClass import Describe
-
-"""describe.py:
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/describe.py:
     This program reproduces the pandas.decribe() function.
 
-Parameter  a dataset file name as parameter.
-options:
+Parameter
+    a dataset file name as parameter.
+options
     --verbose or -v for more info
     --bonus or -b for bonus, additonal metrics to describe
 
 An instance of Describe Class is created
 with agg_describe() method to display description of features
 """
+__authors__ = ['jmouaike, ebremond']
 
-__author__ = "jmouaike"
+import argparse
+import pandas as pd
+
+from DescriberClass import Describe
+from utils import print_out as po
 
 
 def dataset_describer():
@@ -29,9 +33,9 @@ def dataset_describer():
         dataset_descriptor = Describe(df)
         dataset_descriptor.agg_describe(args.bonus)
     except (FileNotFoundError, IsADirectoryError) as e:
-        print("File Error :", e)
+        po.as_error2("File Error :", e)
     except pd.errors.EmptyDataError as e:
-        print("File Content Error :", e)
+        po.as_error2("File Content Error :", e)
 
 
 if __name__ == "__main__":

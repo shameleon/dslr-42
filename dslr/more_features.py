@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-"""
+"""dslr/more_features
     in addition to the 10 best features,
     exploring additonal features for training:
 

@@ -1,8 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""dslr/testDescribe.py
+
+Unit testing for dslr/DescriberClass Describe class
+
+"""
+
 import unittest
 import pandas as pd
-from DescriberClass import Describe
 
-""" Unit testing for dslr/DescriberClass Describe class """
+from DescriberClass import Describe
 
 
 class DescribeTesting(unittest.TestCase):
