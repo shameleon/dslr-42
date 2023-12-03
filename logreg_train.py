@@ -1,6 +1,5 @@
-import argparse
-import os
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """logreg_train.py:
 
 Program to train a logistic regression model
@@ -9,6 +8,10 @@ based on gradient descent algorithm to minimize the error
 Usage example
 $ python logreg_train.py ./datasets/dataset_train.csv
 """
+__authors__ = ['jmouaike, ebremond']
+
+import argparse
+import os
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ from DescriberClass import Describe
 Parameter  a dataset file name as parameter.
 options:
     --verbose or -v for more info
-    --bonnus or -b for bonus, additonal metrics to describe
+    --bonus or -b for bonus, additonal metrics to describe
 
 An instance of Describe Class is created
 with agg_describe() method to display description of features

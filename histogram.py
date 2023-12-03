@@ -1,19 +1,30 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+histogram.py
+    Generate a histogram plot for a feature of a dataset
+
+Usage:
+    script [dataset] [feature]
+    example:
+    $ python histogram.py ./datasets/dataset_train.csv 'Charms'
+
+Subject:
+    The histogram answering the next question :
+    Which Hogwarts course has a homogeneous score distribution
+    between all four houses?
+    Answer:
+        'Arithmancy', 'Care of Magical Creatures'
+"""
+__authors__ = ['jmouaike, ebremond']
+
 import argparse
 import os
 
-"""
-Histogram
-Make a script called histogram.[extension] which displays a
-histogram answering the next question :
-Which Hogwarts course has a homogeneous score distribution
-between all four houses?
-'Arithmancy'
-'Care of Magical Creatures'
-"""
-
 
 if __name__ == "__main__":
-    """call plot_dataset script with the -i option for histogram
+    """Calls dslr/plot_dataset.py script with the -i option for histogram
+    Executes the command (as string) in a subshell. See os.system doc.
     $ python histogram.py ./datasets/dataset_train.csv 'Charms'
     """
     description = 'histogram for a given feature of a dataset'

@@ -1,11 +1,14 @@
-import argparse
-import os
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """logreg_predict.py:
 
 Program to test a logistic regression model
-Comparing predicted outputs to real outputs
+comparing predicted outputs to real outputs.
 """
+__authors__ = ['jmouaike, ebremond']
+
+import argparse
+import os
 
 
 if __name__ == "__main__":

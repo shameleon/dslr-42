@@ -7,10 +7,14 @@
 - [Intro](#intro)
 - [Data understanding](#data-understanding)
 - [Usage](#usage)
-    - [describe.py](#describe-from-scratch)
-    - [Plots](#plots)
-    - [logreg_train.py](#training-dataset-with-logreg_trainpy)
-
+    - [config.py file](#config-file)
+    - [Virtual environment](#virtual-environment-venv)
+    - [Entrypoints](#entrypoints-scripts)
+- [Describe Data: describe.py](#describe-from-scratch)
+- [Plots](#plots)
+    - [Required plots](#required-plots)
+    - [Additional plots](#additional-plots)
+    - [Notebooks](#notebooks)
 - [Subject](#subject)
     - [Mandatory](#mandatory-part)
         - [Describe from scratch](#describe-from-scratch)
@@ -55,7 +59,7 @@ The targeted accuracy for predicting testing dataset should be above *98%*.
 
 In `dslr` module, a `config.py` file contains configuration for scripts to be run : Directories and files names, but also features to be trained and regression parameters.
 
-#### Virtual environment
+#### Virtual environment (venv)
 
 `make` to install the *virtual environment* with its *requirements*.
 
@@ -65,7 +69,7 @@ For virtual environment `venv` activation:
 
 #### Entrypoints scripts
 
-Entrypoints scripts are at the root of the project :
+Entrypoints scripts are at the root of the project. They run script from a `subshell` with [os.system]()
 
 |Program|Arguments|Action|
 |---|---|---|
@@ -118,6 +122,8 @@ max    1599.00  104956.00   1016.21  ...                      3.06  -225.43   27
 
 ### Plots
 
+#### Required plots :
+
 Plots that are required
 
 - Histogram
@@ -138,7 +144,7 @@ From there, we selected features that suits the best to train our model.
 ![Pair plot](./reports/pairplot.png)
 
 
-Additional plots :
+#### Additional plots
 
 - Box plot `-b option`
 
@@ -149,6 +155,8 @@ Joint plot is a nice combination of scatter plot and density distribution.
 
 ```python dslr/plot_dataset.py ./datasets/dataset_train.csv```
 
+#### Notebooks
+
 Other plots in notebooks :
 
     multi-box plots and many heatmaps
@@ -157,9 +165,6 @@ Other plots in notebooks :
 
 - [2.0 notebook](./notebooks/2.0-jm-model-training.ipynb)
 
-### Training dataset with logreg_train.py
-
-```logreg_predict.[extension] ./datasets/dataset_train.csv [weights]```
 
 ## Subject
 
@@ -294,9 +299,9 @@ Test runner chosen : `unittest` included in Python standard library.
 
 `./dslr/tests/testUtilsMath.py` compares `utils.math.py` functions and numpy / pandas equivalent functions
 
-#### pyinstaller modeule
+#### pyinstaller module
 
-An executable application could be built with
+An executable application `.exe` could be built with
 [pyinstaller](https://realpython.com/pyinstaller-python/)
 
 - adding the entry-point script
@@ -305,6 +310,3 @@ An executable application could be built with
 pyinstaller ./dslr/describe.py
 ```
 
-#### Icons
-
-[Icons at mui.com](https://mui.com/material-ui/material-icon)

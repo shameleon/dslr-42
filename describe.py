@@ -1,12 +1,18 @@
-import argparse
-import os
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """
-    Describes the data of a dataset file
-
+describe.py
+    Describes the data of a dataset file,
     executes ./dlsr/describe.py script
     takes one argument 'filename' .csv file
+
+    Usage:
+    python describe.py ./datasets/dataset_train.py
 """
+__authors__ = ['jmouaike, ebremond']
+
+import argparse
+import os
 
 
 if __name__ == "__main__":

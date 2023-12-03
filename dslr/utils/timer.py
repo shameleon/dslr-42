@@ -1,9 +1,11 @@
-from functools import wraps
-import time
-
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 """ code from
 https://dev.to/kcdchennai/python-decorator-to-measure-execution-time-54hk
 """
+
+from functools import wraps
+import time
 
 
 def timeit(func):
