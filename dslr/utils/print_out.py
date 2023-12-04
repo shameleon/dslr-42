@@ -67,7 +67,7 @@ def as_result(mssg: str):
 
 
 def as_comment(mssg: str):
-    printout_one_line(COL_GRNWHI, mssg)
+    printout_one_line(COL_GRNBLK, mssg)
 
 
 def as_status(mssg: str):

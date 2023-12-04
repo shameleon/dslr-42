@@ -17,7 +17,9 @@
 - [Gradient descent algorithms](https://realpython.com/gradient-descent-algorithm-python/)
 
 ### Todo
+
 - [ ] describe.py output saved to file *BonusFeature*
+- [ ] summary for the training as in [odds-ratio-logistic-regressionodds-ratio-logistic-regression](https://mmuratarat.github.io/2019-09-05/odds-ratio-logistic-regression)
 - [ ] add plot logreg-predict.py
 - [ ] *Bonus* : Stochastic Gradient Descent (SGD)
 - [ ] *Bonus* : Minibatch (SGD)
@@ -28,7 +30,7 @@
   - [ ] -b option for bonus
   - [X] Count NaNs
   - [ ] unique, top, freq
-  - [ ]  Skewness, Kurtosis, No. of 3 Sigma Outliers 
+  - [ ] Skewness, Kurtosis, No. of 3 Sigma Outliers 
 - [ ] *Bonus* : choose relevent model metrics and write to file 
   - [X] Accuracy
   - [ ] Precision, recall, F1 score

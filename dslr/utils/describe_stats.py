@@ -158,6 +158,35 @@ def std(x: pd.Series, corrected=True) -> float:
     return sqrt(sq_sum / (len(x_list) - corrected))
 
 
+def skewness(x: pd.Series) -> float:
+    """skewness calculates symetry of a dataset
+    a value of 0: symetric data, normally distributed
+    negative value: skewed to the left
+    positive value: skewed to the right
+    
+    french: coefficient d'asymétrie
+
+    calculation with quartile method is applied
+    """
+    mean_x = mean(x)
+    median_x = percentile(x, 0.5)
+    std_x = std(x)
+    if std_x == 0 or is_nan(std_x):
+        return np.nan
+    skewness = 3 * (mean_x - median_x) / std_x
+    return skewness
+
+
+def kurtosis(x: pd.Series) -> float:
+    """kurtosis estimate thickness of tails 
+    containing outliers of a distibution.
+    value 3: normal distribution
+    negative value < 3: less outliers
+    positive value > 3 : more outlier
+    """
+    return np.nan
+
+
 def __put_format_line(label: str, n1: float, n2: float) -> None:
     """ prints a width formatted line to stdout
     parameters : a label and two float numbers """
@@ -182,10 +211,13 @@ def __test_utils_math(s: pd.Series):
     __put_format_line("50%", s.quantile(0.5), percentile(s, 0.5))
     __put_format_line("75%", s.quantile(0.75), percentile(s, 0.75))
     __put_format_line("max", s.max(), max(s))
-    __put_format_line("NaNs", len(s[s.isna()]), count_nan(s))
     __put_format_line("sum", np.sum(s), sum(s))
     __put_format_line("mean", np.mean(s), mean(s))
     __put_format_line("std", s.std(), std(s))
+    print(f'{" bonus ":#^50}')
+    __put_format_line("NaNs", len(s[s.isna()]), count_nan(s))
+    __put_format_line("skewness", s.skew(), skewness(s))
+    __put_format_line("kurtosis", s.kurtosis(), kurtosis(s))
     print("_" * 50)
 
 

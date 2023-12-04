@@ -112,6 +112,7 @@ class TrainingDataset:
         print(f'Model Weights to {model_dir + dest_file}')
 
     def plot_losses_and_weights(self):
+        """Use -v option to plot losses and weight """
         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(20, 8))
         fig.suptitle('Dataset training', c='blue', fontsize=16)
         fig.subplots_adjust(hspace=0.125, wspace=0.5)
@@ -146,7 +147,7 @@ def train_dataset():
 
 if __name__ == "__main__":
     """_summary_
-    -v option for plotting losses and weights)
+    -v option for plotting losses and weights
     """
     parser = argparse.ArgumentParser(prog='training_dataset.py',
                                      description='Training a dataset',
@@ -156,4 +157,6 @@ if __name__ == "__main__":
     parser.add_argument('-b', '--bonus', action='store_true')
     args = parser.parse_args()
     train_dataset()
+    if not args.verbose:
+        po.as_comment("-v option for plotting losses and weights")
     sys.exit(0)

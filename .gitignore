@@ -5,6 +5,7 @@
 .logreg_model
 
 # VSCode
+dslr_project.*
 code-workspace
 
 .DS_Store
