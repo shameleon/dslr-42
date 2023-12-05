@@ -134,7 +134,7 @@ def mean(x: pd.Series):
 
 
 def kth_moment(x: pd.Series, k: int, corrected=True) -> float:
-    r"""k-th raw moment of the population
+    r"""k-th standardized moment of the population
     k should be in [1, 2, 3, 4] values
     :math:`m_k = \frac{1}{N-1}\sum_{i=1}^n (𝑥_i-\overline{𝑥})^k`
     """
@@ -187,26 +187,7 @@ def skewness(x: pd.Series) -> float:
     std_x = std(x)
     if count(x) <= 1 or std_x == 0 or is_nan(std_x):
         return np.nan
-    return kth_moment(x, 3) / (std_x ** 3)
-
-
-def kelly_skewness(x: pd.Series) -> float:
-    """sample skewness estimates symetry of a dataset
-    a value of 0: symetric data, normally distributed
-    negative value: skewed to the left
-    positive value: skewed to the right
-    
-    french: coefficient d'asymétrie
-
-    The third central moment calculation is applied
-
-    Skewness:
-    (sum of the Deviation Cube)/(N-1) * Std deviation’s Cube.
-    """
-    std_x = std(x)
-    if count(x) <= 1 or std_x == 0 or is_nan(std_x):
-        return np.nan
-    return kth_moment(x, 3) / (std_x ** 3)
+    return kth_moment(x, 3) / (std_x ** (3))
 
 
 def kurtosis(x: pd.Series) -> float:
@@ -217,20 +198,13 @@ def kurtosis(x: pd.Series) -> float:
     positive value > 3 : more outlier
     equivalent to pd.kurt(), not pd.kurtosis()
     """
-    std_x = std(x)
-    if std_x == 0 or is_nan(std_x):
+    sigma2 = kth_moment(x, 2)
+    if sigma2 == 0 or is_nan(sigma2):
         return np.nan
     x_list = drop_nan(x).to_list()
-    x_mean = mean(x)
-    x_sq_mean = mean(x)**2
     m4 = kth_moment(x, 4)
-    # s_to_4 = 0
-    deviation = 0
-    for i in range(len(x_list)):
-        deviation += (x_list[i] - x_mean**2)**2
-    if deviation == 0:
-        return np.nan
-    return m4 / deviation
+    sigma2 = kth_moment(x, 2)
+    return m4 / sigma2**2
 
 
 def __put_format_line(label: str, n1: float, n2: float) -> None:
@@ -263,7 +237,7 @@ def __test_utils_math(s: pd.Series):
     print(f'{" bonus ":#^50}')
     __put_format_line("NaNs", len(s[s.isna()]), count_nan(s))
     __put_format_line("skewness", "%.6f" %s.skew(), "%.6f" %skewness(s))
-    __put_format_line("kurtosis", "%.6f" %s.kurt(),
+    __put_format_line("kurtosis", "%.6f" %s.kurtosis(),
                       "%.6f" %kurtosis(s))
     print("_" * 50)
 
@@ -298,7 +272,7 @@ if __name__ == "__main__":
     """Test: python describe_stats.py"""
     df = pd.DataFrame({
         'A': [42, np.nan, 3, np.nan, 5, 10, 18, 6, -2, 0],
-        'B': [np.nan, 6, 10, 9, 9, 8, 11, 9, 9, np.nan],
+        'B': [np.nan, 10, 9, 9, 9, 8, 9, 9, 9, np.nan],
         'C': [np.nan, np.nan, np.nan, np.nan, np.nan,
               np.nan, np.nan, np.nan, np.nan, np.nan]
         })
