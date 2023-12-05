@@ -162,9 +162,9 @@ def std(x: pd.Series, corrected=True) -> float:
             Return : a corrected std (normalized to N - 1) aswith pd.std()
         corrected=False: for an uncorrected std as np.std()
             Return : std (normalized to N) as np.std() or pd.std(ddof=1)
-    
+
     standard_deviation:
-    :math:`\sigma^2 = \frac{1}{N-1}\sum_{i=1}^n (𝑥_i-\overline{𝑥})^2`     
+    :math:`\sigma^2 = \frac{1}{N-1}\sum_{i=1}^n (𝑥_i-\overline{𝑥})^2`
     """
     if count(x) <= corrected:
         return np.nan
@@ -176,7 +176,7 @@ def skewness(x: pd.Series) -> float:
     a value of 0: symetric data, normally distributed
     negative value: skewed to the left
     positive value: skewed to the right
-    
+
     french: coefficient d'asymétrie
 
     The third central moment calculation is applied
@@ -191,7 +191,7 @@ def skewness(x: pd.Series) -> float:
 
 
 def kurtosis(x: pd.Series) -> float:
-    """sample kurtosis is to estimate thickness of tails 
+    """sample kurtosis is to estimate thickness of tails
     containing outliers of a distibution.
     value 3: normal distribution
     negative value < 3: less outliers
@@ -201,7 +201,6 @@ def kurtosis(x: pd.Series) -> float:
     sigma2 = kth_moment(x, 2)
     if sigma2 == 0 or is_nan(sigma2):
         return np.nan
-    x_list = drop_nan(x).to_list()
     m4 = kth_moment(x, 4)
     sigma2 = kth_moment(x, 2)
     return m4 / sigma2**2
@@ -236,9 +235,9 @@ def __test_utils_math(s: pd.Series):
     __put_format_line("std", s.std(), std(s))
     print(f'{" bonus ":#^50}')
     __put_format_line("NaNs", len(s[s.isna()]), count_nan(s))
-    __put_format_line("skewness", "%.6f" %s.skew(), "%.6f" %skewness(s))
-    __put_format_line("kurtosis", "%.6f" %s.kurtosis(),
-                      "%.6f" %kurtosis(s))
+    __put_format_line("skewness", "%.6f" % s.skew(), "%.6f" % skewness(s))
+    __put_format_line("kurtosis", "%.6f" % s.kurtosis(),
+                      "%.6f" % kurtosis(s))
     print("_" * 50)
 
 
