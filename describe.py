@@ -22,5 +22,8 @@ if __name__ == "__main__":
                                      description='describe data of a dataset',
                                      epilog='verbose mode for options')
     parser.add_argument('filename')
+    parser.add_argument('-b', '--bonus', action='store_true')
+    parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args()
-    os.system(f'./venv/bin/python {script_path} {args.filename}')
+    option = ' ' + ' -b' * args.bonus + ' -v' * args.verbose
+    os.system(f'./venv/bin/python {script_path} {args.filename} {option}')

@@ -29,5 +29,8 @@ if __name__ == "__main__":
                                      description='Training dataset',
                                      epilog='verbose mode for options')
     parser.add_argument('filepath')
+    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-b', '--bonus', action='store_true')
     args = parser.parse_args()
-    os.system(f'./venv/bin/python {script_path} {args.filepath}')
+    options = ' ' + '-v ' * args.verbose + '-b' * args.bonus
+    os.system(f'./venv/bin/python {script_path} {args.filepath} {options}')

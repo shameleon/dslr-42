@@ -44,10 +44,14 @@ The training dataset consists of 1600 students 🧙 caracteristics, with 17 feat
 - A set of 13 wizard skills features being refered as : `Arithmancy` `Astronomy` `Herbology` `Defense Against the Dark Arts` `Divination` `Muggle Studies` `Ancient Runes` `History of Magic` `Transfiguration` `Potions` `Care of Magical Creatures` `Charms` `Flying`.
 
 A model is trained, based on specific selected features, so that it can predict student's affiliation to one of the four 🏰 hogwart's houses
-    🦅 `Gryffindor`
-    🦡 `Hufflepuff`
-    🐦‍⬛ `Ravenclaw`
-    🐍 `Slytherin`
+
+🦅 `Gryffindor`
+
+🦡 `Hufflepuff`
+
+🐦‍⬛ `Ravenclaw`
+
+🐍 `Slytherin`
 
 The targeted accuracy for predicting testing dataset should be above *98%*.
 
@@ -69,7 +73,7 @@ For virtual environment `venv` activation:
 
 #### Entrypoints scripts
 
-Entrypoints scripts are at the root of the project. They run script from a `subshell` with [os.system]()
+Entrypoints scripts are at the root of the project. They run script from a `subshell` with `os.system`.
 
 |Program|Arguments|Action|
 |---|---|---|
@@ -82,15 +86,15 @@ Entrypoints scripts are at the root of the project. They run script from a `subs
 
 Describing the dataset :
 
-``` (venv) ➜  dslr-42 git:(main) ✗ python describe.py ./datasets/dataset_train.csv```
+```(venv) ➜  dslr-42 git:(main) ✗ python describe.py ./datasets/dataset_train.csv```
 
 The training script takes a dataset file as argument :
 
-``` python ./dslr/logreg_train.py ./datasets/dataset_train.csv```
+```python ./dslr/logreg_train.py ./datasets/dataset_train.csv```
 
 For prediction :
 
-``` python ./logreg_predict.py ./datasets/dataset_test.csv ./logreg_model/weights.csv```
+```python ./logreg_predict.py ./datasets/dataset_test.csv ./logreg_model/weights.csv```
 
 Screenshot :
 
@@ -103,8 +107,7 @@ A data file must be provided as argument.
 
 Describing the training dataset :
 
-```python ./dslr/describe.py datasets/dataset_train.csv
-```
+```python ./dslr/describe.py datasets/dataset_train.csv```
 
 Output:
 
@@ -217,7 +220,6 @@ Answers will be evaluated using accuracy score of the Scikit-Learn library. Prof
 McGonagall agrees that your algorithm is comparable to the Sorting Hat only if it has a
 minimum precision of 98% .
 
-
 ## Some helpful links
 
 ### Jupyter
@@ -303,10 +305,3 @@ Test runner chosen : `unittest` included in Python standard library.
 
 An executable application `.exe` could be built with
 [pyinstaller](https://realpython.com/pyinstaller-python/)
-
-- adding the entry-point script
-
-```shell
-pyinstaller ./dslr/describe.py
-```
-

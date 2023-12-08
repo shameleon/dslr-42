@@ -25,11 +25,11 @@ def dataset_describer():
     """  """
     if args.verbose:
         print("File     :", args.filename)
-        print("Verbose : compares to pandas.describe()")
+        print("Verbose mode")
     try:
         df = pd.read_csv(args.filename)
         if args.bonus:
-            print("Bonus")
+            po.as_status("describe.py bonus ")
         dataset_descriptor = Describe(df)
         dataset_descriptor.agg_describe(args.bonus)
     except (FileNotFoundError, IsADirectoryError) as e:
