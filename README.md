@@ -1,3 +1,5 @@
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/shameleon/dslr-42)
+
 # dslr-42
 
 ## Datascience X Logistic Regression
